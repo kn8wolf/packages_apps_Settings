@@ -882,10 +882,6 @@
     <string name="gamma_tuning_brightness">Brightness</string>
     <string name="gamma_tuning_saturation">Saturation</string>
 
-    <!-- Launch music player when headset is connected -->
-    <string name="headset_connect_player_title">Launch music app</string>
-    <string name="headset_connect_player_summary">Launch the default music app when headset is connected</string>
-
     <string name="auto_brightness_reset_button">Reset</string>
 
     <!-- Display settings.  Screen color. -->
@@ -1012,5 +1008,9 @@
 
     <!-- Default alarm ringtone -->
     <string name="alarm_ringtone_title">Default alarm ringtone</string>
+
+    <!-- Launch music player when headset is connected -->
+    <string name="headset_connect_player_title">Launch music app</string>
+    <string name="headset_connect_player_summary">Launch the default music app when headset is connected</string>
 
 </resources>

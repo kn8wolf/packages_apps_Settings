@@ -155,6 +155,8 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory
     public void init() {
         final Context context = getContext();
 
+        removeAll();
+
         final UserInfo currentUser;
         try {
             currentUser = ActivityManagerNative.getDefault().getCurrentUser();
@@ -274,9 +276,6 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory
 
         if (Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
             mItemAvailable.setTitle(R.string.memory_available_read_only);
-            if (mFormatPreference != null) {
-                removePreference(mFormatPreference);
-            }
         } else {
             mItemAvailable.setTitle(R.string.memory_available);
         }
@@ -301,9 +300,6 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory
             removePreference(mUsageBarPreference);
             removePreference(mItemTotal);
             removePreference(mItemAvailable);
-            if (mFormatPreference != null) {
-                removePreference(mFormatPreference);
-            }
         }
 
         if (mUsbConnected && (UsbManager.USB_FUNCTION_MTP.equals(mUsbFunction) ||
@@ -406,6 +402,7 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory
     }
 
     public void onStorageStateChanged() {
+        init();
         measure();
     }
 

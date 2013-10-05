@@ -1292,4 +1292,9 @@
     <string name="lockscreen_wallpaper_title">Wallpaper</string>
     <string name="lockscreen_wallpaper_summary">Set lockscreen wallpaper</string>
 
+    <!-- LTO download data over wi-fi only -->
+    <string name="lto_download_data_wifi_only">GPS assisted data download</string>
+    <string name="lto_download_data_wifi_only_on">Over any networks</string>
+    <string name="lto_download_data_wifi_only_off">Only over Wi\u2011Fi networks</string>
+
 </resources>

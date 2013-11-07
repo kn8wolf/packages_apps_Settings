@@ -80,6 +80,8 @@
             android:supportsRtl="true"
             android:allowBackup="false">
 
+        <uses-library android:name="org.cyanogenmod.hardware" required="false" />
+
         <!-- Settings -->
 
         <activity android:name="Settings"
@@ -126,6 +128,13 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name=".slim.service.BootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
 
         <!-- Wireless Controls -->
 

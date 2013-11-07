@@ -103,6 +103,8 @@
             android:supportsRtl="true"
             android:allowBackup="false">
 
+        <uses-library android:name="org.cyanogenmod.hardware" required="false" />
+
         <!-- Only system/su can open this activity -->
         <!-- This activity will then call the MultitaskSuRequestActivity to create a new task stack -->
         <activity
@@ -193,6 +195,13 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name=".slim.service.BootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
 
         <!-- Wireless Controls -->
 

@@ -34,6 +34,7 @@ import android.preference.SwitchPreference;
 import android.provider.Settings;
 
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
 import com.android.settings.R;
 
 import android.widget.Toast;
@@ -48,6 +49,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private static final String KEY_BUTTON_BACKLIGHT = "button_backlight";
     private static final String ENABLE_NAVIGATION_BAR = "enable_nav_bar";
     private static final String KEYS_OVERFLOW_BUTTON = "keys_overflow_button";
+    private static final String KEY_BLUETOOTH_INPUT_SETTINGS = "bluetooth_input_settings";
 
     private SwitchPreference mDisableHardwareButtons;
     private ButtonBacklightBrightness mBacklight;
@@ -80,6 +82,9 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
         mEnableNavigationBar = (SwitchPreference) prefs.findPreference(ENABLE_NAVIGATION_BAR);
         mEnableNavigationBar.setOnPreferenceChangeListener(this);
+
+        Utils.updatePreferenceToSpecificActivityFromMetaDataOrRemove(getActivity(),
+                getPreferenceScreen(), KEY_BLUETOOTH_INPUT_SETTINGS);
 
         updatePreferences();
     }

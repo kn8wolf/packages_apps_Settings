@@ -1406,6 +1406,10 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="status_bar_double_tap_gesture_title">Double tap gesture</string>
     <string name="status_bar_double_tap_gesture_summary">Enable double tap on status bar to turn off screen</string>
 
+    <!--Lockscreen See Through-->
+    <string name="see_through_title">See through</string>
+    <string name="see_through_summary">Shows the content behind your lockscreen, your data may be visible to those around you</string>
+
     <!-- Screen color -->
     <string name="screencolor">Screen color</string>
     <string name="custom_screencolor">Custom screen color</string>

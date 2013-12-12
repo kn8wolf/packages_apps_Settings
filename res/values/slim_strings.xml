@@ -120,6 +120,10 @@
 
     <string name="additional_options_title">Additional options</string>
 
+    <!-- About phone screen, slim version -->
+    <string name="slimsaber_version_title">SlimSaber version</string>
+    <string name="slimsaber_version_default">Unknown</string>
+
     <!-- Power Widget  -->
     <string name="power_widget_title">Power widget</string>
     <string name="title_expanded_widget">Power widget</string>

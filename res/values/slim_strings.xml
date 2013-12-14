@@ -1272,4 +1272,8 @@
     <!-- Wi-Fi settings screen, error message when the frequency band could not be set [CHAR LIMIT=50]. -->
     <string name="wifi_setting_countrycode_error">There was a problem setting the region code.</string>
 
+    <!-- Chamber of Secrets -->
+    <string name="chamber_title">Chamber of secrets</string>
+    <string name="chamber_toast">The chamber of secrets has opened</string>
+
 </resources>

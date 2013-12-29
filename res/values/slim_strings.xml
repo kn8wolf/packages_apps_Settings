@@ -1664,4 +1664,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="status_bar_double_tap_gesture_title">Double tap gesture</string>
     <string name="status_bar_double_tap_gesture_summary">Enable double tap on status bar to turn off screen</string>
 
+    <!-- Performance Control -->
+    <string name="performance_settings_title">Performance</string>
+
 </resources>

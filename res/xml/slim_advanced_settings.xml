@@ -30,6 +30,11 @@
 
     </PreferenceScreen>
 
+    <PreferenceScreen
+        android:title="@string/performance_settings_title"
+        android:fragment="com.brewcrewfoo.performance.activities.MainActivity">
+    </PreferenceScreen>
+
     <PreferenceCategory
         android:key="advanced_settings_options_prefs"
         android:title="@string/advanced_options_settings_title">

@@ -39,6 +39,8 @@ import android.app.admin.DevicePolicyManager;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.hardware.Sensor;
@@ -102,6 +104,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String CATEGORY_ADVANCED = "advanced_display_prefs";
     private static final String KEY_DISPLAY_COLOR = "color_calibration";
     private static final String KEY_DISPLAY_GAMMA = "gamma_tuning";
+    private static final String KEY_SCREEN_COLOR_SETTINGS = "screencolor_settings";
 
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
 
@@ -110,11 +113,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String ROTATION_ANGLE_180 = "180";
     private static final String ROTATION_ANGLE_270 = "270";
 
-
     private PreferenceScreen mDisplayRotationPreference;
     private WarnedListPreference mFontSizePref;
     private SwitchPreference mWakeUpWhenPluggedOrUnplugged;
     private PreferenceCategory mWakeUpOptions;
+    private PreferenceScreen mScreenColorSettings;
 
     private static final String KEY_DOZE_CATEGORY = "category_doze_options";
     private static final String KEY_DOZE = "doze";
@@ -303,6 +306,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             prefSet.removePreference(mWakeUpOptions);
         }
 
+        mScreenColorSettings = (PreferenceScreen) findPreference(KEY_SCREEN_COLOR_SETTINGS);
+        if (!isPostProcessingSupported()) {
+            getPreferenceScreen().removePreference(mScreenColorSettings);
+        }
     }
 
     private static boolean allowAllRotations(Context context) {
@@ -725,6 +732,17 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 Log.d(TAG, "Color enhancement settings restored.");
             }
         }
+    }
+
+    private boolean isPostProcessingSupported() {
+        boolean ret = true;
+        final PackageManager pm = getPackageManager();
+        try {
+            pm.getPackageInfo("com.qualcomm.display", PackageManager.GET_META_DATA);
+        } catch (NameNotFoundException e) {
+            ret = false;
+        }
+        return ret;
     }
 
     private static boolean isAdaptiveBacklightSupported() {

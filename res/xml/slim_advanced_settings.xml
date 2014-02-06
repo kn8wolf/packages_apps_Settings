@@ -50,4 +50,9 @@
         android:fragment="com.brewcrewfoo.performance.activities.MainActivity">
     </PreferenceScreen>
 
+    <PreferenceScreen
+        android:id="@+id/wakelock_blocker"
+        android:fragment="com.android.settings.du.WakeLockBlocker"
+        android:title="@string/wakelock_blocker" />
+
 </PreferenceScreen>

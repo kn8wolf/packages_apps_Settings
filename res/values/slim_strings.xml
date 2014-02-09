@@ -31,6 +31,9 @@
     <string name="interface_settings_title">Interface</string>
     <string name="navigation_settings_title">Navigation</string>
 
+    <!-- Slim Shortcuts -->
+    <string name="slim_shortcut_picker">Slim Actions</string>
+
     <!-- Color Picker -->
     <string name="dialog_color_picker">Color Picker</string>
     <string name="press_color_to_apply">Press on color below to apply</string>

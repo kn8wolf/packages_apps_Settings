@@ -924,4 +924,7 @@
     <string name="live_display_enhance_color_title">Enhance colors</string>
     <string name="live_display_enhance_color_summary">Improve color vibrance of flesh tones, scenery, and other images</string>
 
+    <!-- Slim Shortcuts -->
+    <string name="slim_shortcut_picker">Slim Actions</string>
+
 </resources>

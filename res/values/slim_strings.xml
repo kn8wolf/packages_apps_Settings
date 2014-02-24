@@ -20,6 +20,7 @@
     <string name="reset">Reset</string>
     <string name="attention">Attention</string>
     <string name="enabled">Enabled</string>
+    <string name="disabled">Disabled</string>
     <string name="default_string">Default</string>
     <string name="additional_options_title">Additional options</string>
     <string name="reset_message">Reset all entries to default?</string>
@@ -1200,5 +1201,12 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="ram_bar_color_disabled">Disabled</string>
     <string name="ram_bar_button_help">Help</string>
     <string name="ram_bar_button_reset">Reset colors</string>
+
+    <!-- Notification Reminders -->
+    <string name="noti_reminder_category">Notification reminder</string>
+    <string name="noti_reminder_enable_title">Enable notification reminder</string>
+    <string name="noti_reminder_sound_title">Notify sound</string>
+    <string name="noti_reminder_sound_looping">Until dismissed</string>
+    <string name="noti_reminder_ringtone">Notify ringtone</string>
 
 </resources>

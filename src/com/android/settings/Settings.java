@@ -76,6 +76,7 @@ import com.android.settings.bluetooth.BluetoothSettings;
 import com.android.settings.profiles.AppGroupConfig;
 import com.android.settings.profiles.ProfileConfig;
 import com.android.settings.profiles.ProfilesSettings;
+import com.android.settings.net.MobileDataEnabler;
 import com.android.settings.wfd.WifiDisplaySettings;
 import com.android.settings.wifi.WifiEnabler;
 import com.android.settings.wifi.WifiSettings;
@@ -465,6 +466,11 @@ public class Settings extends PreferenceActivity
                 if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH)) {
                     target.remove(i);
                 }
+            } else if (id == R.id.mobile_network_settings) {
+                // Remove mobile network settings if the device doesn't have telephony
+                if (Utils.isWifiOnly(this)) {
+                    target.remove(i);
+                }
             } else if (id == R.id.data_usage_settings) {
                 // Remove data usage when kernel module not enabled
                 final INetworkManagementService netManager = INetworkManagementService.Stub
@@ -618,6 +624,7 @@ public class Settings extends PreferenceActivity
         private final BluetoothEnabler mBluetoothEnabler;
         private final ProfileEnabler mProfileEnabler;
         private final TRDSEnabler mTRDSEnabler;
+        private final MobileDataEnabler mMobileDataEnabler;
         private AuthenticatorHelper mAuthHelper;
 
         private static class HeaderViewHolder {
@@ -634,7 +641,8 @@ public class Settings extends PreferenceActivity
                 return HEADER_TYPE_CATEGORY;
             } else if (header.id == R.id.wifi_settings
                      || header.id == R.id.bluetooth_settings
-                     || header.id == R.id.trds_settings) {
+                     || header.id == R.id.trds_settings
+                     || header.id == R.id.mobile_network_settings) {
                 return HEADER_TYPE_SWITCH;
             } else {
                 return HEADER_TYPE_NORMAL;
@@ -680,6 +688,7 @@ public class Settings extends PreferenceActivity
             mBluetoothEnabler = new BluetoothEnabler(context, new Switch(context));
             mProfileEnabler = new ProfileEnabler(context, new Switch(context));
             mTRDSEnabler = new TRDSEnabler(context, new Switch(context));
+            mMobileDataEnabler = new MobileDataEnabler(context, new Switch(context));
         }
 
         @Override
@@ -741,6 +750,8 @@ public class Settings extends PreferenceActivity
                     } else if (header.id == R.id.trds_settings) {
                         mTRDSSwitch = (Switch) view.findViewById(R.id.switchWidget);
                         mTRDSEnabler.setSwitch(holder.switch_);
+                    } else if (header.id == R.id.mobile_network_settings) {
+                        mMobileDataEnabler.setSwitch(holder.switch_);
                     }
                     // No break, fall through on purpose to update common fields
 
@@ -779,6 +790,7 @@ public class Settings extends PreferenceActivity
             mBluetoothEnabler.resume();
             mProfileEnabler.resume();
             mTRDSEnabler.resume();
+            mMobileDataEnabler.resume();
         }
 
         public void pause() {
@@ -786,6 +798,7 @@ public class Settings extends PreferenceActivity
             mBluetoothEnabler.pause();
             mProfileEnabler.pause();
             mTRDSEnabler.pause();
+            mMobileDataEnabler.pause();
         }
     }
 

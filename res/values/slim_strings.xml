@@ -1467,4 +1467,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="location_agps_def_reset_type">HOT</string>
     <string name="location_agps_def_location_mode">MSB</string>
 
+    <!-- Bluetooth accept all Filestypes -->
+    <string name="bluetooth_accept_all_files">Accept all file types</string>
+
 </resources>

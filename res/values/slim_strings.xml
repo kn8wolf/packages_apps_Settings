@@ -867,4 +867,8 @@
     <string name="maximum_head_level">Head: %1$s W/kg</string>
     <string name="maximum_body_level">Body: %1$s W/kg</string>
 
+    <!-- Bluetooth settings. A checkbox to set if we should accept all the file types regardless of
+         their presence in MIME type whitelist -->
+    <string name="bluetooth_accept_all_files">Accept all file types</string>
+
 </resources>

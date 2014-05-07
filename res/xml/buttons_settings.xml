@@ -20,17 +20,18 @@
         android:title="@string/buttons_title">
 
     <PreferenceCategory
-        android:title="@string/buttons_options_title">
+        android:title="@string/general_title">
 
        <SwitchPreference
             android:key="disable_hardware_button"
             android:title="@string/disable_hwbuttons_title"
             android:summary="@string/disable_hwbuttons_summary" />
 
-       <SwitchPreference
-            android:key="enable_nav_bar"
-            android:title="@string/enable_nav_bar_title"
-            android:defaultValue="false" />
+       <com.android.settings.slim.ButtonBacklightBrightness
+            android:key="button_backlight"
+            android:title="@string/button_backlight_title"
+            android:dialogTitle="@string/button_backlight_title"
+            android:persistent="false" />
 
        <ListPreference
             android:key="keys_overflow_button"
@@ -40,4 +41,13 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+                android:title="@string/navbar_title" >
+
+       <SwitchPreference
+            android:key="enable_nav_bar"
+            android:title="@string/enable_nav_bar_title"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
 </PreferenceScreen>

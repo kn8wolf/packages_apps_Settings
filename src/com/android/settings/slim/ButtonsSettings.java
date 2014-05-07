@@ -44,10 +44,12 @@ public class ButtonsSettings extends SettingsPreferenceFragment implements
 
     private static final String TAG = "ButtonsSettings";
     private static final String DISABLE_HARDWARE_BUTTONS = "disable_hardware_button";
+    private static final String KEY_BUTTON_BACKLIGHT = "button_backlight";
     private static final String ENABLE_NAVIGATION_BAR = "enable_nav_bar";
     private static final String KEYS_OVERFLOW_BUTTON = "keys_overflow_button";
 
     private SwitchPreference mDisableHardwareButtons;
+    private ButtonBacklightBrightness mBacklight;
     private SwitchPreference mEnableNavigationBar;
     private ListPreference mOverflowButtonMode;
 
@@ -68,6 +70,11 @@ public class ButtonsSettings extends SettingsPreferenceFragment implements
             mDisableHardwareButtons.setOnPreferenceChangeListener(this);
         } else {
             prefs.removePreference(mDisableHardwareButtons);
+        }
+
+        mBacklight = (ButtonBacklightBrightness) prefs.findPreference(KEY_BUTTON_BACKLIGHT);
+        if (!mBacklight.isButtonSupported() && !mBacklight.isKeyboardSupported()) {
+            prefs.removePreference(mBacklight);
         }
 
         mOverflowButtonMode = (ListPreference) prefs.findPreference(KEYS_OVERFLOW_BUTTON);
@@ -107,6 +114,9 @@ public class ButtonsSettings extends SettingsPreferenceFragment implements
                     com.android.internal.R.integer.config_buttonBrightnessSettingDefault);
             int brightness = value ? 0 : defaultBrightness;
             Settings.System.putInt(getContentResolver(), Settings.System.BUTTON_BRIGHTNESS, brightness);
+            if (mBacklight != null) {
+                mBacklight.setSummary(R.string.backlight_summary_disabled);
+            }
 
             // Enable overflow button
             Settings.System.putInt(getContentResolver(), Settings.System.UI_OVERFLOW_BUTTON, 2);

@@ -87,4 +87,50 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:key="lockscreen_notifications_category"
+        android:title="@string/lockscreen_notifications">
+
+        <CheckBoxPreference
+            android:key="lockscreen_notifications"
+            android:title="@string/lockscreen_notifications"
+            android:summary="@string/lockscreen_notifications_summary" />
+
+        <ListPreference
+            android:title="@string/pocket_mode"
+            android:summary="@string/pocket_mode_summary"
+            android:key="lockscreen_notifications_pocket_mode"
+            android:entries="@array/pocket_mode_modes"
+            android:entryValues="@array/pocket_mode_values" />
+
+        <CheckBoxPreference
+            android:title="@string/wake_on_notification"
+            android:summary="@string/wake_on_notification_summary"
+            android:key="lockscreen_notifications_wake_on_notification" />
+
+        <MultiSelectListPreference
+            android:title="@string/lockscreen_notifications_type"
+            android:key="lockscreen_notifications_type"
+            android:entries="@array/lockscreen_notification_types"
+            android:entryValues="@array/lockscreen_notification_types_values" />
+
+        <ListPreference
+            android:title="@string/notifications_height"
+            android:summary="@string/notifications_height_summary"
+            android:key="lockscreen_notifications_height"
+            android:entries="@array/notifications_height_entries"
+            android:entryValues="@array/notifications_height_values" />
+
+        <!--<net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:title="@string/notification_color"
+            android:key="lockscreen_notifications_color"
+            android:defaultValue="0x555555" />-->
+
+        <com.android.settings.slim.AppMultiSelectListPreference
+            android:key="lockscreen_notifications_excluded_apps"
+            android:title="@string/lockscreen_notifications_excluded_apps_title"
+            android_summary="@string/lockscreen_notifications_excluded_apps_summary" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

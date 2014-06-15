@@ -1273,4 +1273,26 @@ aggiungere ulteriori punti di controllo. \'Rimuovi\' elimina la riga selezionata
     <!-- Device specific settings -->
     <string name="screen_off_gesture_settings_title">Gestures a schermo spento</string>
 
+    <!-- Lockscreen Notifications -->
+    <string name="lockscreen_notifications">Notifiche lockscreen</string>
+    <string name="lockscreen_notifications_summary">Mostra notifiche pendendti nella lockscreen</string>
+    <string name="pocket_mode">Modalità pocket</string>
+    <string name="pocket_mode_summary">Accende lo schermo e visualizza tutte le notifiche quando il dispositivo viene tolto dalla tasca. Spegne lo schermo quando il dispositivo viene rimesso in tasca.</string>
+    <string name="wake_on_notification">Risveglio automatico</string>
+    <string name="wake_on_notification_summary">Risveglia il dispositivo quando arriva una notifica</string>
+    <string name="notifications_height">Limitatore notifiche</string>
+    <string name="notifications_height_summary">Numero di notifiche visualizzate di volta in volta</string>
+    <string name="excluded_apps_title">Apps escluse</string>
+    <string name="excluded_apps_summary">Le apps escluse non verranno mostrate come notifiche nella lockscreen</string>
+    <string name="notification_color">Colore sfondo notifiche</string>
+    <string name="lockscreen_notifications_color_summary">Colore delle notifiche nella lockscreen</string>
+    <string name="lockscreen_notifications_type">Notifiche aggiuntive da visualizzare</string>
+    <string name="lockscreen_notifications_excluded_apps_title">Apps escluse</string>
+    <string name="lockscreen_notifications_excluded_apps_summary">Le apps escluse non mostreranno notifiche nella lockscreen</string>
+    <string name="lockscreen_notification_types_nonclearable">Permanenti</string>
+    <string name="lockscreen_notification_types_lowpriority">Bassa priorità</string>
+    <string name="pocket_mode_modes_alwayson">Sempre attiva</string>
+    <string name="pocket_mode_modes_unreadnotificationsonly">Solo notifiche non lette</string>
+    <string name="pocket_mode_modes_disabled">Disattivata</string>
+
 </resources>

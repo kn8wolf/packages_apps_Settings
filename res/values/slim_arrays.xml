@@ -1404,4 +1404,52 @@
         <item>2</item>
     </string-array>
 
+    <string-array name="notifications_height_entries" translatable="false">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
+    <string-array name="notifications_height_values" translatable="false">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
+    <string-array name="lockscreen_notification_types">
+        <item>@string/lockscreen_notification_types_nonclearable</item>
+        <item>@string/lockscreen_notification_types_lowpriority</item>
+    </string-array>
+
+    <string-array name="lockscreen_notification_types_values" translatable="false">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="pocket_mode_modes">
+        <item>@string/pocket_mode_modes_alwayson</item>
+        <item>@string/pocket_mode_modes_unreadnotificationsonly</item>
+        <item>@string/pocket_mode_modes_disabled</item>
+    </string-array>
+
+    <string-array name="pocket_mode_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
 </resources>

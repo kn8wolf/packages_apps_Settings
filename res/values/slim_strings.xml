@@ -1404,4 +1404,26 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="status_bar_double_tap_gesture_title">Double tap gesture</string>
     <string name="status_bar_double_tap_gesture_summary">Enable double tap on status bar to turn off screen</string>
 
+    <!-- Lockscreen Notifications -->
+    <string name="lockscreen_notifications">Lockscreen notifications</string>
+    <string name="lockscreen_notifications_summary">Show pending notifications on lockscreen</string>
+    <string name="pocket_mode">Pocket mode</string>
+    <string name="pocket_mode_summary">Turn screen on and show all notifications when device is pulled out of pocket. Turn screen off when device gets back into pocket.</string>
+    <string name="wake_on_notification">Wake on notification</string>
+    <string name="wake_on_notification_summary">Wake device when a new notification is received</string>
+    <string name="notifications_height">Notification count</string>
+    <string name="notifications_height_summary">Number of notifications displayed at once</string>
+    <string name="excluded_apps_title">Excluded applications</string>
+    <string name="excluded_apps_summary">Excluded applications will not show up as lockscreen notifications</string>
+    <string name="notification_color">Notification background color</string>
+    <string name="lockscreen_notifications_color_summary">Color of the lockscreen notifications</string>
+    <string name="lockscreen_notifications_type">Notification types to display</string>
+    <string name="lockscreen_notifications_excluded_apps_title">Excluded Applications</string>
+    <string name="lockscreen_notifications_excluded_apps_summary">Excluded applications will not show notifications on lockscreen</string>
+    <string name="lockscreen_notification_types_nonclearable">Non clearable</string>
+    <string name="lockscreen_notification_types_lowpriority">Low Priority</string>
+    <string name="pocket_mode_modes_alwayson">Always On</string>
+    <string name="pocket_mode_modes_unreadnotificationsonly">Unread notifications only</string>
+    <string name="pocket_mode_modes_disabled">Disabled</string>
+
 </resources>

@@ -136,6 +136,11 @@
             android:summary="@string/wake_on_notification_summary"
             android:key="lockscreen_notifications_wake_on_notification" />
 
+        <CheckBoxPreference
+            android:title="@string/privacy_mode"
+            android:summary="@string/privacy_mode_summary"
+            android:key="lockscreen_notifications_privacy_mode" />
+
         <MultiSelectListPreference
             android:title="@string/lockscreen_notifications_type"
             android:key="lockscreen_notifications_type"

@@ -1294,5 +1294,7 @@ aggiungere ulteriori punti di controllo. \'Rimuovi\' elimina la riga selezionata
     <string name="pocket_mode_modes_alwayson">Sempre attiva</string>
     <string name="pocket_mode_modes_unreadnotificationsonly">Solo notifiche non lette</string>
     <string name="pocket_mode_modes_disabled">Disattivata</string>
+    <string name="privacy_mode">Modalità privacy</string>
+    <string name="privacy_mode_summary">Impedisce l\'espansione e l\'eliminazione delle notifiche e visualizza la sola icona per salvaguardare la privacy.</string>
 
 </resources>

@@ -1425,5 +1425,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="pocket_mode_modes_alwayson">Always On</string>
     <string name="pocket_mode_modes_unreadnotificationsonly">Unread notifications only</string>
     <string name="pocket_mode_modes_disabled">Disabled</string>
+    <string name="privacy_mode">Privacy mode</string>
+    <string name="privacy_mode_summary">Disables notifications from beeing shown and dismissed. This way, you just see the icons of your notifications.</string>
 
 </resources>

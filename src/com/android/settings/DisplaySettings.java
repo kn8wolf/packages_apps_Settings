@@ -53,6 +53,7 @@ import java.util.ArrayList;
 
 import org.cyanogenmod.hardware.AdaptiveBacklight;
 import org.cyanogenmod.hardware.SunlightEnhancement;
+import org.cyanogenmod.hardware.ColorEnhancement;
 
 public class DisplaySettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
@@ -81,6 +82,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_DISPLAY_COLOR = "color_calibration";
     private static final String KEY_ADAPTIVE_BACKLIGHT = "adaptive_backlight";
     private static final String KEY_SUNLIGHT_ENHANCEMENT = "sunlight_enhancement";
+    private static final String KEY_COLOR_ENHANCEMENT = "color_enhancement";
     private static final String KEY_SCREEN_COLOR_SETTINGS = "screencolor_settings";
 
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
@@ -104,6 +106,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private PreferenceCategory mWakeUpOptions;
     private CheckBoxPreference mAdaptiveBacklight;
     private CheckBoxPreference mSunlightEnhancement;
+    private CheckBoxPreference mColorEnhancement;
     private PreferenceScreen mScreenColorSettings;
 
     private final Configuration mCurConfig = new Configuration();
@@ -269,6 +272,12 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             mSunlightEnhancement = null;
         }
 
+        mColorEnhancement = (CheckBoxPreference) findPreference(KEY_COLOR_ENHANCEMENT);
+        if (!isColorEnhancementSupported()) {
+            advancedPrefs.removePreference(mColorEnhancement);
+            mColorEnhancement = null;
+        }
+
         if (!DisplayColor.isSupported()) {
             advancedPrefs.removePreference(findPreference(KEY_DISPLAY_COLOR));
         }
@@ -400,6 +409,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             }
         }
 
+        if (mColorEnhancement != null) {
+            mColorEnhancement.setChecked(ColorEnhancement.isEnabled());
+        }
+
         updateDisplayRotationPreferenceDescription();
         updateState();
         updateLightPulseDescription();
@@ -525,6 +538,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             return AdaptiveBacklight.setEnabled(mAdaptiveBacklight.isChecked());
         } else if (preference == mSunlightEnhancement) {
             return SunlightEnhancement.setEnabled(mSunlightEnhancement.isChecked());
+        } else if (preference == mColorEnhancement) {
+            return ColorEnhancement.setEnabled(mColorEnhancement.isChecked());
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
@@ -610,7 +625,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 Log.d(TAG, "Adaptive backlight settings restored.");
             }
         }
-
         if (isSunlightEnhancementSupported()) {
             final boolean enabled = prefs.getBoolean(KEY_SUNLIGHT_ENHANCEMENT, false);
             if (SunlightEnhancement.isAdaptiveBacklightRequired() &&
@@ -623,6 +637,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 } else {
                     Log.d(TAG, "SRE settings restored.");
                 }
+            }
+        }
+        if (isColorEnhancementSupported()) {
+            final boolean enabled = prefs.getBoolean(KEY_COLOR_ENHANCEMENT, true);
+            if (!ColorEnhancement.setEnabled(enabled)) {
+                Log.e(TAG, "Failed to restore color enhancement settings.");
+            } else {
+                Log.d(TAG, "Color enhancement settings restored.");
             }
         }
     }
@@ -655,4 +677,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             return false;
         }
     }
+
+    private static boolean isColorEnhancementSupported() {
+        try {
+            return ColorEnhancement.isSupported();
+        } catch (NoClassDefFoundError e) {
+            // Hardware abstraction framework not installed
+            return false;
+        }
+    }
+
 }

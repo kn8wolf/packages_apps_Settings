@@ -227,6 +227,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             mTouchKeyLights.setOnPreferenceChangeListener(this);
         }
 
+        //If we're removed everything, get rid of the category
+        if (mLightOptions.getPreferenceCount() == 0) {
+            prefSet.removePreference(mLightOptions);
+        }
+
         // respect device default configuration
         // true fades while false animates
         boolean electronBeamFadesConfig = mContext.getResources().getBoolean(

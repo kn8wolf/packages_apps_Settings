@@ -888,6 +888,19 @@
         <item>ic_lockscreen_twitter_normal</item>
     </string-array>
 
+    <!-- QuietHours Mode -->
+    <string-array name="quiet_hours_mode_entries">
+        <item>@string/quiet_hours_off</item>
+        <item>@string/quiet_hours_timed</item>
+        <item>@string/quiet_hours_forced</item>
+    </string-array>
+
+    <string-array name="quiet_hours_mode_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
     <!-- QuietHours Incoming Contact -->
     <string-array name="incoming_contact_entries">
         <item>@string/quiet_hours_auto_disabled</item>
@@ -1313,6 +1326,41 @@
         <item>300000</item>
         <item>600000</item>
         <item>1800000</item>
+    </string-array>
+
+    <!-- Heads up -->
+    <string-array name="heads_up_snooze_entries">
+        <item>@string/disabled</item>
+        <item>@string/heads_up_snooze_3min</item>
+        <item>@string/heads_up_snooze_5min</item>
+        <item>@string/heads_up_snooze_10min</item>
+        <item>@string/heads_up_snooze_15min</item>
+        <item>@string/heads_up_snooze_20min</item>
+    </string-array>
+
+    <string-array name="heads_up_snooze_values" translatable="false">
+        <item>0</item>
+        <item>180000</item>
+        <item>300000</item>
+        <item>600000</item>
+        <item>900000</item>
+        <item>1200000</item>
+    </string-array>
+
+    <string-array name="heads_up_time_out_entries">
+        <item>@string/heads_up_time_out_never</item>
+        <item>@string/heads_up_time_out_4sec</item>
+        <item>@string/heads_up_time_out_6sec</item>
+        <item>@string/heads_up_time_out_8sec</item>
+        <item>@string/heads_up_time_out_10sec</item>
+    </string-array>
+
+    <string-array name="heads_up_time_out_values" translatable="false">
+        <item>0</item>
+        <item>4000</item>
+        <item>6000</item>
+        <item>8000</item>
+        <item>10000</item>
     </string-array>
 
 </resources>

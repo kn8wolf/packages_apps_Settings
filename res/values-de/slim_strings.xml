@@ -1135,7 +1135,6 @@ Zusätzliche Optionen können durch einen langen Druck auf die Zeile angezeigt w
     <!-- Title for the accessibility preference to home button to answers a call. [CHAR LIMIT=35] -->
     <!--- Sms security limit -->
     <!-- NavBar -->
-    <string name="never_show">Niemals</string>
     <string name="size_0_dp">0 dp (deaktiviert)</string>
     <string name="navbar_reset">Zurücksetzen</string>
     <string name="navbar_button_style_reset_message">Alle Design Einstellungen zurücksetzen?</string>
@@ -1154,7 +1153,6 @@ Zusätzliche Optionen können durch einen langen Druck auf die Zeile angezeigt w
     <string name="widgets_delete_message">Aktuelles Widget löschen?</string>
     <string name="widgets_shift_left">Nach links verschieben</string>
     <string name="widgets_shift_right">Nach rechts verschieben</string>
-    <string name="widgets_delete">Löschen</string>
     <string name="widgets_shifted_left">Widget wurde eine Position nach links verschoben</string>
     <string name="widgets_shifted_right">Widget wurde eine Position nach rechts verschoben</string>
     <string name="widgets_shifted_end">Widget kann nicht weiter verschoben werden</string>

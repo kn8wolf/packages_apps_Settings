@@ -620,9 +620,6 @@
     <string name="wifi_secured_first_item" msgid="4072076186051083451">"Zabezpieczona za pomocą protokołu <xliff:g id="WIFI_SECURITY_SHORT">%1$s</xliff:g>"</string>
     <string name="wifi_secured_second_item" msgid="1326000076939056265">", zabezpieczona za pomocą protokołu <xliff:g id="WIFI_SECURITY_SHORT">%1$s</xliff:g>"</string>
     <string name="wifi_security_none" msgid="7985461072596594400">"Brak"</string>
-    <string name="wifi_scan_always_turnon_message" msgid="203123538572122989">"Aby poprawić dokładność lokalizacji (i w innych celach), <xliff:g id="APP_NAME">%1$s</xliff:g> chce włączyć skanowanie sieci – nawet gdy Wi-Fi jest wyłączone.\n\nZezwolić na to wszystkim aplikacjom, które chcą wykonywać skanowanie?"</string>
-    <string name="wifi_scan_always_confirm_allow" msgid="5355973075896817232">"Zezwól"</string>
-    <string name="wifi_scan_always_confirm_deny" msgid="4463982053823520710">"Odrzuć"</string>
     <string name="wifi_connect" msgid="1076622875777072845">"Połącz"</string>
     <string name="wifi_failed_connect_message" msgid="8491902558970292871">"Nie można nawiązać połączenia z siecią"</string>
     <string name="wifi_forget" msgid="8168174695608386644">"Zapomnij"</string>
@@ -688,7 +685,6 @@
     <string name="ring_volume_title" msgid="7938706566797464165">"Głośność dzwonka"</string>
     <string name="vibrate_in_silent_title" msgid="3897968069156767036">"Wibracje po wyciszeniu"</string>
     <string name="notification_sound_title" msgid="5137483249425507572">"Domyślny dźwięk powiadomienia"</string>
-    <string name="notification_pulse_title" msgid="1247988024534030629">"Pulsująca dioda"</string>
     <string name="incoming_call_volume_title" msgid="8073714801365904099">"Dzwonek"</string>
     <string name="notification_volume_title" msgid="2012640760341080408">"Powiadomienie"</string>
     <string name="checkbox_notification_same_as_incoming_call" msgid="1073644356290338921">"Użyj głośności połączeń przychodzących dla powiadomień"</string>

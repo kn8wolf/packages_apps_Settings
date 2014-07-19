@@ -56,7 +56,7 @@ public class GeneralSettings extends SettingsPreferenceFragment implements
         mDualPane = (CheckBoxPreference) findPreference(KEY_DUAL_PANE);
         mDualPane.setOnPreferenceChangeListener(this);
         mDualPane.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.DUAL_PANE_PREFS, 0) == 1);
+                Settings.System.DUAL_PANE_PREFS, Utils.isTablet(getActivity()) ? 1 : 0) == 1);
 
         mLowBatteryWarning = (ListPreference) findPreference(KEY_LOW_BATTERY_WARNING_POLICY);
         mLowBatteryWarning.setOnPreferenceChangeListener(this);

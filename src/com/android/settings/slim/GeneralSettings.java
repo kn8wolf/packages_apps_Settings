@@ -58,12 +58,6 @@ public class GeneralSettings extends SettingsPreferenceFragment implements
         mDualPane.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.DUAL_PANE_PREFS, 0) == 1);
 
-        // remove dual pane preference if not a tablet
-        PreferenceCategory generalCategory = (PreferenceCategory) findPreference(KEY_GENERAL_OPTIONS);
-        if (Utils.isPhone(getActivity())) {
-            generalCategory.removePreference(findPreference(KEY_DUAL_PANE));
-        }
-
         mLowBatteryWarning = (ListPreference) findPreference(KEY_LOW_BATTERY_WARNING_POLICY);
         mLowBatteryWarning.setOnPreferenceChangeListener(this);
         int lowBatteryWarning = Settings.System.getInt(getActivity().getContentResolver(),

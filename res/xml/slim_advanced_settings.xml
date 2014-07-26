@@ -19,10 +19,6 @@
     android:title="@string/advanced_options_settings_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <PreferenceScreen
-        android:title="@string/superuser"
-        android:fragment="com.koushikdutta.superuser.PolicyNativeFragment" />
-
     <PreferenceCategory
         android:key="advanced_settings_options_prefs"
         android:title="@string/advanced_options_settings_title">

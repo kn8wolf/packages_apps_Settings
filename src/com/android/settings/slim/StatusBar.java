@@ -16,10 +16,15 @@
 
 package com.android.settings.slim;
 
+import android.app.AlertDialog;
 import android.content.ContentResolver;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.database.ContentObserver;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.PowerManager;
+import android.os.UserHandle;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -43,12 +48,14 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
 
     private static final String KEY_STATUS_BAR_CLOCK = "clock_style_pref";
     private static final String STATUS_BAR_BRIGHTNESS_CONTROL = "status_bar_brightness_control";
+    private static final String STATUS_BAR_DOUBLE_TAP_GESTURE = "status_bar_double_tap_gesture";
     private static final String STATUS_BAR_NETWORK_STATS = "status_bar_network_stats";
     private static final String STATUS_BAR_NETWORK_STATS_UPDATE = "status_bar_network_stats_update_frequency";
     private static final String STATUS_BAR_NETWORK_STATS_TEXT_COLOR = "status_bar_network_stats_text_color";
 
     private PreferenceScreen mClockStyle;
     private CheckBoxPreference mStatusBarBrightnessControl;
+    private CheckBoxPreference mStatusBarDoubleTapGesture;
     private ListPreference mStatusBarNetStatsUpdate;
     private CheckBoxPreference mStatusBarNetworkStats;
     private ColorPickerPreference mNetStatsColorPicker;
@@ -76,7 +83,13 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mStatusBarBrightnessControl.setChecked((Settings.System.getInt(getContentResolver(),
                             Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL, 0) == 1));
         mStatusBarBrightnessControl.setOnPreferenceChangeListener(this);
-        
+
+        mStatusBarDoubleTapGesture =
+            (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_DOUBLE_TAP_GESTURE);
+        mStatusBarDoubleTapGesture.setChecked((Settings.System.getIntForUser(getContentResolver(),
+                            Settings.System.STATUSBAR_DOUBLE_TAP_GESTURE, 1, UserHandle.USER_CURRENT) == 1));
+        mStatusBarDoubleTapGesture.setOnPreferenceChangeListener(this);
+
         mStatusBarNetworkStats = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_NETWORK_STATS);
         mStatusBarNetworkStats.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
                 Settings.System.STATUS_BAR_NETWORK_STATS, 0) == 1));
@@ -98,6 +111,11 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         if (preference == mStatusBarBrightnessControl) {
             Settings.System.putInt(getContentResolver(),
                     Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL,
+                    (Boolean) newValue ? 1 : 0);
+            return true;
+        } else if (preference == mStatusBarDoubleTapGesture) {
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.STATUSBAR_DOUBLE_TAP_GESTURE,
                     (Boolean) newValue ? 1 : 0);
             return true;
         } else if (preference == mStatusBarNetStatsUpdate) {
@@ -177,5 +195,4 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
                     false, this);
         }
     }
-
 }

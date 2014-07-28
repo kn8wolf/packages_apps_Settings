@@ -66,6 +66,11 @@
             android:summary="@string/status_bar_toggle_brightness_summary"
             android:defaultValue="false" />
 
+        <CheckBoxPreference
+            android:key="status_bar_double_tap_gesture"
+            android:title="@string/status_bar_double_tap_gesture_title"
+            android:summary="@string/status_bar_double_tap_gesture_summary" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

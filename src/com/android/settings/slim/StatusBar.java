@@ -43,6 +43,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private static final String STATUS_BAR_BRIGHTNESS_CONTROL = "status_bar_brightness_control";
     private static final String STATUS_BAR_AUTO_HIDE = "status_bar_auto_hide";
     private static final String STATUS_BAR_QUICK_PEEK = "status_bar_quick_peek";
+    private static final String STATUS_BAR_DOUBLE_TAP_GESTURE = "status_bar_double_tap_gesture";
 
     private StatusBarBrightnessChangedObserver mStatusBarBrightnessChangedObserver;
 
@@ -52,6 +53,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private CheckBoxPreference mStatusBarBrightnessControl;
     private ListPreference mStatusBarAutoHide;
     private CheckBoxPreference mStatusBarQuickPeek;
+    private CheckBoxPreference mStatusBarDoubleTapGesture;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -89,6 +91,11 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
                 Settings.System.STATUSBAR_PEEK, 0) == 1));
         mStatusBarQuickPeek.setOnPreferenceChangeListener(this);
 
+        mStatusBarDoubleTapGesture = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_DOUBLE_TAP_GESTURE);
+        mStatusBarDoubleTapGesture.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.STATUSBAR_DOUBLE_TAP_GESTURE, 1) == 1));
+        mStatusBarDoubleTapGesture.setOnPreferenceChangeListener(this);
+
         mPrefCategoryGeneral = (PreferenceCategory) findPreference(STATUS_BAR_CATEGORY_GENERAL);
 
         if (Utils.isWifiOnly(getActivity())) {
@@ -124,6 +131,11 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         } else if (preference == mStatusBarQuickPeek) {
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.STATUSBAR_PEEK,
+                    (Boolean) newValue ? 1 : 0);
+            return true;
+        } else if (preference == mStatusBarDoubleTapGesture) {
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.STATUSBAR_DOUBLE_TAP_GESTURE,
                     (Boolean) newValue ? 1 : 0);
             return true;
         } else if (preference == mStatusBarAutoHide) {

@@ -566,6 +566,11 @@
     <string name="shortcut_action_ring_vib">Звонок/Вибро</string>
     <string name="shortcut_action_ring_silent">Звонок/Тихо</string>
     <string name="shortcut_action_ring_vib_silent">Звонок/Вибро/Тихо</string>
+    <string name="shortcut_action_camera">Камера</string>
+    <string name="shortcut_action_media_next">Музыка - следующий трек</string>
+    <string name="shortcut_action_media_play_pause">Музыка - играть/пауза</string>
+    <string name="shortcut_action_media_previous">Музыка - предыдущий трек</string>
+    <string name="shortcut_action_wake_device">Разбудить устройство</string>
     <string name="shortcut_action_expanded_desktop">Расширенный рабочий стол</string>
     <string name="shortcut_action_power_menu">Меню управления питанием</string>
     <string name="shortcut_action_torch">Фонарик</string>
@@ -807,6 +812,7 @@
     <string name="dynamic_tile_alarm">Будильник</string>
     <string name="dynamic_tile_bugreport">Отчет об ошибке</string>
     <string name="dynamic_tiles_title">Динамические плитки</string>
+    <string name="dynamic_tile_remote_display">Удаленный экран</string>
     <string name="disable_qs">Быстрые настройки отключены</string>
     <string name="disable_qs_message">Все плитки удалены, быстрые настройки выключены.\n\nДобавьте плитку для включения.</string>
     <string name="help_qs_message">Чтобы добавить плитку быстрых настроек, нажмите кнопку \"Добавить\" и выберите нужную плитку. Чтобы поменятьпорядок плиток, нажмите и удерживайте плитку, затем перетащите ее на нужное место. Для удаления плитки перетащите ее на кнопку удаления, которая появляется при перетаскивании.\n\n Для настройки динамических плиток нажмите соответствующий значок на экране справа вверху.\n\nЧтобы отключить быстрые настройки, удалите все плитки.</string>
@@ -1067,6 +1073,8 @@
     <string name="heads_up_expanded_summary">Показывать уведомления \"поверх\" всегда развернутыми</string>
     <string name="heads_up_show_updates_title">Показывать изменения</string>
     <string name="heads_up_show_updates_summary">Показывать обновившиеся фоновые уведомления \"поверх\"</string>
+    <string name="heads_up_gravity_title">Показывать внизу</string>
+    <string name="heads_up_gravity_summary">Показывать уведомления \"поверх\" в нижней части экрана</string>
     <string name="heads_up_snooze_title">Длительность \"отложить\"</string>
     <string name="heads_up_snooze_summary">При нажатии кнопки \"Отложить\" уведомления \"поверх\" будут приостановлены на <xliff:g id="number">%d</xliff:g> минут.</string>
     <string name="heads_up_snooze_disabled_summary">Функция \"Отложить\" отключена.</string>
@@ -1084,4 +1092,7 @@
     <string name="heads_up_time_out_10sec">10 секунд</string>
     <string name="heads_up_time_out_never">Никогда</string>
     <string name="heads_up_switch_label">Включить уведомления \"поверх\"</string>
+
+    <!-- Device specific settings -->
+    <string name="screen_off_gesture_settings_title">Жесты на выключенном экране</string>
 </resources>

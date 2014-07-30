@@ -643,6 +643,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="quiet_hours_charging_off">La conexión con el cargador puede estar en cualquier estado</string>
     <string name="quiet_hours_charging_on">El dispositivo tiene que estar cargando</string>
     <string name="quiet_hours_timed">El modo descanso depende de las funciones horarias</string>
+    <string name="quiet_hours_reset_times">¿Restablecer tiempos a valores predeterminados?</string>
     <string name="quiet_hours_daily_times">Horarios diarios</string>
     <string name="quiet_hours_daily_on">Los horarios individuales por día están activados</string>
     <string name="quiet_hours_daily_off">Habilitado sólo una configuración de horarios</string>
@@ -902,6 +903,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="dynamic_tile_ime_switcher">Selector IME</string>
     <string name="dynamic_tile_usb_tether">Anclaje USB</string>
     <string name="dynamic_tile_alarm">Alarma</string>
+    <string name="dynamic_tile_remote_display">Pantalla remota</string>
     <string name="dynamic_tile_bugreport">Reportar BUG</string>
     <string name="dynamic_tiles_title">Botones dinámicos</string>
     <string name="tiles_reset_message">¿Restablecer valores predeterminados del panel de ajustes rápidos?</string>

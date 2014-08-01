@@ -13,6 +13,9 @@ LOCAL_CERTIFICATE := platform
 
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 
+LOCAL_AAPT_INCLUDE_ALL_RESOURCES := true
+LOCAL_AAPT_FLAGS := --auto-add-overlay
+
 include $(BUILD_PACKAGE)
 
 # Use the folloing include to make our test apk.

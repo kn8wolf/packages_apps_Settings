@@ -1126,6 +1126,7 @@
     <string name="widgets_delete_message">Удалить текущий виджет?</string>
     <string name="widgets_shift_left">Сдвинуть влево</string>
     <string name="widgets_shift_right">Сдвинуть вправо</string>
+    <string name="widgets_delete">Удалить</string>
     <string name="widgets_shifted_left">Виджет сдвинут на один пункт влево</string>
     <string name="widgets_shifted_right">Виджет сдвинут на один пункт вправо</string>
     <string name="widgets_shifted_end">Виджет нельзя сдвинуть в эту сторону</string>

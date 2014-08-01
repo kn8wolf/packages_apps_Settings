@@ -620,6 +620,9 @@
     <string name="wifi_secured_first_item" msgid="4072076186051083451">"Zaščiteno z <xliff:g id="WIFI_SECURITY_SHORT">%1$s</xliff:g>"</string>
     <string name="wifi_secured_second_item" msgid="1326000076939056265">", zaščiteno z <xliff:g id="WIFI_SECURITY_SHORT">%1$s</xliff:g>"</string>
     <string name="wifi_security_none" msgid="7985461072596594400">"Brez"</string>
+    <string name="wifi_scan_always_turnon_message" msgid="203123538572122989">"Za izboljšanje natančnosti lokacijskih podatkov in druge namene želi <xliff:g id="APP_NAME">%1$s</xliff:g> vklopiti iskanje omrežij, tudi ko je Wi-Fi izklopljen.\n\nŽelite to dovoliti vsem aplikacijam, ki želijo iskati omrežja?"</string>
+    <string name="wifi_scan_always_confirm_allow" msgid="5355973075896817232">"Dovoli"</string>
+    <string name="wifi_scan_always_confirm_deny" msgid="4463982053823520710">"Zavrni"</string>
     <string name="wifi_connect" msgid="1076622875777072845">"Vzpostavi povezavo"</string>
     <string name="wifi_failed_connect_message" msgid="8491902558970292871">"Vzpostavljanje povezave z omrežjem ni uspelo"</string>
     <string name="wifi_forget" msgid="8168174695608386644">"Pozabi"</string>
@@ -685,6 +688,7 @@
     <string name="ring_volume_title" msgid="7938706566797464165">"Glasnost zvonjenja"</string>
     <string name="vibrate_in_silent_title" msgid="3897968069156767036">"Vibriraj v tihem načinu"</string>
     <string name="notification_sound_title" msgid="5137483249425507572">"Privzeti zvok obvestila"</string>
+    <string name="notification_pulse_title" msgid="1247988024534030629">"Lučka za obvestila z utripanjem"</string>
     <string name="incoming_call_volume_title" msgid="8073714801365904099">"Zvonjenje"</string>
     <string name="notification_volume_title" msgid="2012640760341080408">"Obvestilo"</string>
     <string name="checkbox_notification_same_as_incoming_call" msgid="1073644356290338921">"Za obvestila uporabljaj glasnost dohodnih klicev"</string>

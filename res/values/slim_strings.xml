@@ -1227,6 +1227,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="widgets_delete_message">Delete current widget?</string>
     <string name="widgets_shift_left">Shift left</string>
     <string name="widgets_shift_right">Shift right</string>
+    <string name="widgets_delete">Delete</string>
     <string name="widgets_shifted_left">Widget shifted one position to the left</string>
     <string name="widgets_shifted_right">Widget shifted one position to the right</string>
     <string name="widgets_shifted_end">Widget cannot be shifted into this direction</string>

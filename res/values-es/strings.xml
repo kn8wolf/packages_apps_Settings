@@ -620,6 +620,9 @@
     <string name="wifi_secured_first_item" msgid="4072076186051083451">"Protegida con <xliff:g id="WIFI_SECURITY_SHORT">%1$s</xliff:g>"</string>
     <string name="wifi_secured_second_item" msgid="1326000076939056265">", protegida con <xliff:g id="WIFI_SECURITY_SHORT">%1$s</xliff:g>"</string>
     <string name="wifi_security_none" msgid="7985461072596594400">"Ninguna"</string>
+    <string name="wifi_scan_always_turnon_message" msgid="203123538572122989">"Para mejorar la precisión de la ubicación y para otros fines, <xliff:g id="APP_NAME">%1$s</xliff:g> quiere activar la búsqueda de redes aunque la conexión Wi-Fi esté desactivada.\n\n¿Permitir para todas las aplicaciones que quieran buscar redes?"</string>
+    <string name="wifi_scan_always_confirm_allow" msgid="5355973075896817232">"Permitir"</string>
+    <string name="wifi_scan_always_confirm_deny" msgid="4463982053823520710">"Rechazar"</string>
     <string name="wifi_connect" msgid="1076622875777072845">"Establecer conexión"</string>
     <string name="wifi_failed_connect_message" msgid="8491902558970292871">"Error al conectar a la red"</string>
     <string name="wifi_forget" msgid="8168174695608386644">"Borrar"</string>
@@ -685,6 +688,7 @@
     <string name="ring_volume_title" msgid="7938706566797464165">"Volumen del timbre"</string>
     <string name="vibrate_in_silent_title" msgid="3897968069156767036">"Vibrar en modo silencio"</string>
     <string name="notification_sound_title" msgid="5137483249425507572">"Sonido de notificación predeterminado"</string>
+    <string name="notification_pulse_title" msgid="1247988024534030629">"Usar LED de notificación"</string>
     <string name="incoming_call_volume_title" msgid="8073714801365904099">"Tono"</string>
     <string name="notification_volume_title" msgid="2012640760341080408">"Notificación"</string>
     <string name="checkbox_notification_same_as_incoming_call" msgid="1073644356290338921">"Utilizar volumen de llamada entrante para notificaciones"</string>

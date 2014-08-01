@@ -30,10 +30,6 @@
 
     </PreferenceScreen>
 
-    <PreferenceScreen
-        android:title="@string/performance_settings_title"
-        android:fragment="com.android.settings.slim.PerformanceSettings" />
-
     <PreferenceCategory
         android:key="advanced_settings_options_prefs"
         android:title="@string/advanced_options_settings_title">

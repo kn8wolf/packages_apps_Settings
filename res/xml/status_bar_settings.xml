@@ -39,6 +39,13 @@
             android:summary="@string/status_bar_show_network_stats_summary"
             android:defaultValue="false" />
 
+       <CheckBoxPreference
+            android:key="status_bar_network_stats_show_arrow"
+            android:title="@string/status_bar_show_network_stats_show_arrow_title"
+            android:summary="@string/status_bar_show_network_stats_show_arrow_summary"
+            android:defaultValue="true"
+            android:dependency="status_bar_network_stats" />
+
         <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="status_bar_network_stats_text_color"
             android:title="@string/status_bar_network_stats_color_title"

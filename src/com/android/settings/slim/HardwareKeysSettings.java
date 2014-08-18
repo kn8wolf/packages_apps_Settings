@@ -28,6 +28,7 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.Preference.OnPreferenceClickListener;
@@ -68,7 +69,7 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
 
     private static final String KEY_BUTTON_BACKLIGHT = "button_backlight";
     private static final String KEYS_CATEGORY_BINDINGS = "keys_bindings";
-    private static final String KEYS_SHOW_OVERFLOW = "keys_show_overflow";
+    private static final String KEYS_OVERFLOW_BUTTON = "keys_overflow_button";
     private static final String KEYS_ENABLE_CUSTOM = "enable_hardware_rebind";
     private static final String KEYS_BACK_PRESS = "keys_back_press";
     private static final String KEYS_BACK_LONG_PRESS = "keys_back_long_press";
@@ -101,7 +102,7 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
     private static final int KEY_MASK_APP_SWITCH = 0x10;
 
     private CheckBoxPreference mEnableCustomBindings;
-    private CheckBoxPreference mShowActionOverflow;
+    private ListPreference mOverflowButtonMode;
     private Preference mBackPressAction;
     private Preference mBackLongPressAction;
     private Preference mBackDoubleTapAction;
@@ -182,8 +183,8 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
 
         mEnableCustomBindings = (CheckBoxPreference) prefs.findPreference(
                 KEYS_ENABLE_CUSTOM);
-        mShowActionOverflow = (CheckBoxPreference) prefs.findPreference(
-                KEYS_SHOW_OVERFLOW);
+        mOverflowButtonMode = (ListPreference) prefs.findPreference(
+                KEYS_OVERFLOW_BUTTON);
         mBackPressAction = (Preference) prefs.findPreference(
                 KEYS_BACK_PRESS);
         mBackLongPressAction = (Preference) prefs.findPreference(
@@ -316,11 +317,11 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
         mEnableCustomBindings.setChecked(enableHardwareRebind);
         mEnableCustomBindings.setOnPreferenceChangeListener(this);
 
-        boolean enableOverflowButton = Settings.System.getInt(getContentResolver(),
-                Settings.System.UI_FORCE_OVERFLOW_BUTTON, 0) == 1;
-        mShowActionOverflow = (CheckBoxPreference) findPreference(KEYS_SHOW_OVERFLOW);
-        mShowActionOverflow.setChecked(enableOverflowButton);
-        mShowActionOverflow.setOnPreferenceChangeListener(this);
+        String overflowButtonMode = Integer.toString(Settings.System.getInt(getContentResolver(),
+                Settings.System.UI_OVERFLOW_BUTTON, 0));
+        mOverflowButtonMode.setOnPreferenceChangeListener(this);
+        mOverflowButtonMode.setValue(overflowButtonMode);
+        mOverflowButtonMode.setSummary(mOverflowButtonMode.getEntry());
 
         // Handle warning dialog.
         SharedPreferences preferences =
@@ -442,18 +443,12 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(), Settings.System.HARDWARE_KEY_REBINDING,
                     value ? 1 : 0);
             return true;
-        } else if (preference == mShowActionOverflow) {
-            boolean enabled = (Boolean) newValue;
-            Settings.System.putInt(getContentResolver(), Settings.System.UI_FORCE_OVERFLOW_BUTTON,
-                    enabled ? 1 : 0);
-            // Show appropriate
-            if (enabled) {
-                Toast.makeText(getActivity(), R.string.keys_show_overflow_toast_enable,
-                        Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(getActivity(), R.string.keys_show_overflow_toast_disable,
-                        Toast.LENGTH_LONG).show();
-            }
+        } else if (preference == mOverflowButtonMode) {
+            int val = Integer.parseInt((String) newValue);
+            int index = mOverflowButtonMode.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getContentResolver(), Settings.System.UI_OVERFLOW_BUTTON, val);
+            mOverflowButtonMode.setSummary(mOverflowButtonMode.getEntries()[index]);
+            Toast.makeText(getActivity(), R.string.keys_overflow_toast, Toast.LENGTH_LONG).show();
             return true;
         }
         return false;

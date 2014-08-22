@@ -26,6 +26,8 @@ LOCAL_RESOURCE_DIR += packages/apps/PerformanceControl/res
 
 LOCAL_ASSET_DIR += packages/apps/PerformanceControl/assets
 
+LOCAL_JAVA_LIBRARIES += org.cyanogenmod.hardware
+
 include $(BUILD_PACKAGE)
 
 # Use the folloing include to make our test apk.

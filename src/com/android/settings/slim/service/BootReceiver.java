@@ -23,6 +23,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.BatteryManager;
 import android.provider.Settings;
+import com.android.settings.DisplaySettings;
+import com.android.settings.hardware.DisplayColor;
 
 public class BootReceiver extends BroadcastReceiver {
 
@@ -43,5 +45,9 @@ public class BootReceiver extends BroadcastReceiver {
         }
 
         QuietHoursController.getInstance(context).scheduleService();
+
+        /* Restore the hardware tunable values */
+        DisplayColor.restore(context);
+        DisplaySettings.restore(context);
     }
 }

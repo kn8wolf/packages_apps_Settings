@@ -1397,11 +1397,25 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <string name="reset_default_message">Reset default</string>
 
-    <!-- Device specific settings -->
-    <string name="screen_off_gesture_settings_title">Screen off gestures</string>
-
     <!-- Double tap gesture -->
     <string name="status_bar_double_tap_gesture_title">Double tap gesture</string>
     <string name="status_bar_double_tap_gesture_summary">Enable double tap on status bar to turn off screen</string>
+
+    <!-- Device specific settings -->
+    <string name="advanced_settings">Advanced settings</string>
+
+    <!-- Hardware tunables - Screen off gestures -->
+    <string name="screen_off_gesture_settings_title">Screen off gestures</string>
+
+    <!-- Hardware tunables - Backlight brightness settings screen -->
+    <string name="adaptive_backlight_title">Adaptive backlight</string>
+    <string name="adaptive_backlight_summary">Dynamically adjust the brightness of the display\'s backlight to maximize battery life while maintaining usability</string>
+
+    <!-- Hardware tunables - Color calibration -->
+    <string name="color_calibration_title">Color calibration</string>
+    <string name="color_calibration_summary">Calibrate on-screen colors</string>
+    <string name="color_red_title">Red</string>
+    <string name="color_green_title">Green</string>
+    <string name="color_blue_title">Blue</string>
 
 </resources>

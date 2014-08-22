@@ -1418,4 +1418,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="color_green_title">Green</string>
     <string name="color_blue_title">Blue</string>
 
+    <!-- Hardware tunables - Sunlight readability enhancement screen -->
+    <string name="sunlight_enhancement_title">Sunlight enhancement</string>
+    <string name="sunlight_enhancement_summary">Enhance display brightness and readability under bright sunlight</string>
+
 </resources>

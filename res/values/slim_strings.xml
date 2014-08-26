@@ -1422,4 +1422,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="sunlight_enhancement_title">Sunlight enhancement</string>
     <string name="sunlight_enhancement_summary">Enhance display brightness and readability under bright sunlight</string>
 
+    <!-- Hardware tunables - Vibrator intensity -->
+    <string name="vibrator_intensity_title">Vibrator intensity</string>
+    <string name="vibrator_warning">Values higher than %1$d are not recommended</string>
+
 </resources>

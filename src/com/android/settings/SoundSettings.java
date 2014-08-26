@@ -51,6 +51,8 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.VolumePanel;
 
+import com.android.settings.hardware.VibratorIntensity;
+
 import java.util.List;
 
 public class SoundSettings extends SettingsPreferenceFragment implements
@@ -81,6 +83,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final String KEY_DOCK_AUDIO_SETTINGS = "dock_audio";
     private static final String KEY_DOCK_SOUNDS = "dock_sounds";
     private static final String KEY_DOCK_AUDIO_MEDIA_ENABLED = "dock_audio_media_enabled";
+    private static final String KEY_VIBRATION_INTENSITY = "vibration_intensity";
 
     private static final String[] NEED_VOICE_CAPABILITY = {
             KEY_RINGTONE, KEY_DTMF_TONE, KEY_CATEGORY_CALLS,
@@ -202,6 +205,9 @@ public class SoundSettings extends SettingsPreferenceFragment implements
             removePreference(KEY_VIBRATE);
             removePreference(KEY_HAPTIC_FEEDBACK);
             removePreference(KEY_VIBRATION_DURATION);
+            removePreference(KEY_VIBRATION_INTENSITY);
+        } else if (!VibratorIntensity.isSupported()) {
+            removePreference(KEY_VIBRATION_INTENSITY);
         }
 
         if (TelephonyManager.PHONE_TYPE_CDMA == activePhoneType) {

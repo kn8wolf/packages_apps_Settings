@@ -68,6 +68,15 @@
                 android:title="@string/wifi_display_settings_title"
                 android:fragment="com.android.settings.wfd.WifiDisplaySettings" />
 
+        <Preference
+                android:key="screen_off_gesture_settings"
+                android:title="@string/screen_off_gesture_settings_title">
+                <intent
+                    android:action="com.slim.action.LAUNCH_SCREEN_OFF_GESTURE_SETTINGS"
+                    android:targetPackage="com.slim.device"
+                    android:targetClass="com.slim.device.settings.ScreenOffGestureSettings" />
+        </Preference>
+
     <PreferenceCategory
         android:key="category_animation_options"
         android:title="@string/display_category_animation_options_title" >
@@ -164,15 +173,6 @@
                 android:dialogTitle="@string/color_calibration_title"
                 android:summary="@string/color_calibration_summary"
                 android:persistent="false" />
-
-            <Preference
-                android:key="screen_off_gesture_settings"
-                android:title="@string/screen_off_gesture_settings_title">
-                <intent
-                    android:action="com.slim.action.LAUNCH_SCREEN_OFF_GESTURE_SETTINGS"
-                    android:targetPackage="com.slim.device"
-                    android:targetClass="com.slim.device.settings.ScreenOffGestureSettings" />
-            </Preference>
 
         </PreferenceCategory>
 

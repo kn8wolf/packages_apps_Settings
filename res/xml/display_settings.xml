@@ -165,7 +165,8 @@
                 android:key="sunlight_enhancement"
                 android:title="@string/sunlight_enhancement_title"
                 android:summary="@string/sunlight_enhancement_summary"
-                android:defaultValue="true" />
+                android:defaultValue="true"
+                android:dependency="adaptive_backlight" />
 
             <com.android.settings.hardware.DisplayColor
                 android:key="color_calibration"

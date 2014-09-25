@@ -1488,4 +1488,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Bluetooth accept all Filestypes -->
     <string name="bluetooth_accept_all_files">Accept all file types</string>
 
+    <!-- SAR information -->
+    <string name="sar_info">Maximum SAR</string>
+    <string name="maximum_head_level">Head: %1$s W/kg</string>
+    <string name="maximum_body_level">Body: %1$s W/kg</string>
+
 </resources>

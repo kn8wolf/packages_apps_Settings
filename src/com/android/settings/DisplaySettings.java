@@ -618,7 +618,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     public static void restore(Context ctx) {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
         if (isAdaptiveBacklightSupported()) {
-            final boolean enabled = prefs.getBoolean(KEY_ADAPTIVE_BACKLIGHT, true);
+            final boolean enabled = prefs.getBoolean(KEY_ADAPTIVE_BACKLIGHT,
+                    AdaptiveBacklight.isEnabled());
             if (!AdaptiveBacklight.setEnabled(enabled)) {
                 Log.e(TAG, "Failed to restore adaptive backlight settings.");
             } else {
@@ -626,7 +627,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             }
         }
         if (isSunlightEnhancementSupported()) {
-            final boolean enabled = prefs.getBoolean(KEY_SUNLIGHT_ENHANCEMENT, false);
+            final boolean enabled = prefs.getBoolean(KEY_SUNLIGHT_ENHANCEMENT,
+                    SunlightEnhancement.isEnabled());
             if (SunlightEnhancement.isAdaptiveBacklightRequired() &&
                     !AdaptiveBacklight.isEnabled()) {
                 SunlightEnhancement.setEnabled(false);

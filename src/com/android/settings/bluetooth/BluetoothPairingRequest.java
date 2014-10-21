@@ -48,12 +48,10 @@ public final class BluetoothPairingRequest extends BroadcastReceiver {
                     intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
             int type = intent.getIntExtra(BluetoothDevice.EXTRA_PAIRING_VARIANT,
                     BluetoothDevice.ERROR);
-            boolean secure = intent.getBooleanExtra(BluetoothDevice.EXTRA_SECURE_PAIRING, false);
             Intent pairingIntent = new Intent();
             pairingIntent.setClass(context, BluetoothPairingDialog.class);
             pairingIntent.putExtra(BluetoothDevice.EXTRA_DEVICE, device);
             pairingIntent.putExtra(BluetoothDevice.EXTRA_PAIRING_VARIANT, type);
-            pairingIntent.putExtra(BluetoothDevice.EXTRA_SECURE_PAIRING, secure);
             if (type == BluetoothDevice.PAIRING_VARIANT_PASSKEY_CONFIRMATION ||
                     type == BluetoothDevice.PAIRING_VARIANT_DISPLAY_PASSKEY ||
                     type == BluetoothDevice.PAIRING_VARIANT_DISPLAY_PIN) {
@@ -115,19 +113,6 @@ public final class BluetoothPairingRequest extends BroadcastReceiver {
             NotificationManager manager = (NotificationManager) context
                     .getSystemService(Context.NOTIFICATION_SERVICE);
             manager.cancel(NOTIFICATION_ID);
-
-        } else if (BluetoothDevice.ACTION_BOND_STATE_CHANGED.equals(action)) {
-            int bondState = intent.getIntExtra(BluetoothDevice.EXTRA_BOND_STATE,
-                    BluetoothDevice.ERROR);
-            int oldState = intent.getIntExtra(BluetoothDevice.EXTRA_PREVIOUS_BOND_STATE,
-                    BluetoothDevice.ERROR);
-            if((oldState == BluetoothDevice.BOND_BONDING) &&
-                    (bondState == BluetoothDevice.BOND_NONE)) {
-                // Remove the notification
-                NotificationManager manager = (NotificationManager) context
-                    .getSystemService(Context.NOTIFICATION_SERVICE);
-                manager.cancel(NOTIFICATION_ID);
-            }
         }
     }
 }

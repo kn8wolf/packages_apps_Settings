@@ -1261,7 +1261,4 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <!-- Device specific settings -->
     <string name="screen_off_gesture_settings_title">Gestes écran éteint</string>
 
-    <!-- Bluetooth accept all Filestypes -->
-    <string name="bluetooth_accept_all_files">Accepter tous les fichiers</string>
-
 </resources>

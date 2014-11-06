@@ -1474,4 +1474,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="proximity_wake_title">Prevent accidental wake-up</string>
     <string name="proximity_wake_summary">Check the proximity sensor prior to waking up screen</string>
 
+    <!-- Screen Record -->
+    <string name="screenrecord_settings_title">Screen Record</string>
+    <string name="power_menu_toggle_screenrecord_title">Screen Record</string>
+    <string name="power_menu_toggle_screenrecord_summary">Show Screen Record option in Power Menu</string>
+
 </resources>

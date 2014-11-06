@@ -1302,4 +1302,9 @@ aggiungere ulteriori punti di controllo. \'Rimuovi\' elimina la riga selezionata
     <string name="privacy_mode">Modalità privacy</string>
     <string name="privacy_mode_summary">Impedisce l\'espansione e l\'eliminazione delle notifiche e visualizza la sola icona per salvaguardare la privacy.</string>
 
+    <!-- Screen Record -->
+    <string name="screenrecord_settings_title">Registra schermo</string>
+    <string name="power_menu_toggle_screenrecord_title">Registra schermo</string>
+    <string name="power_menu_toggle_screenrecord_summary">Mostra il pulsante di registrazione nel menu Power</string>
+
 </resources>

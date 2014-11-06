@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright (C) 2013 SlimRoms (blk_jack)
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2012 Slimroms
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -13,18 +13,13 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <PreferenceScreen
-        android:fragment="com.android.settings.slim.PowerMenuStyle"
-        android:key="power_menu_style"
-        android:title="@string/style_title"
-        android:summary="@string/power_menu_style_summary" />
-
-    <PreferenceScreen
-        android:fragment="com.android.settings.slim.Screenrecord"
-        android:key="screenrecord_settings"
-        android:title="@string/screenrecord_settings_title" />
+    <CheckBoxPreference
+        android:key="power_menu_screenrecord"
+        android:title="@string/power_menu_toggle_screenrecord_title"
+        android:summary="@string/power_menu_toggle_screenrecord_summary"
+        android:defaultValue="false" />
 
 </PreferenceScreen>

@@ -1278,4 +1278,9 @@ aggiungere ulteriori punti di controllo. \'Rimuovi\' elimina la riga selezionata
     <!-- Device specific settings -->
     <string name="screen_off_gesture_settings_title">Gestures a schermo spento</string>
 
+    <!-- Screen Record -->
+    <string name="screenrecord_settings_title">Registra schermo</string>
+    <string name="power_menu_toggle_screenrecord_title">Registra schermo</string>
+    <string name="power_menu_toggle_screenrecord_summary">Mostra il pulsante di registrazione nel menu Power</string>
+
 </resources>

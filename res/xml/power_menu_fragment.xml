@@ -22,9 +22,4 @@
         android:title="@string/style_title"
         android:summary="@string/power_menu_style_summary" />
 
-    <PreferenceScreen
-        android:fragment="com.android.settings.slim.Screenrecord"
-        android:key="screenrecord_settings"
-        android:title="@string/screenrecord_settings_title" />
-
 </PreferenceScreen>

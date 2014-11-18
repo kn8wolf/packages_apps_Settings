@@ -20,9 +20,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.ContentResolver;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.database.ContentObserver;
 import android.os.Bundle;
 import android.os.Handler;
@@ -32,7 +30,6 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceCategory;
-import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 
@@ -41,8 +38,6 @@ import com.android.internal.util.slim.SlimActions;
 
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
-
-import org.cyanogenmod.hardware.KeyDisabler;
 
 public class NavbarSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
@@ -152,14 +147,6 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
         }
         mMenuDisplayLocation.setEnabled(show
             && mNavBarMenuDisplayValue != 1);
-
-        if (isKeyDisablerSupported()) {
-            KeyDisabler.setActive(show);
-            int defaultBrightness = getResources().getInteger(
-                    com.android.internal.R.integer.config_buttonBrightnessSettingDefault);
-            int brightness = show ? 0 : defaultBrightness;
-            Settings.System.putInt(getContentResolver(), Settings.System.BUTTON_BRIGHTNESS, brightness);
-        }
     }
 
     @Override
@@ -211,23 +198,6 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
         DialogFragment newFragment = MyAlertDialogFragment.newInstance(id);
         newFragment.setTargetFragment(this, 0);
         newFragment.show(getFragmentManager(), "dialog " + id);
-    }
-
-    private static boolean isKeyDisablerSupported() {
-        try {
-            return KeyDisabler.isSupported();
-        } catch (NoClassDefFoundError e) {
-            // Hardware abstraction framework not installed
-            return false;
-        }
-    }
-
-    public static void restore(Context context) {
-        if (isKeyDisablerSupported()) {
-            final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-            final boolean enabled = prefs.getBoolean(ENABLE_NAVIGATION_BAR, false);
-            KeyDisabler.setActive(enabled);
-        }
     }
 
     public static class MyAlertDialogFragment extends DialogFragment {

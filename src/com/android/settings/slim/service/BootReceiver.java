@@ -26,7 +26,6 @@ import android.provider.Settings;
 import com.android.settings.DisplaySettings;
 import com.android.settings.hardware.DisplayColor;
 import com.android.settings.hardware.VibratorIntensity;
-import com.android.settings.slim.NavbarSettings;
 
 public class BootReceiver extends BroadcastReceiver {
 
@@ -51,7 +50,6 @@ public class BootReceiver extends BroadcastReceiver {
         /* Restore the hardware tunable values */
         DisplayColor.restore(context);
         DisplaySettings.restore(context);
-        NavbarSettings.restore(context);
         VibratorIntensity.restore(context);
     }
 }

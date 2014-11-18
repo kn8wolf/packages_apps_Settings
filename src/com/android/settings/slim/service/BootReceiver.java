@@ -26,6 +26,7 @@ import android.provider.Settings;
 import com.android.settings.DisplaySettings;
 import com.android.settings.hardware.DisplayColor;
 import com.android.settings.hardware.VibratorIntensity;
+import com.android.settings.slim.HardwareKeysSettings;
 
 public class BootReceiver extends BroadcastReceiver {
 
@@ -51,5 +52,6 @@ public class BootReceiver extends BroadcastReceiver {
         DisplayColor.restore(context);
         DisplaySettings.restore(context);
         VibratorIntensity.restore(context);
+        HardwareKeysSettings.restore(context);
     }
 }

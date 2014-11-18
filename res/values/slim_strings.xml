@@ -1077,7 +1077,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="storage_rescan_media_complete">Scan completed</string>
 
     <!-- Hardware keys -->
-    <string name="button_keys_title">Hardware Buttons</string>
+    <string name="button_keys_title">Hardware buttons</string>
+    <string name="general_title">General</string>
+    <string name="disable_hwbuttons_title">Disable hardware keys</string>
     <string name="keys_bindings_title">Key actions</string>
     <string name="keys_enable_custom_title">Enable custom actions</string>
     <string name="keys_enable_custom_summary">Enable custom hardware key actions</string>

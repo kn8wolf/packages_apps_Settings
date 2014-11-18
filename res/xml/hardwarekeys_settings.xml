@@ -17,6 +17,27 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+       <PreferenceCategory
+                android:key="general_cat"
+                android:title="@string/general_title" >
+
+            <CheckBoxPreference
+                android:key="disable_hardware_button"
+                android:title="@string/disable_hwbuttons_title" />
+
+            <com.android.settings.slim.ButtonBacklightBrightness
+                android:key="button_backlight"
+                android:title="@string/button_backlight_title"
+                android:dialogTitle="@string/button_backlight_title"
+                android:persistent="false" />
+
+            <ListPreference
+                android:key="keys_overflow_button"
+                android:title="@string/keys_overflow_title"
+                android:entries="@array/overflow_button_entries"
+                android:entryValues="@array/overflow_button_values" />
+        </PreferenceCategory>
+
         <PreferenceCategory
                 android:key="keys_cat"
                 android:title="@string/keys_bindings_title" >
@@ -25,12 +46,6 @@
                 android:key="enable_hardware_rebind"
                 android:title="@string/keys_enable_custom_title"
                 android:summary="@string/keys_enable_custom_summary" />
-
-            <com.android.settings.slim.ButtonBacklightBrightness
-                android:key="button_backlight"
-                android:title="@string/button_backlight_title"
-                android:dialogTitle="@string/button_backlight_title"
-                android:persistent="false" />
         </PreferenceCategory>
 
         <PreferenceCategory
@@ -131,16 +146,6 @@
                 android:key="keys_app_switch_double_tap"
                 android:title="@string/keys_action_double"
                 android:dependency="enable_hardware_rebind" />
-        </PreferenceCategory>
-
-        <PreferenceCategory
-            android:title="@string/additional_options_title">
-
-            <ListPreference
-                android:key="keys_overflow_button"
-                android:title="@string/keys_overflow_title"
-                android:entries="@array/overflow_button_entries"
-                android:entryValues="@array/overflow_button_values" />
         </PreferenceCategory>
 
 </PreferenceScreen>

@@ -20,6 +20,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -33,6 +34,7 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceCategory;
+import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.view.Menu;
@@ -54,6 +56,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.cyanogenmod.hardware.KeyDisabler;
+
 public class HardwareKeysSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener, OnPreferenceClickListener,
         ShortcutPickerHelper.OnPickListener {
@@ -67,6 +71,7 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
     private static final String CATEGORY_ASSIST = "button_keys_assist";
     private static final String CATEGORY_APPSWITCH = "button_keys_appSwitch";
 
+    private static final String DISABLE_HARDWARE_BUTTONS = "disable_hardware_button";
     private static final String KEY_BUTTON_BACKLIGHT = "button_backlight";
     private static final String KEYS_CATEGORY_BINDINGS = "keys_bindings";
     private static final String KEYS_OVERFLOW_BUTTON = "keys_overflow_button";
@@ -101,6 +106,8 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
     private static final int KEY_MASK_ASSIST     = 0x08;
     private static final int KEY_MASK_APP_SWITCH = 0x10;
 
+    private CheckBoxPreference mDisableHardwareButtons;
+    private ButtonBacklightBrightness mBacklight;
     private CheckBoxPreference mEnableCustomBindings;
     private ListPreference mOverflowButtonMode;
     private Preference mBackPressAction;
@@ -311,17 +318,32 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
             prefs.removePreference(keysAppSwitchCategory);
         }
 
-        boolean enableHardwareRebind = Settings.System.getInt(getContentResolver(),
-                Settings.System.HARDWARE_KEY_REBINDING, 0) == 1;
-        mEnableCustomBindings = (CheckBoxPreference) findPreference(KEYS_ENABLE_CUSTOM);
-        mEnableCustomBindings.setChecked(enableHardwareRebind);
-        mEnableCustomBindings.setOnPreferenceChangeListener(this);
+        mBacklight = (ButtonBacklightBrightness) findPreference(KEY_BUTTON_BACKLIGHT);
+        if (!mBacklight.isButtonSupported() && !mBacklight.isKeyboardSupported()) {
+            prefs.removePreference(mBacklight);
+        }
 
         String overflowButtonMode = Integer.toString(Settings.System.getInt(getContentResolver(),
                 Settings.System.UI_OVERFLOW_BUTTON, 0));
         mOverflowButtonMode.setOnPreferenceChangeListener(this);
         mOverflowButtonMode.setValue(overflowButtonMode);
         mOverflowButtonMode.setSummary(mOverflowButtonMode.getEntry());
+
+        boolean enableHardwareRebind = Settings.System.getInt(getContentResolver(),
+                Settings.System.HARDWARE_KEY_REBINDING, 0) == 1;
+        mEnableCustomBindings = (CheckBoxPreference) findPreference(KEYS_ENABLE_CUSTOM);
+        mEnableCustomBindings.setChecked(enableHardwareRebind);
+        mEnableCustomBindings.setOnPreferenceChangeListener(this);
+
+        mDisableHardwareButtons = (CheckBoxPreference) findPreference(DISABLE_HARDWARE_BUTTONS);
+        if (isKeyDisablerSupported()) {
+            boolean isHWKeysDisabled = KeyDisabler.isActive();
+            mDisableHardwareButtons.setChecked(isHWKeysDisabled);
+            mDisableHardwareButtons.setOnPreferenceChangeListener(this);
+            updateHWKeysPreferences(!isHWKeysDisabled);
+        } else {
+            prefs.removePreference(mDisableHardwareButtons);
+        }
 
         // Handle warning dialog.
         SharedPreferences preferences =
@@ -333,12 +355,6 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
         } else if (hasHomeKey()) {
             preferences.edit()
                     .putBoolean("no_home_action", false).commit();
-        }
-
-        final ButtonBacklightBrightness backlight =
-                (ButtonBacklightBrightness) findPreference(KEY_BUTTON_BACKLIGHT);
-        if (!backlight.isButtonSupported() && !backlight.isKeyboardSupported()) {
-            prefs.removePreference(backlight);
         }
 
         mCheckPreferences = true;
@@ -438,7 +454,37 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
         if (!mCheckPreferences) {
             return false;
         }
-        if (preference == mEnableCustomBindings) {
+        if (preference == mDisableHardwareButtons) {
+            boolean value = (Boolean) newValue;
+
+            // Disable hw keys on kernel level
+            KeyDisabler.setActive(value);
+
+            // Disable backlight
+            int defaultBrightness = getResources().getInteger(
+                    com.android.internal.R.integer.config_buttonBrightnessSettingDefault);
+            int brightness = value ? 0 : defaultBrightness;
+            Settings.System.putInt(getContentResolver(), Settings.System.BUTTON_BRIGHTNESS, brightness);
+            if (mBacklight != null) {
+                mBacklight.setSummary(R.string.backlight_summary_disabled);
+            }
+
+            // Enable overflow button
+            Settings.System.putInt(getContentResolver(), Settings.System.UI_OVERFLOW_BUTTON, 0);
+            if (mOverflowButtonMode != null) {
+                mOverflowButtonMode.setSummary(mOverflowButtonMode.getEntries()[0]);
+            }
+
+            // Enable NavBar
+            Settings.System.putInt(getActivity().getContentResolver(),
+                                    Settings.System.NAVIGATION_BAR_SHOW, 1);
+
+            // Update preferences
+            updateHWKeysPreferences(!value);
+
+            return true;
+        }
+        else if (preference == mEnableCustomBindings) {
             boolean value = (Boolean) newValue;
             Settings.System.putInt(getContentResolver(), Settings.System.HARDWARE_KEY_REBINDING,
                     value ? 1 : 0);
@@ -452,6 +498,18 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
             return true;
         }
         return false;
+    }
+
+    private void updateHWKeysPreferences(boolean show) {
+        if (mBacklight != null) {
+            mBacklight.setEnabled(show);
+        }
+        if (mOverflowButtonMode != null) {
+            mOverflowButtonMode.setEnabled(show);
+        }
+        if (mEnableCustomBindings != null) {
+            mEnableCustomBindings.setEnabled(show);
+        }
     }
 
     private boolean hasHomeKey() {
@@ -529,6 +587,23 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
                 MyAlertDialogFragment.newInstance(id, settingsKey, dialogTitle);
         newFragment.setTargetFragment(this, 0);
         newFragment.show(getFragmentManager(), "dialog " + id);
+    }
+
+    private static boolean isKeyDisablerSupported() {
+        try {
+            return KeyDisabler.isSupported();
+        } catch (NoClassDefFoundError e) {
+            // Hardware abstraction framework not installed
+            return false;
+        }
+    }
+
+    public static void restore(Context context) {
+        if (isKeyDisablerSupported()) {
+            final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+            final boolean enabled = prefs.getBoolean(DISABLE_HARDWARE_BUTTONS, false);
+            KeyDisabler.setActive(enabled);
+        }
     }
 
     public static class MyAlertDialogFragment extends DialogFragment {

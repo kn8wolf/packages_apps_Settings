@@ -166,7 +166,7 @@ public class AppOpsState {
                     AppOpsManager.OP_AUDIO_MEDIA_VOLUME,
                     AppOpsManager.OP_AUDIO_ALARM_VOLUME,
                     AppOpsManager.OP_AUDIO_NOTIFICATION_VOLUME,
-                    AppOpsManager.OP_AUDIO_BLUETOOTH_VOLUME, },
+                    AppOpsManager.OP_AUDIO_BLUETOOTH_VOLUME },
             new boolean[] { false,
                     true,
                     true,

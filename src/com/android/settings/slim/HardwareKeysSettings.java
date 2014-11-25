@@ -470,9 +470,9 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
             }
 
             // Enable overflow button
-            Settings.System.putInt(getContentResolver(), Settings.System.UI_OVERFLOW_BUTTON, 0);
+            Settings.System.putInt(getContentResolver(), Settings.System.UI_OVERFLOW_BUTTON, 2);
             if (mOverflowButtonMode != null) {
-                mOverflowButtonMode.setSummary(mOverflowButtonMode.getEntries()[0]);
+                mOverflowButtonMode.setSummary(mOverflowButtonMode.getEntries()[2]);
             }
 
             // Enable NavBar

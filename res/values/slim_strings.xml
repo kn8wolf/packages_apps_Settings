@@ -1100,6 +1100,7 @@
     <string name="recents_clear_all_location_top_left">Top left</string>
     <string name="recents_clear_all_location_bottom_right">Bottom right</string>
     <string name="recents_clear_all_location_bottom_left">Bottom left</string>
+    <string name="recents_show_searchbar">Show search bar in recents menu</string>
 
     <string name="recents_max_apps_title">Max allowed apps</string>
     <string name="recent_panel_scale_title">Size</string>

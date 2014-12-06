@@ -67,6 +67,7 @@ import java.util.List;
 import com.android.settings.hardware.DisplayColor;
 import com.android.settings.hardware.DisplayGamma;
 
+import org.cyanogenmod.hardware.TapToWake;
 import org.cyanogenmod.hardware.AdaptiveBacklight;
 import org.cyanogenmod.hardware.ColorEnhancement;
 import org.cyanogenmod.hardware.SunlightEnhancement;
@@ -90,6 +91,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_WAKEUP_CATEGORY = "category_wakeup_options";
     private static final String KEY_VOLUME_WAKE = "pref_volume_wake";
     private static final String KEY_PROXIMITY_WAKE = "proximity_on_wake";
+    private static final String KEY_TAP_TO_WAKE = "double_tap_wake_gesture";
     private static final String KEY_ADAPTIVE_BACKLIGHT = "adaptive_backlight";
     private static final String KEY_SUNLIGHT_ENHANCEMENT = "sunlight_enhancement";
     private static final String KEY_COLOR_ENHANCEMENT = "color_enhancement";
@@ -129,6 +131,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
     };
 
+    private SwitchPreference mTapToWake;
     private SwitchPreference mAdaptiveBacklight;
     private SwitchPreference mSunlightEnhancement;
     private SwitchPreference mColorEnhancement;
@@ -177,6 +180,12 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
 
         PreferenceCategory advancedPrefs = (PreferenceCategory) findPreference(CATEGORY_ADVANCED);
+
+        mTapToWake = (SwitchPreference) findPreference(KEY_TAP_TO_WAKE);
+        if (!isTapToWakeSupported()) {
+            advancedPrefs.removePreference(mTapToWake);
+            mTapToWake = null;
+        }
 
         mAdaptiveBacklight = (SwitchPreference) findPreference(KEY_ADAPTIVE_BACKLIGHT);
         if (!isAdaptiveBacklightSupported()) {
@@ -393,6 +402,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     public void onResume() {
         super.onResume();
 
+        if (mTapToWake != null) {
+            mTapToWake.setChecked(TapToWake.isEnabled());
+        }
+
         if (mAdaptiveBacklight != null) {
             mAdaptiveBacklight.setChecked(AdaptiveBacklight.isEnabled());
         }
@@ -497,7 +510,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        if (preference == mAdaptiveBacklight) {
+        if (preference == mTapToWake) {
+            return TapToWake.setEnabled(mTapToWake.isChecked());
+        } else if (preference == mAdaptiveBacklight) {
             if (mSunlightEnhancement != null &&
                     SunlightEnhancement.isAdaptiveBacklightRequired()) {
                 mSunlightEnhancement.setEnabled(mAdaptiveBacklight.isChecked());
@@ -573,6 +588,17 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
      */
     public static void restore(Context ctx) {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
+
+        if (isTapToWakeSupported()) {
+            final boolean enabled = prefs.getBoolean(KEY_TAP_TO_WAKE,
+                TapToWake.isEnabled());
+            if (!TapToWake.setEnabled(enabled)) {
+                Log.e(TAG, "Failed to restore tap-to-wake settings.");
+            } else {
+                Log.d(TAG, "Tap-to-wake settings restored.");
+            }
+        }
+
         if (isAdaptiveBacklightSupported()) {
             final boolean enabled = prefs.getBoolean(KEY_ADAPTIVE_BACKLIGHT,
                     AdaptiveBacklight.isEnabled());
@@ -607,6 +633,15 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             } else {
                 Log.d(TAG, "Color enhancement settings restored.");
             }
+        }
+    }
+
+    private static boolean isTapToWakeSupported() {
+        try {
+            return TapToWake.isSupported();
+        } catch (NoClassDefFoundError e) {
+            // Hardware abstraction framework not installed
+            return false;
         }
     }
 

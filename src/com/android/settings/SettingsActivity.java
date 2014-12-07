@@ -1202,18 +1202,12 @@ public class SettingsActivity extends Activity
                 } else if (id == R.id.superuser) {
                     String value = SystemProperties.get(
                             DevelopmentSettings.ROOT_ACCESS_PROPERTY, "0");
-                    if (Integer.valueOf(value) == 0 || um.hasUserRestriction(
+                    if (isSuperSUSupported() || Integer.valueOf(value) == 0 || um.hasUserRestriction(
                             UserManager.DISALLOW_DEBUGGING_FEATURES)) {
                         removeTile = true;
                     }
                 } else if (id == R.id.supersu_settings) {
-                    // Embedding into Settings is supported from SuperSU v1.85 and up
-                    boolean supported = false;
-                    try {
-                        supported = (getPackageManager().getPackageInfo("eu.chainfire.supersu", 0).versionCode >= 185);
-                    } catch (PackageManager.NameNotFoundException e) {
-                    }
-                    if (!supported) {
+                    if (!isSuperSUSupported()) {
                         removeTile = true;
                     }
                 }
@@ -1229,6 +1223,16 @@ public class SettingsActivity extends Activity
                 n--;
             }
         }
+    }
+
+    private boolean isSuperSUSupported() {
+        // Embedding into Settings is supported from SuperSU v1.85 and up
+        boolean supported = false;
+        try {
+           supported = (getPackageManager().getPackageInfo("eu.chainfire.supersu", 0).versionCode >= 185);
+        } catch (PackageManager.NameNotFoundException e) {
+        }
+        return supported;
     }
 
     private boolean updateHomeSettingTiles(DashboardTile tile) {

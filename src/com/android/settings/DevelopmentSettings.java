@@ -373,7 +373,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         mOverlayDisplayDevices = addListPreference(OVERLAY_DISPLAY_DEVICES_KEY);
         mOpenGLTraces = addListPreference(OPENGL_TRACES_KEY);
         mSimulateColorSpace = addListPreference(SIMULATE_COLOR_SPACE);
-        mUseNuplayer = findAndInitSwitchPref(USE_NUPLAYER_KEY);
+        mUseNuplayer = (SwitchPreference) findPreference(USE_NUPLAYER_KEY);
+        mAllPrefs.add(mUseNuplayer);
         mUSBAudio = findAndInitSwitchPref(USB_AUDIO_KEY);
 
         mKillAppLongpressBack = findAndInitSwitchPref(KILL_APP_LONGPRESS_BACK);
@@ -627,6 +628,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         pokeSystemProperties();
         resetRootAccessOptions();
         mShowUnacAndOvercounted.setChecked(false);
+        resetUseNuplayerOptions();
     }
 
     private void updateRootAccessOptions() {
@@ -661,6 +663,10 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
                     Settings.Secure.ADB_ENABLED, 1);
         }
         updateRootAccessOptions();
+    }
+
+    private void resetUseNuplayerOptions() {
+        SystemProperties.set(USE_AWESOMEPLAYER_PROPERTY, "0");
     }
 
     private void updateHdcpValues() {

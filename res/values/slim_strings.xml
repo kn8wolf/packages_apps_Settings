@@ -719,7 +719,16 @@
     <!-- Doze (ambient display) preference category -->
     <string name="display_category_doze_options_title">Ambient display options</string>
 
-    <!-- Battery percentage -->
+    <!-- Status bar - Battery -->
+    <string name="battery_icon_options_title">Battery icon options</string>
+    <string name="status_bar_battery_style_title">Battery status style</string>
+    <string name="status_bar_battery_style_icon_portrait">Icon portrait</string>
+    <string name="status_bar_battery_style_icon_landscape">Icon landscape</string>
+    <string name="status_bar_battery_style_circle">Circle</string>
+    <string name="status_bar_battery_style_text">Text</string>
+    <string name="status_bar_battery_style_hidden">Hidden</string>
+
+    <!-- Status bar - Battery percentage -->
     <string name="status_bar_battery_percentage_title">Show battery percentage</string>
     <string name="status_bar_battery_percentage_dialog_title">Battery percentage</string>
     <string name="status_bar_battery_percentage_default">Hidden (default)</string>

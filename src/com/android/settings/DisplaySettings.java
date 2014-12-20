@@ -222,14 +222,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             mDozePreference.setOnPreferenceChangeListener(this);
             // Doze timeout
             mDozeTimeout = (SlimSeekBarPreference) findPreference(KEY_DOZE_TIMEOUT);
-            if (mDozeTimeout != null) {
-                mDozeTimeout.setDefault(3000);
-                mDozeTimeout.isMilliseconds(true);
-                mDozeTimeout.setInterval(1);
-                mDozeTimeout.minimumValue(100);
-                mDozeTimeout.multiplyValue(100);
-                mDozeTimeout.setOnPreferenceChangeListener(this);
-            }
         } else {
             removePreference(KEY_DOZE);
             removePreference(KEY_DOZE_TIMEOUT);
@@ -451,6 +443,13 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
         // Doze timeout
         if (mDozeTimeout != null) {
+            mDozeTimeout.setDefault(3000);
+            mDozeTimeout.isMilliseconds(true);
+            mDozeTimeout.setInterval(1);
+            mDozeTimeout.minimumValue(100);
+            mDozeTimeout.multiplyValue(100);
+            mDozeTimeout.setOnPreferenceChangeListener(this);
+
             final int statusDozeTimeout = Settings.System.getInt(getContentResolver(),
                     Settings.System.DOZE_TIMEOUT, 3000);
             // minimum 100 is 1 interval of the 100 multiplier

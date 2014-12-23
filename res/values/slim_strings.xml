@@ -871,4 +871,7 @@
          their presence in MIME type whitelist -->
     <string name="bluetooth_accept_all_files">Accept all file types</string>
 
+    <!-- Viper4Android -->
+    <string name="viper_title">Viper4Android</string>
+
 </resources>

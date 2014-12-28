@@ -17,6 +17,28 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <PreferenceCategory
+        android:title="@string/general_title">
+
+       <SwitchPreference
+            android:key="disable_hardware_button"
+            android:title="@string/disable_hwbuttons_title"
+            android:summary="@string/disable_hwbuttons_summary" />
+
+       <com.android.settings.slim.ButtonBacklightBrightness
+            android:key="button_backlight"
+            android:title="@string/button_backlight_title"
+            android:dialogTitle="@string/button_backlight_title"
+            android:persistent="false" />
+
+       <ListPreference
+            android:key="keys_overflow_button"
+            android:title="@string/keys_overflow_title"
+            android:entries="@array/overflow_button_entries"
+            android:entryValues="@array/overflow_button_values" />
+
+    </PreferenceCategory>
+
         <PreferenceCategory
                 android:key="keys_cat"
                 android:title="@string/keys_bindings_title" >

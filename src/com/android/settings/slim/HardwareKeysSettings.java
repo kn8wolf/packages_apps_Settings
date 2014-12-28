@@ -20,25 +20,32 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.content.SharedPreferences;
+import android.hardware.CmHardwareManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.SystemProperties;
+import android.preference.ListPreference;
 import android.preference.SwitchPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceCategory;
+import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.android.internal.util.slim.AppHelper;
+import com.android.internal.util.slim.Action;
 import com.android.internal.util.slim.ActionConstants;
 import com.android.internal.util.slim.DeviceUtils;
 import com.android.internal.util.slim.DeviceUtils.FilteredDeviceFeaturesArray;
@@ -57,6 +64,10 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
         ShortcutPickerHelper.OnPickListener {
 
     private static final String TAG = "HardwareKeys";
+
+    private static final String DISABLE_HARDWARE_BUTTONS = "disable_hardware_button";
+    private static final String KEY_BUTTON_BACKLIGHT = "button_backlight";
+    private static final String KEYS_OVERFLOW_BUTTON = "keys_overflow_button";
 
     private static final String CATEGORY_KEYS = "button_keys";
     private static final String CATEGORY_BACK = "button_keys_back";
@@ -102,6 +113,10 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
     private static final int KEY_MASK_APP_SWITCH = 0x10;
     private static final int KEY_MASK_CAMERA     = 0x20;
 
+    private SwitchPreference mDisableHardwareButtons;
+    private ButtonBacklightBrightness mBacklight;
+    private ListPreference mOverflowButtonMode;
+
     private SwitchPreference mEnableCustomBindings;
     private Preference mBackPressAction;
     private Preference mBackLongPressAction;
@@ -129,9 +144,13 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
     private String mPendingSettingsKey;
     private static FilteredDeviceFeaturesArray sFinalActionDialogArray;
 
+    private CmHardwareManager mCmHardwareManager;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mCmHardwareManager = (CmHardwareManager) getActivity().getSystemService(Context.CMHW_SERVICE);
 
         mPicker = new ShortcutPickerHelper(getActivity(), this);
 
@@ -340,6 +359,8 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
             prefs.removePreference(keysAppSwitchCategory);
         }
 
+        addGeneralOptions(prefs);
+
         boolean enableHardwareRebind = Settings.System.getInt(getContentResolver(),
                 Settings.System.HARDWARE_KEY_REBINDING, 0) == 1;
         mEnableCustomBindings = (SwitchPreference) findPreference(KEYS_ENABLE_CUSTOM);
@@ -360,6 +381,59 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
 
         mCheckPreferences = true;
         return prefs;
+    }
+
+    private void addGeneralOptions(PreferenceScreen prefs) {
+        final boolean navbarIsDefault = Action.isNavBarDefault(getActivity());
+        if (navbarIsDefault) {
+            return;
+        }
+
+        mDisableHardwareButtons = (SwitchPreference) prefs.findPreference(DISABLE_HARDWARE_BUTTONS);
+        if (isKeyDisablerSupported()) {
+            mDisableHardwareButtons.setOnPreferenceChangeListener(this);
+        } else {
+            prefs.removePreference(mDisableHardwareButtons);
+        }
+
+        // Backlight
+        mBacklight = (ButtonBacklightBrightness) prefs.findPreference(KEY_BUTTON_BACKLIGHT);
+        if (!mBacklight.isButtonSupported() && !mBacklight.isKeyboardSupported()) {
+            prefs.removePreference(mBacklight);
+        }
+
+        // Overflow
+        mOverflowButtonMode = (ListPreference) prefs.findPreference(KEYS_OVERFLOW_BUTTON);
+        mOverflowButtonMode.setOnPreferenceChangeListener(this);
+
+        updateGeneralOptions();
+    }
+
+    private void updateGeneralOptions() {
+        // KeyDisabler
+        if (isKeyDisablerSupported()) {
+            boolean isHWKeysDisabled = mCmHardwareManager.get(CmHardwareManager.FEATURE_KEY_DISABLE);
+            mDisableHardwareButtons.setChecked(isHWKeysDisabled);
+            if (mBacklight != null) {
+                mBacklight.setEnabled(isHWKeysDisabled ? false : true);
+            }
+            if (mOverflowButtonMode != null) {
+                mOverflowButtonMode.setEnabled(isHWKeysDisabled ? false : true);
+            }
+        }
+
+        // Backlight
+        if (mBacklight != null) {
+            mBacklight.updateSummary();
+        }
+
+        // Overflow
+        String overflowButtonMode = Integer.toString(Settings.System.getInt(getContentResolver(),
+                Settings.System.UI_OVERFLOW_BUTTON, 2));
+        if (mOverflowButtonMode != null) {
+            mOverflowButtonMode.setValue(overflowButtonMode);
+            mOverflowButtonMode.setSummary(mOverflowButtonMode.getEntry());
+        }
     }
 
     private void setupOrUpdatePreference(
@@ -470,8 +544,61 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(), Settings.System.HARDWARE_KEY_REBINDING,
                     value ? 1 : 0);
             return true;
+        } else if (preference == mDisableHardwareButtons) {
+            boolean value = (Boolean) newValue;
+
+            // Disable hw keys on kernel level
+            if (mCmHardwareManager != null) {
+                mCmHardwareManager.set(CmHardwareManager.FEATURE_KEY_DISABLE, value);
+            }
+
+            // Disable backlight
+            int defaultBrightness = getResources().getInteger(
+                com.android.internal.R.integer.config_buttonBrightnessSettingDefault);
+            int brightness = value ? 0 : defaultBrightness;
+            Settings.System.putInt(getContentResolver(), Settings.System.BUTTON_BRIGHTNESS, brightness);
+
+            // Enable overflow button
+            Settings.System.putInt(getContentResolver(), Settings.System.UI_OVERFLOW_BUTTON, 2);
+            mOverflowButtonMode.setSummary(mOverflowButtonMode.getEntries()[2]);
+
+            // Enable NavBar
+            final String hwkeysProp = SystemProperties.get("qemu.hw.mainkeys");
+            final boolean navBarOverride = (hwkeysProp.equals("0") || hwkeysProp.equals("1"));
+            if (!navBarOverride) {
+                Settings.System.putInt(getContentResolver(), Settings.System.NAVIGATION_BAR_SHOW, 1);
+            }
+
+            // Update preferences
+            updateGeneralOptions();
+
+            return true;
+        } else if (preference == mOverflowButtonMode) {
+            int val = Integer.parseInt((String) newValue);
+            int index = mOverflowButtonMode.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getContentResolver(), Settings.System.UI_OVERFLOW_BUTTON, val);
+            mOverflowButtonMode.setSummary(mOverflowButtonMode.getEntries()[index]);
+            Toast.makeText(getActivity(), R.string.keys_overflow_toast, Toast.LENGTH_LONG).show();
+            return true;
         }
         return false;
+    }
+
+    private boolean isKeyDisablerSupported() {
+        if (mCmHardwareManager != null) {
+            return mCmHardwareManager.isSupported(CmHardwareManager.FEATURE_KEY_DISABLE);
+        }
+        return false;
+    }
+
+    public static void restore(Context context) {
+        CmHardwareManager cmHardwareManager =
+                (CmHardwareManager) context.getSystemService(Context.CMHW_SERVICE);
+        if (cmHardwareManager.isSupported(CmHardwareManager.FEATURE_KEY_DISABLE)) {
+            final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+            final boolean enabled = prefs.getBoolean(DISABLE_HARDWARE_BUTTONS, false);
+            cmHardwareManager.set(CmHardwareManager.FEATURE_KEY_DISABLE, enabled);
+        }
     }
 
     private boolean hasHomeKey() {

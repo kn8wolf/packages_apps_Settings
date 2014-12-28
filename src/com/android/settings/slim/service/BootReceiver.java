@@ -24,6 +24,7 @@ import com.android.settings.DisplaySettings;
 import com.android.settings.hardware.DisplayColor;
 import com.android.settings.hardware.DisplayGamma;
 import com.android.settings.hardware.VibratorIntensity;
+import com.android.settings.slim.ButtonsSettings;
 
 public class BootReceiver extends BroadcastReceiver {
 
@@ -36,5 +37,6 @@ public class BootReceiver extends BroadcastReceiver {
         DisplayGamma.restore(context);
         VibratorIntensity.restore(context);
         DisplaySettings.restore(context);
+        ButtonsSettings.restore(context);
     }
 }

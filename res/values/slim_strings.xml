@@ -757,4 +757,11 @@
     <string name="disable_hwbuttons_summary">Disable hardware buttons and enable navigation bar</string>
     <string name="enable_nav_bar_title">Enable navigation bar</string>
 
+    <!-- Overflow button -->
+    <string name="keys_overflow_title">Overflow button</string>
+    <string name="keys_overflow_toast">The action overflow button may not be visible or hidden until apps are restarted</string>
+    <string name="overflow_auto_detect">Auto detect</string>
+    <string name="overflow_show">Show</string>
+    <string name="overflow_hide">Hide</string>
+
 </resources>

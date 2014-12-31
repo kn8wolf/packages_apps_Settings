@@ -89,16 +89,21 @@ public class ButtonsSettings extends SettingsPreferenceFragment implements
             mDisableHardwareButtons.setChecked(isHWKeysDisabled);
             mEnableNavigationBar.setEnabled(isHWKeysDisabled ? false : true);
             mOverflowButtonMode.setEnabled(isHWKeysDisabled ? false : true);
+            mBacklight.setEnabled(isHWKeysDisabled ? false : true);
         }
      
+        int navbarIsDefault = getResources().getBoolean(
+                com.android.internal.R.bool.config_showNavigationBar) ? 1 : 0;
         boolean enableNavigationBar = Settings.System.getInt(getContentResolver(),
-            Settings.System.NAVIGATION_BAR_SHOW, -1) == 1;
+            Settings.System.NAVIGATION_BAR_SHOW, navbarIsDefault) == 1;
         mEnableNavigationBar.setChecked(enableNavigationBar);
 
         String overflowButtonMode = Integer.toString(Settings.System.getInt(getContentResolver(),
                 Settings.System.UI_OVERFLOW_BUTTON, 2));
         mOverflowButtonMode.setValue(overflowButtonMode);
         mOverflowButtonMode.setSummary(mOverflowButtonMode.getEntry());
+
+        mBacklight.updateSummary();
     }
 
     @Override
@@ -111,12 +116,9 @@ public class ButtonsSettings extends SettingsPreferenceFragment implements
 
             // Disable backlight
             int defaultBrightness = getResources().getInteger(
-                    com.android.internal.R.integer.config_buttonBrightnessSettingDefault);
+                com.android.internal.R.integer.config_buttonBrightnessSettingDefault);
             int brightness = value ? 0 : defaultBrightness;
             Settings.System.putInt(getContentResolver(), Settings.System.BUTTON_BRIGHTNESS, brightness);
-            if (mBacklight != null) {
-                mBacklight.setSummary(R.string.backlight_summary_disabled);
-            }
 
             // Enable overflow button
             Settings.System.putInt(getContentResolver(), Settings.System.UI_OVERFLOW_BUTTON, 2);
@@ -125,8 +127,7 @@ public class ButtonsSettings extends SettingsPreferenceFragment implements
             }
 
             // Enable NavBar
-            Settings.System.putInt(getActivity().getContentResolver(),
-                                    Settings.System.NAVIGATION_BAR_SHOW, 1);
+            Settings.System.putInt(getContentResolver(), Settings.System.NAVIGATION_BAR_SHOW, 1);
 
             // Update preferences
             updateSettings();

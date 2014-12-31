@@ -41,7 +41,7 @@ import com.android.settings.R;
 
 public class ButtonBacklightBrightness extends DialogPreference implements
         SeekBar.OnSeekBarChangeListener {
-    private static final int DEFAULT_BUTTON_TIMEOUT = 5;
+    private static final int DEFAULT_BUTTON_TIMEOUT = 1;
 
     private Window mWindow;
 
@@ -225,7 +225,7 @@ public class ButtonBacklightBrightness extends DialogPreference implements
                 com.android.internal.R.integer.config_keyboardBrightnessSettingDefault) > 0;
     }
 
-    private void updateSummary() {
+    public void updateSummary() {
         if (mButtonBrightness != null) {
             int buttonBrightness = mButtonBrightness.getBrightness(true);
             int timeout = getTimeout();

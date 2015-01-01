@@ -62,9 +62,6 @@ public class ButtonsSettings extends SettingsPreferenceFragment implements
 
         PreferenceScreen prefs = getPreferenceScreen();
 
-        mEnableNavigationBar = (SwitchPreference) prefs.findPreference(ENABLE_NAVIGATION_BAR);
-        mEnableNavigationBar.setOnPreferenceChangeListener(this);
-
         mDisableHardwareButtons = (SwitchPreference) prefs.findPreference(DISABLE_HARDWARE_BUTTONS);
         if (isKeyDisablerSupported()) {
             mDisableHardwareButtons.setOnPreferenceChangeListener(this);
@@ -80,30 +77,45 @@ public class ButtonsSettings extends SettingsPreferenceFragment implements
         mOverflowButtonMode = (ListPreference) prefs.findPreference(KEYS_OVERFLOW_BUTTON);
         mOverflowButtonMode.setOnPreferenceChangeListener(this);
 
-        updateSettings();
+        mEnableNavigationBar = (SwitchPreference) prefs.findPreference(ENABLE_NAVIGATION_BAR);
+        mEnableNavigationBar.setOnPreferenceChangeListener(this);
+
+        updatePreferences();
     }
 
-    private void updateSettings() {
+    private void updatePreferences() {
+        boolean navbarIsDefault = getResources().getBoolean(
+            com.android.internal.R.bool.config_showNavigationBar);
+
+        // KeyDisabler
         if (isKeyDisablerSupported()) {
             boolean isHWKeysDisabled = KeyDisabler.isActive();
             mDisableHardwareButtons.setChecked(isHWKeysDisabled);
-            mEnableNavigationBar.setEnabled(isHWKeysDisabled ? false : true);
+            if (mBacklight != null) {
+                mBacklight.setEnabled(isHWKeysDisabled ? false : true);
+            }
             mOverflowButtonMode.setEnabled(isHWKeysDisabled ? false : true);
-            mBacklight.setEnabled(isHWKeysDisabled ? false : true);
+            mEnableNavigationBar.setEnabled(isHWKeysDisabled ? false : true);
+        } else if (navbarIsDefault) {
+            mOverflowButtonMode.setEnabled(false);
+            mEnableNavigationBar.setEnabled(false);
         }
-     
-        int navbarIsDefault = getResources().getBoolean(
-                com.android.internal.R.bool.config_showNavigationBar) ? 1 : 0;
-        boolean enableNavigationBar = Settings.System.getInt(getContentResolver(),
-            Settings.System.NAVIGATION_BAR_SHOW, navbarIsDefault) == 1;
-        mEnableNavigationBar.setChecked(enableNavigationBar);
 
+        // Backlight
+        if (mBacklight != null) {
+            mBacklight.updateSummary();
+        }
+
+        // Overflow
         String overflowButtonMode = Integer.toString(Settings.System.getInt(getContentResolver(),
                 Settings.System.UI_OVERFLOW_BUTTON, 2));
         mOverflowButtonMode.setValue(overflowButtonMode);
         mOverflowButtonMode.setSummary(mOverflowButtonMode.getEntry());
 
-        mBacklight.updateSummary();
+        // NavBar
+        boolean enableNavigationBar = Settings.System.getInt(getContentResolver(),
+            Settings.System.NAVIGATION_BAR_SHOW, navbarIsDefault ? 1 : 0) == 1;
+        mEnableNavigationBar.setChecked(enableNavigationBar);
     }
 
     @Override
@@ -122,15 +134,13 @@ public class ButtonsSettings extends SettingsPreferenceFragment implements
 
             // Enable overflow button
             Settings.System.putInt(getContentResolver(), Settings.System.UI_OVERFLOW_BUTTON, 2);
-            if (mOverflowButtonMode != null) {
-                mOverflowButtonMode.setSummary(mOverflowButtonMode.getEntries()[2]);
-            }
+            mOverflowButtonMode.setSummary(mOverflowButtonMode.getEntries()[2]);
 
             // Enable NavBar
             Settings.System.putInt(getContentResolver(), Settings.System.NAVIGATION_BAR_SHOW, 1);
 
             // Update preferences
-            updateSettings();
+            updatePreferences();
 
             return true;
         } else if (preference == mEnableNavigationBar) {
@@ -152,7 +162,7 @@ public class ButtonsSettings extends SettingsPreferenceFragment implements
     @Override
     public void onResume() {
         super.onResume();
-        updateSettings();
+        updatePreferences();
     }
 
     private static boolean isKeyDisablerSupported() {

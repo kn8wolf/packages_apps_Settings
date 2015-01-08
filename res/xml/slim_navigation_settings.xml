@@ -24,6 +24,11 @@
         android:fragment="com.android.settings.slim.HardwareKeysSettings"
         android:title="@string/hardwarekeys_pref_title" />
 
+     <PreferenceScreen
+        android:key="navigation_bar"
+        android:fragment="com.android.settings.slim.NavigationBarSettings"
+        android:title="@string/navigation_bar_title" />
+
     <PreferenceScreen
         android:key="navbar_targets_settings"
         android:fragment="com.android.settings.slim.dslv.ActionListViewSettings"

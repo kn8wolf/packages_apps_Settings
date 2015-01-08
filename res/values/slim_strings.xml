@@ -779,9 +779,25 @@
     <string name="disable_hwbuttons_title">Disable hardware buttons</string>
     <string name="disable_hwbuttons_summary">Disable hardware buttons and enable navigation bar</string>
 
-    <!-- NavBar -->
+    <!-- Navigation Bar -->
+    <string name="navigation_bar_title">Navigation bar</string>
+    <string name="navigation_bar_general_category">General</string>
+
+    <!-- Enable NavBar -->
     <string name="navbar_summary_override">Navigation bar is overridden by the system property qemu.hw.mainkeys</string>
     <string name="enable_nav_bar_title">Enable navigation bar</string>
+
+    <!-- Navigation Bar Height -->
+    <string name="navigation_bar_height">Navigation bar height</string>
+    <string name="navigation_bar_height_48">48dp (default)</string>
+    <string name="navigation_bar_height_44">44dp</string>
+    <string name="navigation_bar_height_40">40dp</string>
+    <string name="navigation_bar_height_36">36dp</string>
+    <string name="navigation_bar_height_32">32dp</string>
+    <string name="navigation_bar_height_28">28dp</string>
+    <string name="navigation_bar_height_24">24dp</string>
+    <string name="navigation_bar_height_20">20dp</string>
+    <string name="navigation_bar_height_0">0dp (hide)</string>
 
     <!-- Overflow button -->
     <string name="keys_overflow_title">Overflow button</string>

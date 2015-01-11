@@ -1010,4 +1010,7 @@
     <!-- Sound & notification > Other sounds: Title for the option enabling sound on volume slide adjust. [CHAR LIMIT=30] -->
     <string name="volume_adjust_sound_title">Volume slider sound</string>
 
+    <!-- Default alarm ringtone -->
+    <string name="alarm_ringtone_title">Default alarm ringtone</string>
+
 </resources>

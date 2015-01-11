@@ -61,5 +61,10 @@
             android:summary="@string/status_bar_show_weather_summary"
             android:defaultValue="true" />
 
+        <com.android.settings.slim.SystemSettingSwitchPreference
+            android:key="qs_show_brightness_slider"
+            android:title="@string/qs_brightness_slider_title"
+            android:defaultValue="true"/>
+
 </PreferenceScreen>
 

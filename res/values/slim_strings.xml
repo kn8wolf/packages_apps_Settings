@@ -890,6 +890,8 @@
     <string name="qs_advanced_location_title">Advanced location quick settings</string>
     <string name="qs_advanced_location_summary">Enable advanced settings for location in quick settings</string>
 
+    <string name="qs_brightness_slider_title">Show brightness slider</string>
+    
     <!-- WiFi Ad-Hoc mode -->
     <string name="wifi_mode">Mode</string>
     <string name="wifi_mode_ibss">Ad-Hoc (IBSS) Network</string>

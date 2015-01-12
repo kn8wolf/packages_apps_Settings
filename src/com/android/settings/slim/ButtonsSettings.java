@@ -23,6 +23,7 @@ import android.database.ContentObserver;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.UserHandle;
+import android.os.SystemProperties;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -84,8 +85,10 @@ public class ButtonsSettings extends SettingsPreferenceFragment implements
     }
 
     private void updatePreferences() {
-        boolean navbarIsDefault = getResources().getBoolean(
+        final boolean navbarIsDefault = getResources().getBoolean(
             com.android.internal.R.bool.config_showNavigationBar);
+        final String hwkeysProp = SystemProperties.get("qemu.hw.mainkeys");
+        final boolean navBarOverride = (hwkeysProp.equals("0") || hwkeysProp.equals("1"));
 
         // KeyDisabler
         if (isKeyDisablerSupported()) {
@@ -95,10 +98,17 @@ public class ButtonsSettings extends SettingsPreferenceFragment implements
                 mBacklight.setEnabled(isHWKeysDisabled ? false : true);
             }
             mOverflowButtonMode.setEnabled(isHWKeysDisabled ? false : true);
-            mEnableNavigationBar.setEnabled(isHWKeysDisabled ? false : true);
-        } else if (navbarIsDefault) {
+            if (navBarOverride) {
+                mEnableNavigationBar.setEnabled(false);
+                mEnableNavigationBar.setSummary(R.string.navbar_summary_override);
+            } else {
+                mEnableNavigationBar.setEnabled(isHWKeysDisabled ? false : true);
+                mEnableNavigationBar.setSummary("");
+            }
+        } else if (navbarIsDefault || navBarOverride) {
             mOverflowButtonMode.setEnabled(false);
             mEnableNavigationBar.setEnabled(false);
+            mEnableNavigationBar.setSummary(R.string.navbar_summary_override);
         }
 
         // Backlight
@@ -137,7 +147,11 @@ public class ButtonsSettings extends SettingsPreferenceFragment implements
             mOverflowButtonMode.setSummary(mOverflowButtonMode.getEntries()[2]);
 
             // Enable NavBar
-            Settings.System.putInt(getContentResolver(), Settings.System.NAVIGATION_BAR_SHOW, 1);
+            final String hwkeysProp = SystemProperties.get("qemu.hw.mainkeys");
+            final boolean navBarOverride = (hwkeysProp.equals("0") || hwkeysProp.equals("1"));
+            if (!navBarOverride) {
+                Settings.System.putInt(getContentResolver(), Settings.System.NAVIGATION_BAR_SHOW, 1);
+            }
 
             // Update preferences
             updatePreferences();

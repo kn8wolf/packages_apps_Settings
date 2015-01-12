@@ -754,9 +754,12 @@
     <!-- Buttons settins -->
     <string name="buttons_title">Button settings</string>
     <string name="general_title">General</string>
-    <string name="navbar_title">Navigation bar</string>
     <string name="disable_hwbuttons_title">Disable hardware buttons</string>
     <string name="disable_hwbuttons_summary">Disable hardware buttons and enable navigation bar</string>
+
+    <!-- NavBar -->
+    <string name="navbar_title">Navigation bar</string>
+    <string name="navbar_summary_override">Navigation bar is overridden by the system property qemu.hw.mainkeys</string>
     <string name="enable_nav_bar_title">Enable navigation bar</string>
 
     <!-- Overflow button -->

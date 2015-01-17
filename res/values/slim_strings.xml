@@ -751,8 +751,9 @@
     <string name="status_bar_network_stats_color_title">Network speeds text color</string>
     <string name="status_bar_network_stats_color_summary">Network speeds text color in statusbar</string>
 
-    <!-- Buttons settins -->
-    <string name="buttons_title">Button settings</string>
+    <!-- Button settings -->
+    <string name="button_pref_title">Buttons</string>
+    <string name="button_title">Button settings</string>
     <string name="general_title">General</string>
     <string name="disable_hwbuttons_title">Disable hardware buttons</string>
     <string name="disable_hwbuttons_summary">Disable hardware buttons and enable navigation bar</string>

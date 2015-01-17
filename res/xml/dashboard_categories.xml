@@ -83,6 +83,14 @@
                 android:title="@string/interface_settings_title"
                 />
 
+        <!-- Buttons -->
+        <dashboard-tile
+                android:id="@+id/button_settings"
+                android:title="@string/button_pref_title"
+                android:fragment="com.android.settings.slim.ButtonSettings"
+                android:icon="@drawable/ic_settings_buttons"
+                />
+
     </dashboard-category>
 
     <!-- DEVICE -->

@@ -40,7 +40,7 @@ import android.widget.Toast;
 
 import org.cyanogenmod.hardware.KeyDisabler;
 
-public class ButtonsSettings extends SettingsPreferenceFragment implements
+public class ButtonSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
     private static final String TAG = "ButtonsSettings";
@@ -59,7 +59,7 @@ public class ButtonsSettings extends SettingsPreferenceFragment implements
         super.onCreate(savedInstanceState);
 
         // Load the preferences from an XML resource
-        addPreferencesFromResource(R.xml.buttons_settings);
+        addPreferencesFromResource(R.xml.button_settings);
 
         PreferenceScreen prefs = getPreferenceScreen();
 

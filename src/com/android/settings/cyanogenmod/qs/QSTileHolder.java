@@ -71,7 +71,7 @@ public class QSTileHolder {
                 stringId = R.string.airplane_mode;
                 break;
             case QSConstants.TILE_ROTATION:
-                resourceName = "ic_qs_rotation_locked";
+                resourceName = "ic_qs_rotation_unlocked";
                 stringId = R.string.display_rotation_title;
                 break;
             case QSConstants.TILE_FLASHLIGHT:
@@ -91,8 +91,20 @@ public class QSTileHolder {
                 stringId = R.string.hotspot;
                 break;
             case QSConstants.TILE_NOTIFICATIONS:
-                resourceName = "ic_qs_ic_qs_ringer_audible";
+                resourceName = "ic_qs_ringer_audible";
                 stringId = R.string.notifications;
+                break;
+             case QSConstants.TILE_ADB_NETWORK:
+                 resourceName = "ic_qs_network_adb_on";
+                 stringId = R.string.adb_over_network;
+                 break;
+            case QSConstants.TILE_NFC:
+                resourceName = "ic_qs_nfc_on";
+                stringId = R.string.qs_title_nfc;
+                break;
+            case QSConstants.TILE_COMPASS:
+                resourceName = "ic_qs_compass_on";
+                stringId = R.string.qs_title_compass;
                 break;
             default:
                 return null;

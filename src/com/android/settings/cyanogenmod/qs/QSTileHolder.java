@@ -106,6 +106,10 @@ public class QSTileHolder {
                 resourceName = "ic_qs_compass_on";
                 stringId = R.string.qs_tile_compass;
                 break;
+            case QSConstants.TILE_LOCKSCREEN:
+                resourceName = "ic_qs_lock_screen_on";
+                stringId = R.string.qs_title_lockscreen;
+                break;
             default:
                 return null;
         }

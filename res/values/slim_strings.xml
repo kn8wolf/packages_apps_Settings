@@ -907,4 +907,7 @@
     <!-- Settings main menu entry -->
     <string name="gesture_settings_title">Gestures</string>
 
+    <!-- BitSyko Layers -->
+    <string name="bitsyko_layers_str">Layers</string>
+
 </resources>

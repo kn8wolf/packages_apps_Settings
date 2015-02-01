@@ -908,6 +908,8 @@
 
     <string name="qs_category_general_title">General</string>
     <string name="qs_category_tiles_title">Tiles</string>
+
+    <string name="qs_four_columns_title">Show four tiles per row</string>
     
     <!-- WiFi Ad-Hoc mode -->
     <string name="wifi_mode">Mode</string>

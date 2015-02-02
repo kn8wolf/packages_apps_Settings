@@ -102,6 +102,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
     private Preference mNotificationLight;
     private DropDownPreference mLockscreen;
     private Preference mNotificationAccess;
+    private Preference mHeadsUp;
     private boolean mSecure;
     private int mLockscreenSelectedValue;
     private Preference mAlarmRingtonePreference;
@@ -120,6 +121,8 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
         }
 
         addPreferencesFromResource(R.xml.notification_settings);
+
+        mHeadsUp = findPreference(Settings.System.HEADS_UP_NOTIFICATION);
 
         final PreferenceCategory sound = (PreferenceCategory) findPreference(KEY_SOUND);
         initVolumePreference(KEY_MEDIA_VOLUME, AudioManager.STREAM_MUSIC);
@@ -149,6 +152,10 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
     @Override
     public void onResume() {
         super.onResume();
+        boolean headsUpEnabled = Settings.System.getInt(
+                getContentResolver(), Settings.System.HEADS_UP_NOTIFICATION,1) != 0;
+        mHeadsUp.setSummary(headsUpEnabled
+                ? R.string.summary_heads_up_enabled : R.string.summary_heads_up_disabled);
         refreshNotificationListeners();
         lookupRingtoneNames();
         updateNotificationPreferenceState();

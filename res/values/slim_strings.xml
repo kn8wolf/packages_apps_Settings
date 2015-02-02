@@ -585,7 +585,7 @@
     <string name="bluetooth_accept_all_files">Accept all file types</string>
 
     <!-- Device specific settings -->
-    <string name="screen_off_gesture_settings_title">Screen off gestures</string>
+    <string name="screen_off_gesture_settings_title">Gestures</string>
 
     <!-- Display & Lights screen, setting options for LCD density -->
     <string name="lcd_density">LCD density</string>

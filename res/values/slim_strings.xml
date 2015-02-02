@@ -670,7 +670,7 @@
     <string name="shortcuts_icon_picker_unlock">Unlock</string>
 
     <!-- Device specific settings -->
-    <string name="screen_off_gesture_settings_title">Screen off gestures</string>
+    <string name="screen_off_gesture_settings_title">Gestures</string>
 
     <!-- Lockscreen Shortcuts -->
     <string name="lockscreen_shortcuts_title">Shortcuts</string>

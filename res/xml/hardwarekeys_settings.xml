@@ -21,7 +21,7 @@
                 android:key="keys_cat"
                 android:title="@string/keys_bindings_title" >
 
-            <CheckBoxPreference
+            <SwitchPreference
                 android:key="enable_hardware_rebind"
                 android:title="@string/keys_enable_custom_title"
                 android:summary="@string/keys_enable_custom_summary" />

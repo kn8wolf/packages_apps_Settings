@@ -753,8 +753,8 @@
     <string name="status_bar_network_stats_color_summary">Network speeds text color in statusbar</string>
 
     <!-- Button settings -->
-    <string name="button_pref_title">Buttons</string>
-    <string name="button_title">Button settings</string>
+    <string name="button_pref_title">Advanced options</string>
+    <string name="button_title">Advanced options</string>
     <string name="general_title">General</string>
     <string name="disable_hwbuttons_title">Disable hardware buttons</string>
     <string name="disable_hwbuttons_summary">Disable hardware buttons and enable navigation bar</string>
@@ -911,7 +911,7 @@
     <string name="navigation_settings_options_title">Navigation options</string>
 
     <!-- Hardware keys -->
-    <string name="button_keys_title">Hardware Buttons</string>
+    <string name="hardwarekeys_pref_title">Hardware keys rebinding</string>
     <string name="keys_bindings_title">Key actions</string>
     <string name="keys_enable_custom_title">Enable custom actions</string>
     <string name="keys_enable_custom_summary">Enable custom hardware key actions</string>

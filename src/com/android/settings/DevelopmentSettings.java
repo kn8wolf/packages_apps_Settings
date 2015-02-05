@@ -204,7 +204,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private SwitchPreference mEnableOemUnlock;
     private SwitchPreference mAllowMockLocation;
     private SwitchPreference mDebugViewAttributes;
-    private CheckBoxPreference mQuickBoot;
+    private SwitchPreference mQuickBoot;
 
     private PreferenceScreen mPassword;
     private String mDebugApp;
@@ -320,7 +320,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         }
         mAllowMockLocation = findAndInitSwitchPref(ALLOW_MOCK_LOCATION);
         mDebugViewAttributes = findAndInitSwitchPref(DEBUG_VIEW_ATTRIBUTES);
-        mQuickBoot = findAndInitCheckboxPref(ENABLE_QUICKBOOT);
+        mQuickBoot = findAndInitSwitchPref(ENABLE_QUICKBOOT);
         mPassword = (PreferenceScreen) findPreference(LOCAL_BACKUP_PASSWORD);
         mAllPrefs.add(mPassword);
 
@@ -567,7 +567,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
                 Settings.Secure.ALLOW_MOCK_LOCATION, 0) != 0);
         updateSwitchPref(mDebugViewAttributes, Settings.Global.getInt(cr,
                 Settings.Global.DEBUG_VIEW_ATTRIBUTES, 0) != 0);
-        updateCheckBox(mQuickBoot, Settings.System.getInt(cr, ENABLE_QUICKBOOT, 0) != 0);
+        updateSwitchPref(mQuickBoot, Settings.System.getInt(cr, ENABLE_QUICKBOOT, 0) != 0);
         updateHdcpValues();
         updatePasswordSummary();
         updateDebuggerOptions();

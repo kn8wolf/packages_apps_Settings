@@ -21,7 +21,6 @@
     <string name="screen_recorder_video_dimensions_title">Dimensioni Video</string>
     <string name="screen_recorder_video_bitrate_title">Bitrate</string>
 
-    <string name="power_menu_screenrecord_title">Registra schermo</string>
     <string name="screen_recorder_record_audio_title">Audio esterno</string>
     <string name="screen_recorder_record_audio_summary">Registra audio dal microfono</string>
 

@@ -590,7 +590,7 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
                     intent.putExtra(SelectSubscription.PACKAGE,
                              "com.android.phone");
                     intent.putExtra(SelectSubscription.TARGET_CLASS,
-                            "com.android.phone.MSimMobileNetworkSubSettings");
+                            "com.android.phone.MobileNetworkSubSettings");
                 } else {
                     intent.setComponent(new ComponentName("com.android.phone",
                             "com.android.phone.MobileNetworkSettings"));

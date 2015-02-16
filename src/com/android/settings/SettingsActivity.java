@@ -48,6 +48,7 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
+import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.transition.TransitionManager;
 import android.util.AttributeSet;
@@ -1142,6 +1143,14 @@ public class SettingsActivity extends Activity
                 } else if (id == R.id.wifi_settings) {
                     // Remove WiFi Settings if WiFi service is not available.
                     if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_WIFI)) {
+                        removeTile = true;
+                    }
+                } else if (id == R.id.mobile_networks) {
+                    if (TelephonyManager.getDefault().getPhoneCount() > 1) {
+                        removeTile = true;
+                    }
+                } else if (id == R.id.msim_mobile_networks) {
+                    if (TelephonyManager.getDefault().getPhoneCount() <= 1) {
                         removeTile = true;
                     }
                 } else if (id == R.id.bluetooth_settings) {

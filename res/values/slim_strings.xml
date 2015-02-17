@@ -1038,4 +1038,8 @@
 
     <string name="usb_not_connected">Usb not connected</string>
 
+    <!-- Zen mode related -->
+    <string name="interruptions_ignore_while_media_title">Prevent audio ducking</string>
+    <string name="interruptions_ignore_while_media_summary">Do not reduce media playback volume when a notification arrives</string>
+ 
 </resources>

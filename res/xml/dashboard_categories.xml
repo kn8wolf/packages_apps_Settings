@@ -102,6 +102,17 @@
                     android:targetClass="com.slim.device.settings.ScreenOffGestureSettings" />
         </dashboard-tile>
 
+        <!-- SlimCenter -->
+        <dashboard-tile
+               android:id="@+id/slim_center"
+               android:title="@string/slim_center_title"
+               android:icon="@drawable/ic_settings_slimcenter">
+               <intent
+                       android:action="android.intent.action.MAIN"
+                       android:targetPackage="com.slim.ota"
+                       android:targetClass="com.slim.center.SlimCenter" />
+        </dashboard-tile>
+
         <!-- BitSyko Layers App -->
           <dashboard-tile
                 android:id="@+id/bitsyko_layers"

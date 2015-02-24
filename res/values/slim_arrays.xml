@@ -585,7 +585,7 @@
         <!--<item>@string/shortcut_action_notifications</item>-->
         <item>@string/shortcut_action_menu_big</item>
         <item>@string/shortcut_action_ime</item>
-        <!--<item>@string/shortcut_action_power_menu</item>-->
+        <item>@string/shortcut_action_power_menu</item>
         <!--<item>@string/shortcut_action_qs</item>-->
         <!--<item>@string/shortcut_action_smart</item>-->
         <item>@string/shortcut_action_recent</item>
@@ -614,7 +614,7 @@
         <!--<item>**notifications**</item>-->
         <item>**menu_big**</item>
         <item>**ime**</item>
-        <!--<item>**power_menu**</item>-->
+        <item>**power_menu**</item>
         <!--<item>**quicksettings**</item>-->
         <!--<item>**smart_pulldown**</item>-->
         <item>**recents**</item>
@@ -663,7 +663,7 @@
         <!--<item>@string/shortcut_action_notifications</item>-->
         <item>@string/shortcut_action_ime</item>
         <!--<item>@string/shortcut_action_pie</item>-->
-        <!--<item>@string/shortcut_action_power_menu</item>-->
+        <item>@string/shortcut_action_power_menu</item>
         <!--<item>@string/shortcut_action_qs</item>-->
         <item>@string/shortcut_action_ring_silent</item>
         <item>@string/shortcut_action_ring_vib</item>
@@ -682,7 +682,7 @@
         <!--<item>**notifications**</item>-->
         <item>**ime**</item>
         <!--<item>**pie**</item>-->
-        <!--<item>**power_menu**</item>-->
+        <item>**power_menu**</item>
         <!--<item>**quicksettings**</item>-->
         <item>**ring_silent**</item>
         <item>**ring_vib**</item>

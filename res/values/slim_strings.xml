@@ -891,6 +891,9 @@
     <string name="qs_advanced_location_summary">Enable advanced settings for location in quick settings</string>
 
     <string name="qs_brightness_slider_title">Show brightness slider</string>
+
+    <string name="qs_category_general_title">General</string>
+    <string name="qs_category_tiles_title">Tiles</string>
     
     <!-- WiFi Ad-Hoc mode -->
     <string name="wifi_mode">Mode</string>

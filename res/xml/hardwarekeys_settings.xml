@@ -37,11 +37,6 @@
             android:entries="@array/overflow_button_entries"
             android:entryValues="@array/overflow_button_values" />
 
-       <SwitchPreference
-            android:key="enable_nav_bar"
-            android:title="@string/enable_nav_bar_title"
-            android:defaultValue="false" />
-
     </PreferenceCategory>
 
         <PreferenceCategory

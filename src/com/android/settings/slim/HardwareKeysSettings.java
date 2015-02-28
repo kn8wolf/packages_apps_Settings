@@ -44,6 +44,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.android.internal.util.slim.AppHelper;
+import com.android.internal.util.slim.Action;
 import com.android.internal.util.slim.ActionConstants;
 import com.android.internal.util.slim.DeviceUtils;
 import com.android.internal.util.slim.DeviceUtils.FilteredDeviceFeaturesArray;
@@ -67,7 +68,6 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
 
     private static final String DISABLE_HARDWARE_BUTTONS = "disable_hardware_button";
     private static final String KEY_BUTTON_BACKLIGHT = "button_backlight";
-    private static final String ENABLE_NAVIGATION_BAR = "enable_nav_bar";
     private static final String KEYS_OVERFLOW_BUTTON = "keys_overflow_button";
 
     private static final String CATEGORY_KEYS = "button_keys";
@@ -116,7 +116,6 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
 
     private SwitchPreference mDisableHardwareButtons;
     private ButtonBacklightBrightness mBacklight;
-    private SwitchPreference mEnableNavigationBar;
     private ListPreference mOverflowButtonMode;
 
     private SwitchPreference mEnableCustomBindings;
@@ -382,8 +381,7 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
     }
 
     private void addGeneralOptions(PreferenceScreen prefs) {
-        final boolean navbarIsDefault = getResources().getBoolean(
-                                           com.android.internal.R.bool.config_showNavigationBar);
+        final boolean navbarIsDefault = Action.isNavBarDefault(getActivity());
         if (navbarIsDefault) {
             return;
         }
@@ -405,10 +403,6 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
         mOverflowButtonMode = (ListPreference) prefs.findPreference(KEYS_OVERFLOW_BUTTON);
         mOverflowButtonMode.setOnPreferenceChangeListener(this);
 
-        // NavBar
-        mEnableNavigationBar = (SwitchPreference) prefs.findPreference(ENABLE_NAVIGATION_BAR);
-        mEnableNavigationBar.setOnPreferenceChangeListener(this);
-
         updateGeneralOptions();
     }
 
@@ -423,10 +417,6 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
             if (mOverflowButtonMode != null) {
                 mOverflowButtonMode.setEnabled(isHWKeysDisabled ? false : true);
             }
-            if (mEnableNavigationBar != null) {
-                mEnableNavigationBar.setEnabled(isHWKeysDisabled ? false : true);
-                mEnableNavigationBar.setSummary("");
-            }
         }
 
         // Backlight
@@ -440,19 +430,6 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
         if (mOverflowButtonMode != null) {
             mOverflowButtonMode.setValue(overflowButtonMode);
             mOverflowButtonMode.setSummary(mOverflowButtonMode.getEntry());
-        }
-
-        // NavBar
-        final boolean navbarIsDefault = getResources().getBoolean(
-                                           com.android.internal.R.bool.config_showNavigationBar);
-        final String hwkeysProp = SystemProperties.get("qemu.hw.mainkeys");
-        final boolean navBarOverride = (hwkeysProp.equals("0") || hwkeysProp.equals("1"));
-        boolean enableNavigationBar = Settings.System.getInt(getContentResolver(),
-            Settings.System.NAVIGATION_BAR_SHOW, navbarIsDefault ? 1 : 0) == 1;
-        mEnableNavigationBar.setChecked(enableNavigationBar);
-        if (navBarOverride) {
-            mEnableNavigationBar.setEnabled(false);
-            mEnableNavigationBar.setSummary(R.string.navbar_summary_override);
         }
     }
 
@@ -597,11 +574,6 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(), Settings.System.UI_OVERFLOW_BUTTON, val);
             mOverflowButtonMode.setSummary(mOverflowButtonMode.getEntries()[index]);
             Toast.makeText(getActivity(), R.string.keys_overflow_toast, Toast.LENGTH_LONG).show();
-            return true;
-        } else if (preference == mEnableNavigationBar) {
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.NAVIGATION_BAR_SHOW,
-                    ((Boolean) newValue) ? 1 : 0);
             return true;
         }
         return false;

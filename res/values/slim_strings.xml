@@ -895,6 +895,7 @@
     <string name="qs_tile_screen_timeout">Screen timeout</string>
     <string name="qs_tile_visualizer">AudioFX</string>
     <string name="qs_tile_reboot">Reboot</string>
+    <string name="qs_tile_slimaction">SlimAction</string>
 
     <string name="qs_main_tiles_title">Enlarge first row</string>
     <string name="qs_main_tiles_summary_on">Two main tiles on the first row</string>
@@ -904,6 +905,9 @@
     <string name="qs_advanced_location_summary">Enable advanced settings for location in quick settings</string>
 
     <string name="qs_brightness_slider_title">Show brightness slider</string>
+
+    <string name="qs_slim_action_title">SlimActions</string>
+    <string name="qs_slim_action_summary">Add and set the order of SlimActions for SlimAction tile</string>
 
     <string name="qs_category_general_title">General</string>
     <string name="qs_category_tiles_title">Tiles</string>

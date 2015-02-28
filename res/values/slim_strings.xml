@@ -664,6 +664,7 @@
     <string name="qs_tile_visualizer">AudioFX</string>
     <string name="qs_tile_reboot">Reboot</string>
     <string name="qs_tile_notifications">Notifications</string>
+    <string name="qs_tile_slimaction">SlimAction</string>
     <string name="qs_sync_tile">Sync</string>
     <string name="qs_ambient_display">Ambient Display</string>
     <string name="qs_main_tiles_title">Enlarge first row</string>
@@ -671,6 +672,8 @@
     <string name="qs_main_tiles_summary_off">Three or four tiles on each row</string>
     <string name="qs_advanced_location_title">Advanced location settings</string>
     <string name="qs_advanced_location_summary">Enable advanced settings for location in Quick Settings</string>
+    <string name="qs_slim_action_title">SlimActions</string>
+    <string name="qs_slim_action_summary">Add and set the order of SlimActions for SlimAction tile</string>
 
     <!-- QuickSettings 4 columns -->
     <string name="qs_four_columns_title">Show four tiles per row</string>

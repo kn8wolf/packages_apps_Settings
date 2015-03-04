@@ -20,9 +20,8 @@ import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
-import com.android.settings.DisplaySettings;
-import com.android.settings.hardware.DisplayColor;
-import com.android.settings.hardware.DisplayGamma;
+import com.android.settings.livedisplay.DisplayColor;
+import com.android.settings.livedisplay.DisplayGamma;
 import com.android.settings.hardware.VibratorIntensity;
 import com.android.settings.slim.HardwareKeysSettings;
 
@@ -33,10 +32,8 @@ public class BootReceiver extends BroadcastReceiver {
         ContentResolver resolver = context.getContentResolver();
 
         /* Restore the hardware tunable values */
-        DisplayColor.restore(context);
         DisplayGamma.restore(context);
         VibratorIntensity.restore(context);
-        DisplaySettings.restore(context);
         HardwareKeysSettings.restore(context);
     }
 }

@@ -795,6 +795,7 @@
     <string name="navigation_bar_height_44">44dp</string>
     <string name="navigation_bar_height_40">40dp</string>
     <string name="navigation_bar_height_36">36dp</string>
+    <string name="navigation_bar_height_0">0dp (hide)</string>
 
     <!-- Overflow button -->
     <string name="keys_overflow_title">Overflow button</string>

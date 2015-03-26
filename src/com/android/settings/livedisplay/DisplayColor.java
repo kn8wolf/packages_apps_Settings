@@ -136,6 +136,8 @@ public class DisplayColor extends DialogPreference {
                 mSeekBars[i].mSeekBar.setMaximum(1.0f);
             }
             mSeekBars[i].mSeekBar.setProgressFloat(mCurrentColors[i]);
+            int percent = Math.round(100F * mCurrentColors[i]);
+            value.setText(String.format("%d%%", percent));
         }
     }
 

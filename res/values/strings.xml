@@ -2207,7 +2207,10 @@
     <string name="device_status_summary" product="tablet">Status of the battery, network, and other information</string>
     <!-- About phone screen, summary of the item to go into the phone status screen -->
     <string name="device_status_summary" product="default">Battery Status, battery level, etc.</string>
-    <string name="subs_settings">SUBS Status</string>
+    <!-- MSIM SIM status -->
+    <string name="sim_card_status_title">SIM %d status</string>
+    <string name="sim_card_lock_settings_title">SIM %d lock settings</string>
+    <string name="sim_card_summary_empty">SIM not inserted</string>
     <!-- About phone screen, summary of the item to go into the phone status screen -->
     <string name="device_additional_status_summary">Phone number, Signal, IMEI, etc.</string>
     <!-- In About phone->Status screen, title of the item to go into the subscription status screen -->

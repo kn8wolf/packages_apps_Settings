@@ -1069,4 +1069,7 @@
     <string name="partition_info_sdext">/sd-ext (EXT)</string>
     <string name="partition_info_used_of">/</string>
 
+    <!-- KernelAdiutor -->
+    <string name="kerneladiutor_title">KernelAdiutor</string>
+
 </resources>

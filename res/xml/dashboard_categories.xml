@@ -346,6 +346,17 @@
                 android:targetClass="eu.chainfire.supersu.MainActivity" />
         </dashboard-tile>
 
+        <!-- Kernel Adiutor -->
+        <dashboard-tile
+            android:id="@+id/kernel_adiutor"
+            android:icon="@drawable/ic_settings_performance"
+            android:title="@string/kerneladiutor_title">
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="com.grarak.kerneladiutor"
+                android:targetClass="com.grarak.kerneladiutor.MainActivity" />
+        </dashboard-tile>
+
         <!-- Advanced Settings -->
         <dashboard-tile
             android:id="@+id/advanced_settings"

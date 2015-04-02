@@ -1080,4 +1080,8 @@
     <string name="network_traffic_color_reset">Reset color</string>
     <string name="network_traffic_color_reset_message">Reset network traffic color to default?</string>
 
+    <!-- Appops -->
+    <string name="appops_manager_title">Appops</string>
+    <string name="appops_manager_summary">Individually manage all apps permissions</string>
+
 </resources>

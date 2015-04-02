@@ -473,8 +473,6 @@
 
     <string name="auto_brightness_reset_button">Reset</string>
 
-    <string name="performance_settings">Performance</string>
-
     <!--Quick unlock -->
     <string name="unlock_quick_unlock_control_title">Quick unlock</string>
     <string name="unlock_quick_unlock_control_summary">Unlock automatically when the correct PIN/password is entered</string>

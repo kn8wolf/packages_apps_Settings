@@ -16,7 +16,12 @@
 
 package com.android.settings.dashboard;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.net.Uri;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -89,6 +94,20 @@ public class DashboardTileView extends FrameLayout implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
+        if (mTile.id == R.id.bitsyko_layers) {
+            final String appPackageName = "com.lovejoy777.rroandlayersmanager";
+            try{
+                getContext().getPackageManager().getPackageInfo(appPackageName, 0);
+                getContext().startActivity(mTile.intent);
+            } catch (NameNotFoundException ex) {
+                try {
+                    getContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+                } catch (ActivityNotFoundException e) {
+                    getContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + appPackageName)));
+                }
+            }
+            return;
+        }
         if (mTile.fragment != null) {
             Utils.startWithFragment(getContext(), mTile.fragment, mTile.fragmentArguments, null, 0,
                     mTile.titleRes, mTile.getTitle(getResources()));

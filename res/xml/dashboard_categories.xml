@@ -183,17 +183,6 @@
                 android:icon="@drawable/ic_settings_notifications"
                 />
 
-        <!-- Viper4Android -->
-        <dashboard-tile
-            android:id="@+id/viper_settings"
-            android:icon="@drawable/ic_settings_viper"
-            android:title="@string/viper_title">
-            <intent
-                android:action="android.intent.action.MAIN"
-                android:targetPackage="com.vipercn.viper4android_v2"
-                android:targetClass="com.vipercn.viper4android_v2.activity.ViPER4Android" />
-        </dashboard-tile>
-
         <!-- Storage -->
         <dashboard-tile
                 android:id="@+id/storage_settings"
@@ -327,43 +316,13 @@
                 android:icon="@drawable/ic_settings_development"
                 />
 
-        <!-- Superuser -->
-        <dashboard-tile
-                android:id="@+id/superuser"
-                android:fragment="com.koushikdutta.superuser.PolicyNativeFragment"
-                android:icon="@drawable/ic_action_permission"
-                android:title="@string/superuser"
-                />
-
-        <!-- SuperSU -->
-        <dashboard-tile
-            android:id="@+id/supersu_settings"
-            android:icon="@drawable/ic_settings_supersu"
-            android:title="@string/supersu_title">
-            <intent
-                android:action="android.intent.action.MAIN"
-                android:targetPackage="eu.chainfire.supersu"
-                android:targetClass="eu.chainfire.supersu.MainActivity" />
-        </dashboard-tile>
-
-        <!-- Kernel Adiutor -->
-        <dashboard-tile
-            android:id="@+id/kernel_adiutor"
-            android:icon="@drawable/ic_settings_performance"
-            android:title="@string/kerneladiutor_title">
-            <intent
-                android:action="android.intent.action.MAIN"
-                android:targetPackage="com.grarak.kerneladiutor"
-                android:targetClass="com.grarak.kerneladiutor.MainActivity" />
-        </dashboard-tile>
-
         <!-- Advanced Settings -->
         <dashboard-tile
-            android:id="@+id/advanced_settings"
-            android:fragment="com.android.settings.slim.AdvancedSettings"
-            android:title="@string/advanced_settings_title"
-            android:icon="@drawable/ic_settings_advanced">
-        </dashboard-tile>
+                android:id="@+id/advanced_settings"
+                android:fragment="com.android.settings.slim.AdvancedSettings"
+                android:title="@string/advanced_settings_title"
+                android:icon="@drawable/ic_settings_advanced"
+                />
 
         <!-- About Device -->
         <dashboard-tile

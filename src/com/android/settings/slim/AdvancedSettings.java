@@ -16,30 +16,114 @@
 
 package com.android.settings.slim;
 
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.SystemProperties;
+import android.os.UserManager;
 import android.provider.Settings;
 import android.preference.Preference;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.preference.Preference.OnPreferenceChangeListener;
 
+import android.util.Log;
+
+import com.android.settings.DevelopmentSettings;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.slim.util.BugReport;
 
-import java.util.List;
+public class AdvancedSettings extends SettingsPreferenceFragment {
 
-public class AdvancedSettings extends SettingsPreferenceFragment
-        implements OnPreferenceChangeListener {
+    private static final String TAG = "AdvancedSettings";
+
+    private static final String CATEGORY_ROOT = "root_category";
+    private static final String CATEGORY_TWEAK = "tweak_category";
+
+    private static final String KEY_KERNEL_ADIUTOR = "key_kernel_adiutor";
+    private static final String KEY_VIPER4ANDROID = "key_viper4android";
+    private static final String KEY_MAXXAUDIOFX = "key_maxxaudiofx";
+    private static final String KEY_SUPERSU = "key_supersu";
+    private static final String KEY_SUPERUSER = "key_superuser";
+    private static final String KEY_BUGREPORT = "key_bug_report";
+
+    private BugReport mBugReportTask = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.slim_advanced_settings);
+
+        // Tweak category
+        PreferenceCategory tweakCat = (PreferenceCategory) findPreference(CATEGORY_TWEAK);
+        PreferenceScreen kernelAdiutor = (PreferenceScreen) findPreference(KEY_KERNEL_ADIUTOR);
+        try {
+            getActivity().getPackageManager().getPackageInfo("com.grarak.kerneladiutor", 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            tweakCat.removePreference(kernelAdiutor);
+        }
+
+        PreferenceScreen viper4android = (PreferenceScreen) findPreference(KEY_VIPER4ANDROID);
+        boolean supported = false;
+        try {
+            supported = (getActivity().getPackageManager().getPackageInfo("com.vipercn.viper4android_v2", 0).versionCode >= 18);
+        } catch (PackageManager.NameNotFoundException e) {
+        }
+        if (!supported) {
+            tweakCat.removePreference(viper4android);
+        }
+
+        PreferenceScreen maxxaudiofx = (PreferenceScreen) findPreference(KEY_MAXXAUDIOFX);
+        try {
+            getActivity().getPackageManager().getPackageInfo("com.cyngn.maxxaudio", 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            tweakCat.removePreference(maxxaudiofx);
+        }
+
+        if (tweakCat.getPreferenceCount() == 0) {
+            getPreferenceScreen().removePreference(tweakCat);
+        }
+
+        // Root category
+        PreferenceCategory rootCat = (PreferenceCategory) findPreference(CATEGORY_ROOT);
+        String value = SystemProperties.get(DevelopmentSettings.ROOT_ACCESS_PROPERTY, "0");
+        final UserManager um = (UserManager) getSystemService(Context.USER_SERVICE);
+        if (Integer.valueOf(value) == 0 || um.hasUserRestriction(UserManager.DISALLOW_DEBUGGING_FEATURES)) {
+            getPreferenceScreen().removePreference(rootCat);
+        } else {
+            PreferenceScreen superuser = (PreferenceScreen) findPreference(KEY_SUPERUSER);
+            PreferenceScreen supersu = (PreferenceScreen) findPreference(KEY_SUPERSU);
+            if (isSuperSUSupported()) {
+                rootCat.removePreference(superuser);
+            } else {
+                rootCat.removePreference(supersu);
+            }
+        }
     }
 
     @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-        return false;
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        if (preference.getKey().equals(KEY_BUGREPORT)) {
+            if (mBugReportTask == null || mBugReportTask.getStatus() != AsyncTask.Status.RUNNING) {
+                mBugReportTask = new BugReport();
+                mBugReportTask.execute(getActivity());
+            }
+            return true;
+        }
+        return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
+    private boolean isSuperSUSupported() {
+        // Embedding into Settings is supported from SuperSU v1.85 and up
+        boolean supported = false;
+        try {
+           supported = (getActivity().getPackageManager().getPackageInfo("eu.chainfire.supersu", 0).versionCode >= 185);
+        } catch (PackageManager.NameNotFoundException e) {
+        }
+        return supported;
+    }
 }

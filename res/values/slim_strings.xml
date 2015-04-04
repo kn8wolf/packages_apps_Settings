@@ -47,6 +47,21 @@
     <!-- Advanced, Device specific (DeviceParts) settings  -->
     <string name="device_settings_title">Device</string>
     <string name="advanced_settings_title">Advanced</string>
+    <string name="tweak_category_title">Tweak</string>
+    <string name="root_category_title">Root</string>
+    <string name="misc_category_title">Miscellaneous</string>
+    <string name="kernel_adiutor_title">Kernel Adiutor</string>
+    <string name="kernel_adiutor_summary">Tweak kernel parameters. Warning! This may cause instability!</string>
+    <string name="viper4android_title">Viper4Android</string>
+    <string name="viper4android_summary">Tweak audio settings</string>
+    <string name="maxxaudiofx_title">MaxxAudioFX</string>
+    <string name="maxxaudiofx_summary">Tweak audio settings</string>
+    <string name="root_summary">Manage apps root permission</string>
+    <string name="screen_recorder_summary">Configure screen recorder settings</string>
+    <string name="bug_report_title">Bug report</string>
+    <string name="bug_report_summary">Create bug report which includes logcat, last_kmsg and dmesg</string>
+    <string name="bug_report_success">Bug report created in /sdcard/Bugreport</string>
+    <string name="bug_report_failed">Bug report creation failed</string>
 
     <!-- About phone screen, Slim version -->
     <string name="slim_version_title">Slim version</string>
@@ -931,9 +946,6 @@
          their presence in MIME type whitelist -->
     <string name="bluetooth_accept_all_files">Accept all file types</string>
 
-    <!-- Viper4Android -->
-    <string name="viper_title">Viper4Android</string>
-
     <!-- Expanded Desktop -->
     <string name="power_menu_expanded_desktop">Expanded desktop</string>
     <string name="expanded_hide_nothing">Hide nothing</string>
@@ -1068,8 +1080,5 @@
     <string name="partition_info_sdcard">/sdcard (FAT)</string>
     <string name="partition_info_sdext">/sd-ext (EXT)</string>
     <string name="partition_info_used_of">/</string>
-
-    <!-- KernelAdiutor -->
-    <string name="kerneladiutor_title">KernelAdiutor</string>
 
 </resources>

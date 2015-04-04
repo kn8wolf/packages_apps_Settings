@@ -19,10 +19,81 @@
     android:title="@string/advanced_settings_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <PreferenceScreen
-        android:key="screen_recorder"
-        android:title="@string/screen_recorder_title"
-        android:fragment="com.android.settings.slim.ScreenRecorderSettings" >
-    </PreferenceScreen>
+    <PreferenceCategory
+        android:key="root_category"
+        android:title="@string/root_category_title">
+
+        <PreferenceScreen
+                android:key="key_superuser"
+                android:fragment="com.koushikdutta.superuser.PolicyNativeFragment"
+                android:title="@string/superuser"
+                android:summary="@string/root_summary" />
+
+        <PreferenceScreen
+            android:key="key_supersu"
+            android:title="@string/supersu_title"
+            android:summary="@string/root_summary">
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="eu.chainfire.supersu"
+                android:targetClass="eu.chainfire.supersu.MainActivity" />
+        </PreferenceScreen>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="tweak_category"
+        android:title="@string/tweak_category_title">
+
+        <PreferenceScreen
+            android:key="key_kernel_adiutor"
+            android:title="@string/kernel_adiutor_title"
+            android:summary="@string/kernel_adiutor_summary">
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="com.grarak.kerneladiutor"
+                android:targetClass="com.grarak.kerneladiutor.MainActivity" />
+        </PreferenceScreen>
+
+        <PreferenceScreen
+            android:key="key_viper4android"
+            android:title="@string/viper4android_title"
+            android:summary="@string/viper4android_summary">
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="com.vipercn.viper4android_v2"
+                android:targetClass="com.vipercn.viper4android_v2.activity.ViPER4Android" />
+        </PreferenceScreen>
+
+        <PreferenceScreen
+            android:key="key_maxxaudiofx"
+            android:title="@string/maxxaudiofx_title"
+            android:summary="@string/maxxaudiofx_summary">
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="com.cyngn.maxxaudio"
+                android:targetClass="com.cyngn.maxxaudio.activity.ActivityMusic" />
+        </PreferenceScreen>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="misc_category"
+        android:title="@string/misc_category_title">
+
+        <PreferenceScreen
+            android:key="screen_recorder"
+            android:title="@string/screen_recorder_title"
+            android:summary="@string/screen_recorder_summary"
+            android:fragment="com.android.settings.slim.ScreenRecorderSettings" >
+        </PreferenceScreen>
+
+        <PreferenceScreen
+            android:key="key_bug_report"
+            android:title="@string/bug_report_title"
+            android:summary="@string/bug_report_summary" >
+        </PreferenceScreen>
+
+    </PreferenceCategory>
 
 </PreferenceScreen>

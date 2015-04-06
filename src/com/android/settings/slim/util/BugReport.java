@@ -69,37 +69,29 @@ public class BugReport extends AsyncTask<Context, Void, Context> {
     }
 
     @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        RootUtils.rootAccess();
+    }
+
+    @Override
     protected Context doInBackground(Context... arg) {
         Context context = arg[0];
-        createLog("logcat -d -f " + mLogcat.toString() + " *:V\n");
-        createLog("cat /proc/last_kmsg > " + mLastKmsg.toString() + "\n");
-        createLog("dmesg > " + mDmesg.toString() + "\n");
+        RootUtils.runCommand("logcat -d -f " + mLogcat.toString() + " *:V\n");
+        RootUtils.runCommand("cat /proc/last_kmsg > " + mLastKmsg.toString());
+        RootUtils.runCommand("dmesg > " + mDmesg.toString());
         return context;
     }
 
     @Override
     protected void onPostExecute(Context context) {
         zipLogs(context);
+        RootUtils.closeSU();
     }
 
     private void toast(String text, Context context) {
         Toast toast = Toast.makeText(context, text, Toast.LENGTH_SHORT);
         toast.show();
-    }
-
-    private void createLog(String command) {
-        DataOutputStream os = null;
-        try {
-            Process process = Runtime.getRuntime().exec("su");
-            os = new DataOutputStream(process.getOutputStream());
-            os.writeBytes(command);
-            os.writeBytes("exit\n");
-            os.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (os != null) try { os.close(); } catch (IOException e) { e.printStackTrace(); }
-        }
     }
 
     private void zipLogs(Context context) {

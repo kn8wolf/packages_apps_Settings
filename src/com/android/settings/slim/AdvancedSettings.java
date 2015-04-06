@@ -92,12 +92,13 @@ public class AdvancedSettings extends SettingsPreferenceFragment {
         PreferenceCategory rootCat = (PreferenceCategory) findPreference(CATEGORY_ROOT);
         String value = SystemProperties.get(DevelopmentSettings.ROOT_ACCESS_PROPERTY, "0");
         final UserManager um = (UserManager) getSystemService(Context.USER_SERVICE);
-        if (Integer.valueOf(value) == 0 || um.hasUserRestriction(UserManager.DISALLOW_DEBUGGING_FEATURES)) {
+        boolean isSuperSUSupported = isSuperSUSupported();
+        if (!isSuperSUSupported && (Integer.valueOf(value) == 0 || um.hasUserRestriction(UserManager.DISALLOW_DEBUGGING_FEATURES))) {
             getPreferenceScreen().removePreference(rootCat);
         } else {
             PreferenceScreen superuser = (PreferenceScreen) findPreference(KEY_SUPERUSER);
             PreferenceScreen supersu = (PreferenceScreen) findPreference(KEY_SUPERSU);
-            if (isSuperSUSupported()) {
+            if (isSuperSUSupported) {
                 rootCat.removePreference(superuser);
             } else {
                 rootCat.removePreference(supersu);

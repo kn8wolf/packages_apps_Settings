@@ -111,7 +111,7 @@ public class AdvancedSettings extends SettingsPreferenceFragment {
         if (preference.getKey().equals(KEY_BUGREPORT)) {
             if (mBugReportTask == null || mBugReportTask.getStatus() != AsyncTask.Status.RUNNING) {
                 mBugReportTask = new BugReport();
-                mBugReportTask.execute(getActivity());
+                mBugReportTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, getActivity());
             }
             return true;
         }

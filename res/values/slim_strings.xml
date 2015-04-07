@@ -62,6 +62,9 @@
     <string name="bug_report_summary">Create bug report which includes logcat, last_kmsg and dmesg</string>
     <string name="bug_report_success">Bug report created in /sdcard/Bugreport</string>
     <string name="bug_report_failed">Bug report creation failed</string>
+    <string name="changelog_title">Build changelog</string>
+    <string name="changelog_summary">A full changelog of the current build</string>
+    <string name="no_changelog_summary">No changelog</string>
 
     <!-- About phone screen, Slim version -->
     <string name="slim_version_title">Slim version</string>

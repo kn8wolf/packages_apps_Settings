@@ -445,7 +445,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         }
         simPref.clearItems();
 
-        //Get num of activated Subs
+        // Get num of activated Subs if mSubInfoList is not null
         if (mSubInfoList != null) {
             for (SubscriptionInfo subInfo : mSubInfoList) {
                 if (subInfo != null && subInfo.mStatus == mSubscriptionManager.ACTIVE) mActCount++;

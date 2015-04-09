@@ -48,10 +48,10 @@ import android.preference.CheckBoxPreference;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
-import com.android.settings.cyanogenmod.PackageListAdapter;
-import com.android.settings.cyanogenmod.PackageListAdapter.PackageItem;
+import com.android.settings.slim.PackageListAdapter;
+import com.android.settings.slim.PackageListAdapter.PackageItem;
 import com.android.settings.SettingsActivity;
-import com.android.settings.cyanogenmod.BaseSystemSettingSwitchBar;
+import com.android.settings.slim.BaseSystemSettingSwitchBar;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -168,13 +168,6 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
         refreshCustomApplicationPrefs();
         getListView().setOnItemLongClickListener(this);
         getActivity().invalidateOptionsMenu();
-
-        // If running on a phone, remove padding around container
-        // and the preference listview
-        if (!Utils.isTablet(getActivity())) {
-            mPrefsContainer.setPadding(0, 0, 0, 0);
-            getListView().setPadding(0, 0, 0, 0);
-        }
     }
 
     @Override
@@ -203,7 +196,6 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
         final ListView list = new ListView(getActivity());
         list.setAdapter(mPackageAdapter);
 
-        builder.setTitle(R.string.profile_choose_app);
         builder.setView(list);
         dialog = builder.create();
 

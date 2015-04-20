@@ -1091,4 +1091,10 @@
     <string name="heads_up_touch_outside_summary_enabled">Hide notification on touch outside and on home button press</string>
     <string name="heads_up_touch_outside_summary_disabled">Do not hide notification after touch outside or on home button press</string>
 
+    <!-- Lock screen shortcuts -->
+    <string name="lockscreen_shortcut_title">Lockscreen shortcuts</string>
+    <string name="lockscreen_bottom_shortcuts_title">Enable bottom shortcuts</string>
+    <string name="lockscreen_bottom_shortcuts_enabled">Lockscreen phone and camera shortcuts are enabled</string>
+    <string name="lockscreen_bottom_shortcuts_disabled">Lockscreen phone and camera shortcuts are disabled</string>
+
 </resources>

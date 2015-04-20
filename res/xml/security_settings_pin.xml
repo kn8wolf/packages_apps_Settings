@@ -56,6 +56,18 @@
             android:persistent="false"/>
 
         <PreferenceScreen
+            android:key="owner_info_settings"
+            android:fragment="com.android.settings.OwnerInfoSettings"
+            android:title="@string/owner_info_settings_title"
+            android:summary="@string/owner_info_settings_summary"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="lockscreen_shortcut_category"
+        android:title="@string/lockscreen_shortcut_title">
+
+        <PreferenceScreen
                  android:key="lockscreen_shortcuts"
                  android:fragment="com.android.settings.slim.dslv.ActionListViewSettings"
                  android:summary="@string/lockscreen_shortcuts_summary"
@@ -67,11 +79,9 @@
              <extra android:name="fragment" android:value="com.android.settings.slim.fragments.LockscreenShortcutFragment" />
         </PreferenceScreen>
 
-        <PreferenceScreen
-            android:key="owner_info_settings"
-            android:fragment="com.android.settings.OwnerInfoSettings"
-            android:title="@string/owner_info_settings_title"
-            android:summary="@string/owner_info_settings_summary"/>
+        <SwitchPreference
+            android:key="lockscreen_bottom_shortcuts"
+            android:title="@string/lockscreen_bottom_shortcuts_title"/>
 
     </PreferenceCategory>
 

@@ -81,7 +81,10 @@
     <!-- About device screen, CPU and RAM info. -->
     <string name="cpu_info">CPU</string>
     <string name="mem_info">Memory</string>
-    <string name="model_name">Model name</string>
+    <!-- About phone screen, Device model -->
+    <string name="device_model">Device model</string>
+    <!-- About phone screen, Device nodel -->
+    <string name="device_name">Device name</string>
 
     <!-- Setting checkbox title for root access -->
     <string name="root_access">Root access</string>

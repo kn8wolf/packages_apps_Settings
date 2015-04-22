@@ -16,9 +16,12 @@
 
 package com.android.settings.slim;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemProperties;
@@ -49,6 +52,7 @@ public class AdvancedSettings extends SettingsPreferenceFragment {
     private static final String KEY_SUPERSU = "key_supersu";
     private static final String KEY_SUPERUSER = "key_superuser";
     private static final String KEY_BUGREPORT = "key_bug_report";
+    private static final String KEY_LAYERS_MANAGER = "key_layers_manager";
 
     private BugReport mBugReportTask = null;
 
@@ -103,7 +107,7 @@ public class AdvancedSettings extends SettingsPreferenceFragment {
             } else {
                 rootCat.removePreference(supersu);
             }
-        }
+        }        
     }
 
     @Override
@@ -114,6 +118,19 @@ public class AdvancedSettings extends SettingsPreferenceFragment {
                 mBugReportTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, getActivity());
             }
             return true;
+        } else if (preference.getKey().equals(KEY_LAYERS_MANAGER)) {
+            final String appPackageName = "com.lovejoy777.rroandlayersmanager";
+            try {
+                getActivity().getPackageManager().getPackageInfo(appPackageName, 0);
+            } catch (PackageManager.NameNotFoundException e) {
+                try {
+                    getActivity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+                } catch (ActivityNotFoundException ex) {
+                    getActivity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + appPackageName)));
+                }
+                return true;
+            }
+            return false;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }

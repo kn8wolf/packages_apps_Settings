@@ -50,6 +50,7 @@
     <string name="tweak_category_title">Tweak</string>
     <string name="root_category_title">Root</string>
     <string name="misc_category_title">Miscellaneous</string>
+    <string name="theme_category_title">Theme</string>
     <string name="kernel_adiutor_title">Kernel Adiutor</string>
     <string name="kernel_adiutor_summary">Tweak kernel parameters. Warning! This may cause instability!</string>
     <string name="viper4android_title">Viper4Android</string>
@@ -65,6 +66,8 @@
     <string name="changelog_title">Build changelog</string>
     <string name="changelog_summary">A full changelog of the current build</string>
     <string name="no_changelog_summary">No changelog</string>
+    <string name="layers_manager_title">Layers manager</string>
+    <string name="layers_manager_summary">An easy way to manage layers</string>
 
     <!-- About phone screen, Slim version -->
     <string name="slim_version_title">Slim version</string>
@@ -936,9 +939,6 @@
     <string name="expanded_desktop_state">Expanded state</string>
     <string name="expanded_enabled_for_all">Enabled for all</string>
     <string name="expanded_user_configurable">User configurable</string>
-
-    <!-- BitSyko Layers -->
-    <string name="bitsyko_layers_str">Layers</string>
 
     <!-- Navigation settings -->
     <string name="navigation_settings_options_title">Navigation options</string>

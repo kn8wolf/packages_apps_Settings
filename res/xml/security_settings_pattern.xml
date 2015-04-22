@@ -45,17 +45,17 @@
             android:key="power_button_instantly_locks"
             android:title="@string/lockpattern_settings_enable_power_button_instantly_locks"/>
 
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="lockscreen_category"
+        android:title="@string/lockscreen_title">
+
         <PreferenceScreen
             android:fragment="com.android.settings.OwnerInfoSettings"
             android:key="owner_info_settings"
             android:title="@string/owner_info_settings_title"
             android:summary="@string/owner_info_settings_summary"/>
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="lockscreen_shortcut_category"
-        android:title="@string/lockscreen_shortcut_title">
 
         <PreferenceScreen
                  android:key="lockscreen_shortcuts"

@@ -148,6 +148,10 @@ public class QSTileHolder {
                 resourceName ="ic_livedisplay_day";
                 stringId = R.string.live_display_title;
                 break;
+            case QSConstants.TILE_SYNC:
+                resourceName = "ic_qs_sync_on";
+                stringId = R.string.qs_tile_sync;
+                break;
             default:
                 return null;
         }

@@ -84,11 +84,21 @@
         <PreferenceScreen
             android:key="key_layers_manager"
             android:title="@string/layers_manager_title"
-            android:summary="@string/layers_manager_summary">     
+            android:summary="@string/layers_manager_summary">
             <intent
                 android:action="android.intent.action.MAIN"
                 android:targetPackage="com.lovejoy777.rroandlayersmanager"
                 android:targetClass="com.lovejoy777.rroandlayersmanager.menu" />
+        </PreferenceScreen>
+
+        <PreferenceScreen
+            android:key="key_layers_backup"
+            android:title="@string/layers_backup_title"
+            android:summary="@string/layers_backup_summary">
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="com.kantjer.xda.layers"
+                android:targetClass="net.dinglisch.android.tasker.Kid" />
         </PreferenceScreen>
 
     </PreferenceCategory>

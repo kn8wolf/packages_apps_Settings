@@ -68,6 +68,8 @@
     <string name="no_changelog_summary">No changelog</string>
     <string name="layers_manager_title">Layers manager</string>
     <string name="layers_manager_summary">An easy way to manage layers</string>
+    <string name="layers_backup_title">Layers backup</string>
+    <string name="layers_backup_summary">Create backup script for layers to survive a dirty flash</string>
 
     <!-- About phone screen, Slim version -->
     <string name="slim_version_title">Slim version</string>

@@ -53,6 +53,7 @@ public class AdvancedSettings extends SettingsPreferenceFragment {
     private static final String KEY_SUPERUSER = "key_superuser";
     private static final String KEY_BUGREPORT = "key_bug_report";
     private static final String KEY_LAYERS_MANAGER = "key_layers_manager";
+    private static final String KEY_LAYERS_BACKUP = "key_layers_backup";
 
     private BugReport mBugReportTask = null;
 
@@ -107,7 +108,7 @@ public class AdvancedSettings extends SettingsPreferenceFragment {
             } else {
                 rootCat.removePreference(supersu);
             }
-        }        
+        }
     }
 
     @Override
@@ -128,6 +129,16 @@ public class AdvancedSettings extends SettingsPreferenceFragment {
                 } catch (ActivityNotFoundException ex) {
                     getActivity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + appPackageName)));
                 }
+                return true;
+            }
+            return false;
+        } else if (preference.getKey().equals(KEY_LAYERS_BACKUP)) {
+            final String appPackageName = "com.kantjer.xda.layers";
+            try {
+                getActivity().getPackageManager().getPackageInfo(appPackageName, 0);
+            } catch (PackageManager.NameNotFoundException e) {
+                String url = "https://basketbuild.com/devs/kantjer/app";
+                getActivity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
                 return true;
             }
             return false;

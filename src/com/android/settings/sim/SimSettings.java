@@ -166,9 +166,14 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             final SubInfoRecord sir = findRecordBySlotId(i);
             simCards.addPreference(new SimPreference(getActivity(), sir, i));
             if (mNumSlots > 1) {
-                mSimEnablers.add(i, new MultiSimEnablerPreference(
-                        getActivity(), sir, mHandler, i));
-                simEnablers.addPreference(mSimEnablers.get(i));
+                MultiSimEnablerPreference multiSimEnablerPreference =
+                        new MultiSimEnablerPreference(getActivity(), sir, mHandler, sir.slotId);
+                if (!getResources()
+                        .getBoolean(R.bool.config_disableAltAlwaysSmsCallSimPref)
+                        || sir.slotId > 0) {
+                    mSimEnablers.add(multiSimEnablerPreference);
+                    simEnablers.addPreference(multiSimEnablerPreference);
+                }
             } else {
                 removePreference(SIM_ENABLER_CATEGORY);
             }

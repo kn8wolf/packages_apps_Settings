@@ -1110,4 +1110,7 @@
     <string name="headset_connect_player_title">Launch music app</string>
     <string name="headset_connect_player_summary">Launch the default music app when headset is connected</string>
 
+    <!-- Connection override toggles (not all are used at this time ) -->
+    <string name="toggleData">Data connection</string>
+
 </resources>

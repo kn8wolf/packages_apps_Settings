@@ -1084,4 +1084,7 @@
     <string name="appops_manager_title">Appops</string>
     <string name="appops_manager_summary">Individually manage all apps permissions</string>
 
+    <!-- Bluetooth -->
+    <string name="bluetooth_pan_profile_summary_use_for_error">Connection error; is Bluetooth tethering enabled on this device?</string>
+
 </resources>

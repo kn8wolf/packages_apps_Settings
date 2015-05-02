@@ -130,15 +130,15 @@
                     android:targetClass="com.slim.device.settings.ScreenOffGestureSettings" />
         </dashboard-tile>
 
-        <!-- SlimCenter -->
+        <!-- SlimOTA -->
         <dashboard-tile
-               android:id="@+id/slim_center"
-               android:title="@string/slim_center_title"
+               android:id="@+id/slimota"
+               android:title="@string/slimota_title"
                android:icon="@drawable/ic_settings_slimcenter">
                <intent
                        android:action="android.intent.action.MAIN"
-                       android:targetPackage="com.slim.ota"
-                       android:targetClass="com.slim.center.SlimCenter" />
+                       android:targetPackage="com.fusionjack.slimota"
+                       android:targetClass="com.fusionjack.slimota.MainActivity" />
         </dashboard-tile>
 
     </dashboard-category>

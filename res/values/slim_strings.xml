@@ -1051,8 +1051,8 @@
     <string name="live_display_enhance_color_title">Enhance colors</string>
     <string name="live_display_enhance_color_summary">Improve color vibrance of flesh tones, scenery, and other images</string>
 
-    <!-- SlimCenter -->
-    <string name="slim_center_title">SlimCenter</string>
+    <!-- SlimOTA -->
+    <string name="slimota_title">SlimOTA</string>
 
     <string name="storage_rescan_media">Rescan media for the storage volume</string>
     <string name="storage_rescan_media_complete">Scan completed</string>

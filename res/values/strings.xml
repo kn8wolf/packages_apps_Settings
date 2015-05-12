@@ -5296,6 +5296,8 @@
     <string name="sub_deactivate_not_supported">Deactivation not supported</string>
     <string name="sub_activate_not_supported">Activation not supported</string>
     <string name="slot_name">SIM <xliff:g id="sub">%d</xliff:g></string>
+    <string name="sim_mobile_network_settings_category_title">Mobile network settings</string>
+    <string name="sim_mobile_network_settings_title">SIM %d settings</string>
 
     <!-- A menu item in "About phone" that allows the user to update the phone with settings
     from their cell phone carrier. The use of the string is similar to the string

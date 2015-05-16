@@ -630,7 +630,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             final TelephonyManager tm =
                         (TelephonyManager) getActivity().getSystemService(
                         Context.TELEPHONY_SERVICE);
-            String simCarrierName = tm.getSimOperatorNameForSubscription(mSubInfoRecord
+            String simCarrierName = tm.getSimOperatorNameForSubscription(mSubscriptionInfo
                         .getSubscriptionId());
             TextView carrierView = (TextView)dialogLayout.findViewById(R.id.carrier);
             carrierView.setText(!TextUtils.isEmpty(simCarrierName) ? simCarrierName :

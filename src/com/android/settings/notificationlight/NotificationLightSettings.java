@@ -416,7 +416,7 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         mMenu = menu;
-        mMenu.add(0, MENU_ADD, 0, R.string.profiles_add)
+        mMenu.add(0, MENU_ADD, 0, R.string.add_title)
                 .setIcon(R.drawable.ic_menu_add_white)
                 .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
     }
@@ -449,7 +449,7 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
                 final ListView list = new ListView(getActivity());
                 list.setAdapter(mPackageAdapter);
 
-                builder.setTitle(R.string.profile_choose_app);
+                builder.setTitle(R.string.choose_app_title);
                 builder.setView(list);
                 dialog = builder.create();
 

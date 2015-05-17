@@ -812,4 +812,32 @@
     <!-- SlimOTA -->
     <string name="slimota_title">SlimOTA</string>
 
+    <!-- Advanced settings  -->
+    <string name="advanced_settings_title">Advanced</string>
+    <string name="tweak_category_title">Tweak</string>
+    <string name="root_category_title">Root</string>
+    <string name="misc_category_title">Miscellaneous</string>
+    <string name="theme_category_title">Theme</string>
+    <string name="supersu_title">SuperSU</string>
+    <string name="kernel_adiutor_title">Kernel Adiutor</string>
+    <string name="kernel_adiutor_summary">Tweak kernel parameters. Warning! This may cause instability!</string>
+    <string name="viper4android_title">Viper4Android</string>
+    <string name="viper4android_summary">Tweak audio settings</string>
+    <string name="maxxaudiofx_title">MaxxAudioFX</string>
+    <string name="maxxaudiofx_summary">Tweak audio settings</string>
+    <string name="root_summary">Manage apps root permission</string>
+    <string name="screen_recorder_title">Screen recorder</string>
+    <string name="screen_recorder_summary">Configure screen recorder settings</string>
+    <string name="bug_report_title">Bug report</string>
+    <string name="bug_report_summary">Create bug report which includes logcat, last_kmsg and dmesg</string>
+    <string name="bug_report_success">Bug report created in /sdcard/Bugreport</string>
+    <string name="bug_report_failed">Bug report creation failed</string>
+    <string name="changelog_title">Build changelog</string>
+    <string name="changelog_summary">A full changelog of the current build</string>
+    <string name="no_changelog_summary">No changelog</string>
+    <string name="layers_manager_title">Layers manager</string>
+    <string name="layers_manager_summary">An easy way to manage layers</string>
+    <string name="layers_backup_title">Layers backup</string>
+    <string name="layers_backup_summary">Create backup script for layers to survive a dirty flash</string>
+
 </resources>

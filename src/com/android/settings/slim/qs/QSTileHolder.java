@@ -156,6 +156,7 @@ public class QSTileHolder {
             case QSConstants.TILE_LIVE_DISPLAY:
                 resourceName ="ic_livedisplay_day";
                 stringId = R.string.live_display_title;
+                break;
             case QSConstants.TILE_SLIMACTION:
                 resourceName = "ic_qs_reboot_recovery";
                 stringId = R.string.qs_tile_slimaction;

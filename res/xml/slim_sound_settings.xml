@@ -43,6 +43,12 @@
         android:title="@string/swap_volume_buttons_title"
         android:summary="@string/swap_volume_buttons_summary" />
 
+    <com.android.settings.slim.SystemSettingSwitchPreference
+        android:key="headset_connect_player"
+        android:title="@string/headset_connect_player_title"
+        android:summary="@string/headset_connect_player_summary"
+        android:defaultValue="false" />
+
     <PreferenceCategory
         android:title="@string/notifications_category_title" />
 

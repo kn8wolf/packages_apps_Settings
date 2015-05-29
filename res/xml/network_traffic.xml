@@ -42,9 +42,9 @@
             android:key="network_traffic_autohide_threshold"
             android:title="@string/network_traffic_autohide_threshold"
             android:max="100"
-            settings:min="0"
-            settings:unitsLeft=""
-            settings:unitsRight="kB/s"
+            settings:netMin="0"
+            settings:netUnitsLeft=""
+            settings:netUnitsRight="kB/s"
             android:dependency="network_traffic_autohide"
             android:persistent="false" />
 

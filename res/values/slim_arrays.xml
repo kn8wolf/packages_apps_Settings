@@ -564,6 +564,7 @@
         <item>@string/shortcut_action_home</item>
         <item>@string/shortcut_action_kill</item>
         <item>@string/shortcut_action_lastapp</item>
+        <item>@string/shortcut_action_menu_big</item>
         <item>@string/shortcut_action_notifications</item>
         <item>@string/shortcut_action_ime</item>
         <item>@string/shortcut_action_power_menu</item>
@@ -582,6 +583,7 @@
         <item>**home**</item>
         <item>**kill**</item>
         <item>**lastapp**</item>
+        <item>**menu_big**</item>
         <item>**notifications**</item>
         <item>**ime**</item>
         <item>**power_menu**</item>
@@ -934,18 +936,6 @@
     </string-array>
 
      <!-- Recent panel -->
-    <string-array name="recent_panel_scale_entries">
-        <item>@string/recent_panel_100</item>
-        <item>@string/recent_panel_85</item>
-        <item>@string/recent_panel_70</item>
-    </string-array>
-
-    <string-array name="recent_panel_scale_values" translatable="false">
-        <item>100</item>
-        <item>85</item>
-        <item>70</item>
-    </string-array>
-
     <string-array name="recent_panel_expanded_mode_entries">
         <item>@string/recent_panel_expanded_mode_auto</item>
         <item>@string/recent_panel_expanded_mode_always</item>

@@ -1261,4 +1261,7 @@
     <string name="autoperf_title">Enable per-app profiles</string>
     <string name="autoperf_summary">Automatically choose an appropriate performance profile for various applications</string>
 
+    <!-- WiFi auto-configure priorities -->
+    <string name="wifi_auto_config_priorities">Auto conf. priorities</string>
+
 </resources>

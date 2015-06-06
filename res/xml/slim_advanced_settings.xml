@@ -102,6 +102,13 @@
         android:title="@string/misc_category_title">
 
         <PreferenceScreen
+            android:key="screen_recorder"
+            android:title="@string/screen_recorder_title"
+            android:summary="@string/screen_recorder_summary"
+            android:fragment="com.android.settings.slim.ScreenRecorderSettings" >
+        </PreferenceScreen>
+
+        <PreferenceScreen
             android:key="key_bug_report"
             android:title="@string/bug_report_title"
             android:summary="@string/bug_report_summary" >

@@ -307,7 +307,7 @@ public class SettingsActivity extends Activity
             OtherSoundSettings.class.getName(),
             QuickLaunchSettings.class.getName(),
             ApnSettings.class.getName(),
-            LiveDisplay.class.getName()
+            LiveDisplay.class.getName(),
             BlacklistSettings.class.getName()
     };
 

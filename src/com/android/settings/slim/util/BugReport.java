@@ -77,7 +77,7 @@ public class BugReport extends AsyncTask<Context, Void, Context> {
     @Override
     protected Context doInBackground(Context... arg) {
         Context context = arg[0];
-        RootUtils.runCommand("logcat -d -f " + mLogcat.toString() + " *:V\n");
+        RootUtils.runCommand("logcat -v time -d -f " + mLogcat.toString() + " *:V\n");
         RootUtils.runCommand("cat /proc/last_kmsg > " + mLastKmsg.toString());
         RootUtils.runCommand("dmesg > " + mDmesg.toString());
         return context;

@@ -562,13 +562,6 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(), Settings.System.UI_OVERFLOW_BUTTON, 2);
             mOverflowButtonMode.setSummary(mOverflowButtonMode.getEntries()[2]);
 
-            // Enable NavBar
-            final String hwkeysProp = SystemProperties.get("qemu.hw.mainkeys");
-            final boolean navBarOverride = (hwkeysProp.equals("0") || hwkeysProp.equals("1"));
-            if (!navBarOverride) {
-                Settings.System.putInt(getContentResolver(), Settings.System.NAVIGATION_BAR_SHOW, 1);
-            }
-
             // Update preferences
             updateGeneralOptions();
 

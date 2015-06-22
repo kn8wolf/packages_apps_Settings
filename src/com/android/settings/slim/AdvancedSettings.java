@@ -120,7 +120,7 @@ public class AdvancedSettings extends SettingsPreferenceFragment {
             try {
                 getActivity().getPackageManager().getPackageInfo(appPackageName, 0);
             } catch (PackageManager.NameNotFoundException e) {
-                String url = "https://basketbuild.com/devs/kantjer/app";
+                String url = "https://www.androidfilehost.com/?w=files&flid=33949";
                 getActivity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
                 return true;
             }

@@ -57,6 +57,12 @@
             android:defaultValue="0"
             android:dependency="show_clear_all_recents" />
 
+        <PreferenceScreen
+            android:key="screen_pinning_settings"
+            android:title="@string/screen_pinning_title"
+            android:fragment="com.android.settings.ScreenPinningSettings"
+            android:defaultValue="false" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

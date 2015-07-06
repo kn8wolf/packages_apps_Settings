@@ -111,7 +111,6 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private static final String KEY_CREDENTIALS_MANAGER = "credentials_management";
     private static final String PACKAGE_MIME_TYPE = "application/vnd.android.package-archive";
     private static final String KEY_TRUST_AGENT = "trust_agent";
-    private static final String KEY_SCREEN_PINNING = "screen_pinning_settings";
 
     // These switch preferences need special handling since they're not all stored in Settings.
     private static final String SWITCH_PREFERENCE_KEYS[] = { KEY_LOCK_AFTER_TIMEOUT,
@@ -411,12 +410,6 @@ public class SecuritySettings extends SettingsPreferenceFragment
             } else if (numPhones > 1) {
                 iccLockGroup.removePreference(iccLock);
             }
-        }
-
-        if (Settings.System.getInt(getContentResolver(),
-                Settings.System.LOCK_TO_APP_ENABLED, 0) != 0) {
-            root.findPreference(KEY_SCREEN_PINNING).setSummary(
-                    getResources().getString(R.string.switch_on_text));
         }
 
         // Show password

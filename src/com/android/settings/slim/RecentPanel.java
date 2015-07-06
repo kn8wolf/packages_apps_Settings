@@ -60,6 +60,7 @@ public class RecentPanel extends SettingsPreferenceFragment implements DialogCre
     private static final String RECENTS_SHOW_SEARCH_BAR = "recents_show_search_bar";
     private static final String RECENTS_SHOW_CLEAR_ALL = "show_clear_all_recents";
     private static final String RECENTS_CLEAR_ALL_LOCATION = "recents_clear_all_location";
+    private static final String SCREEN_PINNING = "screen_pinning_settings";
 
     private static final String RECENTS_MAX_APPS = "max_apps";
     private static final String RECENT_PANEL_SHOW_TOPMOST =
@@ -83,6 +84,7 @@ public class RecentPanel extends SettingsPreferenceFragment implements DialogCre
     private SwitchPreference mShowClearAll;
     private SwitchPreference mShowSearchBar;
     private ListPreference mRecentsClearAllLocation;
+    private PreferenceScreen mScreenPinning;
 
     private SlimSeekBarPreference mMaxApps;
     private SwitchPreference mRecentsShowTopmost;
@@ -260,6 +262,14 @@ public class RecentPanel extends SettingsPreferenceFragment implements DialogCre
        final boolean useSlimRecent = Settings.System.getInt(getContentResolver(),
                 Settings.System.USE_SLIM_RECENTS, 0) == 1;
        updateStockRecents(!useSlimRecent);
+
+       final boolean screenPinning = Settings.System.getInt(getContentResolver(),
+                Settings.System.LOCK_TO_APP_ENABLED, 0) == 1;
+       if (mScreenPinning != null) {
+           mScreenPinning.setSummary(screenPinning ?
+               getResources().getString(R.string.switch_on_text) :
+               getResources().getString(R.string.switch_off_text));
+       }
     }
 
     private void updateStockRecents(boolean enable) {
@@ -268,6 +278,9 @@ public class RecentPanel extends SettingsPreferenceFragment implements DialogCre
         }
         if (mShowClearAll != null) {
             mShowClearAll.setEnabled(enable);
+        }
+        if (mScreenPinning != null) {
+            mScreenPinning.setEnabled(enable);
         }
     }
 
@@ -283,6 +296,8 @@ public class RecentPanel extends SettingsPreferenceFragment implements DialogCre
 
         mRecentsClearAllLocation = (ListPreference) findPreference(RECENTS_CLEAR_ALL_LOCATION);
         mRecentsClearAllLocation.setOnPreferenceChangeListener(this);
+
+        mScreenPinning = (PreferenceScreen) findPreference(SCREEN_PINNING);
 
         mMaxApps = (SlimSeekBarPreference) findPreference(RECENTS_MAX_APPS);
         mMaxApps.setOnPreferenceChangeListener(this);

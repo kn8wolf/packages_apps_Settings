@@ -124,12 +124,6 @@
                 android:persistent="false"
                 android:fragment="com.android.settings.TrustAgentSettings"/>
 
-        <PreferenceScreen
-                android:key="screen_pinning_settings"
-                android:title="@string/screen_pinning_title"
-                android:summary="@string/switch_off_text"
-                android:fragment="com.android.settings.ScreenPinningSettings"/>
-
         <Preference android:key="usage_access"
                     android:title="@string/usage_access_title"
                     android:fragment="com.android.settings.UsageAccessSettings"/>

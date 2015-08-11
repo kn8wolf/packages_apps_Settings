@@ -90,6 +90,12 @@
             </intent>
         </PreferenceScreen>
 
+        <PreferenceScreen
+            android:key="lockscreen_weather"
+            android:summary="@string/lock_screen_weather_settings_summary"
+            android:title="@string/lock_screen_weather_settings_title"
+            android:fragment="com.android.settings.slim.LockScreenWeatherSettings" />
+
         <SwitchPreference
             android:key="lockscreen_bottom_shortcuts"
             android:title="@string/lockscreen_bottom_shortcuts_title"/>

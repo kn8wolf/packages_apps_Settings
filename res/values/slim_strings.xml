@@ -1292,10 +1292,6 @@
     <string name="captive_portal_detection">Captive portal detection</string>
     <string name="captive_portal_detection_summary">If disabled, a connection to google servers is not required in order to detect data connection.</string>
 
-    <!-- Lockscreen wallpaper -->
-    <string name="lockscreen_wallpaper_title">Wallpaper</string>
-    <string name="lockscreen_wallpaper_summary">Set lockscreen wallpaper</string>
-
     <!-- LTO download data over wi-fi only -->
     <string name="lto_download_data_wifi_only">GPS assisted data download</string>
     <string name="lto_download_data_wifi_only_on">Over any networks</string>

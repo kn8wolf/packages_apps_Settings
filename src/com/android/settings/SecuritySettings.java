@@ -28,7 +28,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.content.pm.UserInfo;
 import android.content.res.Resources;
@@ -38,7 +37,6 @@ import android.os.UserManager;
 import android.preference.SwitchPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
-import android.preference.PreferenceCategory;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
@@ -94,8 +92,6 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private static final String LOCKSCREEN_QUICK_UNLOCK_CONTROL = "quick_unlock_control";
     private static final String LOCK_NUMPAD_RANDOM = "lock_numpad_random";
     private static final String LOCKSCREEN_BOTTOM_SHORTCUTS = "lockscreen_bottom_shortcuts";
-    private static final String KEY_LOCKSCREEN_CATEGORY = "lockscreen_category";
-    private static final String KEY_LOCKSCREEN_WALLPAPER = "lockscreen_wallpaper";
 
     private static final int SET_OR_CHANGE_LOCK_METHOD_REQUEST = 123;
     private static final int CONFIRM_EXISTING_FOR_BIOMETRIC_WEAK_IMPROVE_REQUEST = 124;
@@ -491,17 +487,6 @@ public class SecuritySettings extends SettingsPreferenceFragment
             PreferenceGroup appCategory = (PreferenceGroup)
                     root.findPreference(KEY_APP_SECURITY_CATEGORY);
             appCategory.removePreference(mBlacklist);
-        }
-
-        // Lockscreen wallpaper
-        PreferenceCategory lockscreenCategory = (PreferenceCategory)
-            root.findPreference(KEY_LOCKSCREEN_CATEGORY);
-        PreferenceScreen lockscreenWallpaper = (PreferenceScreen)
-            lockscreenCategory.findPreference(KEY_LOCKSCREEN_WALLPAPER);
-        try {
-            getActivity().getPackageManager().getPackageInfo("com.slim.wallpaperpicker", 0);
-        } catch (PackageManager.NameNotFoundException e) {
-            lockscreenCategory.removePreference(lockscreenWallpaper);
         }
 
         // The above preferences come and go based on security state, so we need to update

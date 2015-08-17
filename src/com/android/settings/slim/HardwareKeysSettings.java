@@ -26,7 +26,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.content.SharedPreferences;
-import android.hardware.CmHardwareManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.SystemProperties;
@@ -54,6 +53,8 @@ import com.android.internal.util.slim.HwKeyHelper;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
 import com.android.settings.slim.util.ShortcutPickerHelper;
+
+import cyanogenmod.hardware.CMHardwareManager;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -144,13 +145,9 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
     private String mPendingSettingsKey;
     private static FilteredDeviceFeaturesArray sFinalActionDialogArray;
 
-    private CmHardwareManager mCmHardwareManager;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        mCmHardwareManager = (CmHardwareManager) getActivity().getSystemService(Context.CMHW_SERVICE);
 
         mPicker = new ShortcutPickerHelper(getActivity(), this);
 
@@ -412,7 +409,8 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
     private void updateGeneralOptions() {
         // KeyDisabler
         if (isKeyDisablerSupported()) {
-            boolean isHWKeysDisabled = mCmHardwareManager.get(CmHardwareManager.FEATURE_KEY_DISABLE);
+            final CMHardwareManager hardware = CMHardwareManager.getInstance(getActivity());
+            boolean isHWKeysDisabled = hardware.get(CMHardwareManager.FEATURE_KEY_DISABLE);
             mDisableHardwareButtons.setChecked(isHWKeysDisabled);
             if (mBacklight != null) {
                 mBacklight.setEnabled(isHWKeysDisabled ? false : true);
@@ -548,9 +546,8 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
             boolean value = (Boolean) newValue;
 
             // Disable hw keys on kernel level
-            if (mCmHardwareManager != null) {
-                mCmHardwareManager.set(CmHardwareManager.FEATURE_KEY_DISABLE, value);
-            }
+            final CMHardwareManager hardware = CMHardwareManager.getInstance(getActivity());
+            hardware.set(CMHardwareManager.FEATURE_KEY_DISABLE, value);
 
             // Disable backlight
             int defaultBrightness = getResources().getInteger(
@@ -578,19 +575,16 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
     }
 
     private boolean isKeyDisablerSupported() {
-        if (mCmHardwareManager != null) {
-            return mCmHardwareManager.isSupported(CmHardwareManager.FEATURE_KEY_DISABLE);
-        }
-        return false;
+        final CMHardwareManager hardware = CMHardwareManager.getInstance(getActivity());
+        return hardware.isSupported(CMHardwareManager.FEATURE_KEY_DISABLE);
     }
 
     public static void restore(Context context) {
-        CmHardwareManager cmHardwareManager =
-                (CmHardwareManager) context.getSystemService(Context.CMHW_SERVICE);
-        if (cmHardwareManager.isSupported(CmHardwareManager.FEATURE_KEY_DISABLE)) {
+        final CMHardwareManager hardware = CMHardwareManager.getInstance(context);
+        if (hardware.isSupported(CMHardwareManager.FEATURE_KEY_DISABLE)) {
             final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
             final boolean enabled = prefs.getBoolean(DISABLE_HARDWARE_BUTTONS, false);
-            cmHardwareManager.set(CmHardwareManager.FEATURE_KEY_DISABLE, enabled);
+            hardware.set(CMHardwareManager.FEATURE_KEY_DISABLE, enabled);
         }
     }
 

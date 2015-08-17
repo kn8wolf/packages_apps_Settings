@@ -23,7 +23,6 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.Resources;
 import android.database.ContentObserver;
-import android.hardware.CmHardwareManager;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -39,6 +38,8 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
+
+import cyanogenmod.hardware.CMHardwareManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -113,9 +114,8 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
             TYPE_SYSTEM, KEY_VIBRATION_INTENSITY, System.HAPTIC_FEEDBACK_ENABLED, DEFAULT_ON) {
         @Override
         public boolean isApplicable(Context context) {
-            CmHardwareManager cmHardwareManager =
-                    (CmHardwareManager) context.getSystemService(Context.CMHW_SERVICE);
-            return cmHardwareManager.isSupported(CmHardwareManager.FEATURE_VIBRATOR);
+            CMHardwareManager hardware = CMHardwareManager.getInstance(context);
+            return hardware.isSupported(CMHardwareManager.FEATURE_VIBRATOR);
         }
     };
 

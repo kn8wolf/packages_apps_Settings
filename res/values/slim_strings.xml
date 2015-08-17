@@ -1306,7 +1306,7 @@
 
     <!-- Lockscreen weather -->
     <string name="status_bar_show_weather_category">Weather</string>
-    <string name="lock_screen_weather_settings_title">Lockscreen weather</string>
+    <string name="lock_screen_weather_settings_title">Weather</string>
     <string name="lock_screen_weather_settings_summary">Show weather on lockscreen</string>
     <string name="weather_show_weather_title">Show weather</string>
     <string name="weather_show_weather_summary">Enable weather on lockscreen</string>

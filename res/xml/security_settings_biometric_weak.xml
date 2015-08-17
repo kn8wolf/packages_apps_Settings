@@ -54,40 +54,4 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory
-        android:key="lockscreen_category"
-        android:title="@string/lockscreen_title">
-
-        <PreferenceScreen
-            android:key="owner_info_settings"
-            android:fragment="com.android.settings.OwnerInfoSettings"
-            android:title="@string/owner_info_settings_title"
-            android:summary="@string/owner_info_settings_summary"/>
-
-        <PreferenceScreen
-                 android:key="lockscreen_shortcuts"
-                 android:fragment="com.android.settings.slim.dslv.ActionListViewSettings"
-                 android:summary="@string/lockscreen_shortcuts_summary"
-                 android:title="@string/lockscreen_shortcuts_title">
-             <extra android:name="actionMode" android:value="4" />
-             <extra android:name="maxAllowedActions" android:value="5" />
-             <extra android:name="disableLongpress" android:value="true" />
-             <extra android:name="useAppPickerOnly" android:value="true" />
-             <extra android:name="fragment" android:value="com.android.settings.slim.fragments.LockscreenShortcutFragment" />
-        </PreferenceScreen>
-
-        <PreferenceScreen
-            android:key="lockscreen_wallpaper"
-            android:title="@string/lockscreen_wallpaper_title"
-            android:summary="@string/lockscreen_wallpaper_summary"
-            android:persistent="false"
-            android:fragment="com.android.settings.slim.LockscreenWallpaper">
-        </PreferenceScreen>
-
-        <SwitchPreference
-            android:key="lockscreen_bottom_shortcuts"
-            android:title="@string/lockscreen_bottom_shortcuts_title"/>
-
-    </PreferenceCategory>
-
 </PreferenceScreen>

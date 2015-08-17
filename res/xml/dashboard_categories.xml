@@ -114,6 +114,14 @@
                     android:targetClass="com.slim.device.settings.ScreenOffGestureSettings" />
         </dashboard-tile>
 
+        <!-- Lock screen -->
+        <dashboard-tile
+                android:id="@+id/lockscreen_settings"
+                android:title="@string/lockscreen_title"
+                android:fragment="com.android.settings.slim.LockscreenSettings"
+                android:icon="@drawable/ic_settings_lockscreen"
+                />
+
         <!-- SlimOTA -->
         <dashboard-tile
                android:id="@+id/slimota"

@@ -67,6 +67,7 @@ import android.widget.SearchView;
 
 import com.android.internal.util.ArrayUtils;
 import com.android.internal.util.XmlUtils;
+import com.android.internal.widget.LockPatternUtils;
 import com.android.settings.accessibility.AccessibilitySettings;
 import com.android.settings.accessibility.CaptionPropertiesFragment;
 import com.android.settings.accounts.AccountSettings;
@@ -1254,6 +1255,11 @@ public class SettingsActivity extends Activity
                     }
                 } else if (id == R.id.performance_settings) {
                     if (!(pm.hasPowerProfiles())) {
+                        removeTile = true;
+                    }
+                } else if (id == R.id.lockscreen_settings) {
+                    final LockPatternUtils lockPatternUtils = new LockPatternUtils(this);
+                    if (lockPatternUtils.isLockScreenDisabled()) {
                         removeTile = true;
                     }
                 }

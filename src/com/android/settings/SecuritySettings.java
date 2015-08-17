@@ -91,7 +91,6 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private static final String KEY_ADVANCED_REBOOT = "advanced_reboot";
     private static final String LOCKSCREEN_QUICK_UNLOCK_CONTROL = "quick_unlock_control";
     private static final String LOCK_NUMPAD_RANDOM = "lock_numpad_random";
-    private static final String LOCKSCREEN_BOTTOM_SHORTCUTS = "lockscreen_bottom_shortcuts";
 
     private static final int SET_OR_CHANGE_LOCK_METHOD_REQUEST = 123;
     private static final int CONFIRM_EXISTING_FOR_BIOMETRIC_WEAK_IMPROVE_REQUEST = 124;
@@ -146,7 +145,6 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private ListPreference mAdvancedReboot;
     private SwitchPreference mQuickUnlockScreen;
     private ListPreference mLockNumpadRandom;
-    private SwitchPreference mLockscreenBottomShortcuts;
 
     private boolean mIsPrimary;
 
@@ -340,18 +338,6 @@ public class SecuritySettings extends SettingsPreferenceFragment
                     Settings.Secure.LOCK_NUMPAD_RANDOM, 0)));
             mLockNumpadRandom.setSummary(mLockNumpadRandom.getEntry());
             mLockNumpadRandom.setOnPreferenceChangeListener(this);
-        }
-
-        // Lockscreen bottom shortcuts
-        mLockscreenBottomShortcuts = (SwitchPreference) root.findPreference(LOCKSCREEN_BOTTOM_SHORTCUTS);
-        if (mLockscreenBottomShortcuts != null) {
-            boolean lockScreenBottomShortcutsEnabled = Settings.Secure.getInt(getContentResolver(),
-                    Settings.Secure.LOCKSCREEN_BOTTOM_SHORTCUTS, 1) == 1;
-            mLockscreenBottomShortcuts.setChecked(lockScreenBottomShortcutsEnabled);
-            mLockscreenBottomShortcuts.setSummary(lockScreenBottomShortcutsEnabled
-                    ? R.string.lockscreen_bottom_shortcuts_enabled :
-                      R.string.lockscreen_bottom_shortcuts_disabled);
-            mLockscreenBottomShortcuts.setOnPreferenceChangeListener(this);
         }
 
         // Append the rest of the settings
@@ -809,10 +795,6 @@ public class SecuritySettings extends SettingsPreferenceFragment
                     Integer.valueOf((String) value));
             mLockNumpadRandom.setValue(String.valueOf(value));
             mLockNumpadRandom.setSummary(mLockNumpadRandom.getEntry());
-        } else if (preference == mLockscreenBottomShortcuts) {
-            Settings.Secure.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.Secure.LOCKSCREEN_BOTTOM_SHORTCUTS,
-                    (Boolean) value ? 1 : 0);
         }
         return result;
     }

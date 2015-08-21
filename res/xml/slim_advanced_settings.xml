@@ -102,6 +102,12 @@
         android:title="@string/misc_category_title">
 
         <PreferenceScreen
+            android:key="lock_clock"
+            android:title="@string/lock_clock_title"
+            android:summary="@string/lock_clock_summary"
+            android:fragment="com.android.settings.slim.LockClock" />
+
+        <PreferenceScreen
             android:key="screen_recorder"
             android:title="@string/screen_recorder_title"
             android:summary="@string/screen_recorder_summary"
